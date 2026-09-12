@@ -1,0 +1,22 @@
+name: WatchAgents
+options:
+  minimumXcodeGenVersion: 2.38.0
+packages:
+  AgentHubCore:
+    path: ../../packages/apple-core
+targets:
+  WatchAgents:
+    type: application
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources: [Sources]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.watchagents.watch
+        SWIFT_VERSION: 6.0
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - package: AgentHubCore
+        product: AgentHubCore
+      - package: AgentHubCore
+        product: AgentHubUI

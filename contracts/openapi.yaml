@@ -1,0 +1,58 @@
+openapi: 3.1.0
+info:
+  title: Watch Agents Control Plane API
+  version: 1.0.0
+paths:
+  /health:
+    get:
+      responses:
+        '200': { description: Healthy }
+  /v1/ingest/events:
+    post:
+      summary: Ingest an idempotent normalized agent event
+      security: [{ connectorToken: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: './events.schema.json' }
+      responses:
+        '202': { description: Accepted }
+  /v1/runs:
+    get:
+      security: [{ deviceToken: [] }]
+      parameters:
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
+        - { name: state, in: query, schema: { type: string } }
+      responses:
+        '200': { description: Run list }
+  /v1/devices/current/push:
+    put:
+      summary: Register or update the current device push token and privacy mode
+      security: [{ deviceToken: [] }]
+      responses:
+        '204': { description: Updated }
+  /v1/metrics/runs/daily:
+    get:
+      security: [{ deviceToken: [] }]
+      parameters:
+        - { name: days, in: query, schema: { type: integer, enum: [7, 14, 30], default: 7 } }
+        - { name: timezone, in: query, schema: { type: string } }
+      responses:
+        '200': { description: Daily run counts }
+  /v1/hitl/{id}/approve:
+    post:
+      summary: Approve an unexpired HITL request with a device signature
+      security: [{ deviceToken: [] }]
+      responses:
+        '202': { description: Command queued }
+  /v1/runs/{id}/follow-up/dispatch:
+    post:
+      summary: Dispatch the stored deterministic follow-up draft
+      security: [{ deviceToken: [] }]
+      responses:
+        '202': { description: Command queued }
+components:
+  securitySchemes:
+    connectorToken: { type: http, scheme: bearer }
+    deviceToken: { type: http, scheme: bearer }

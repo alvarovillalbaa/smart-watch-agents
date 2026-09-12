@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://watch-agents.dev/contracts/events.schema.json",
+  "title": "Watch Agents event envelope",
+  "type": "object",
+  "required": ["eventId", "occurredAt", "provider", "agentId", "runId", "sequence", "type", "payload"],
+  "properties": {
+    "eventId": { "type": "string", "minLength": 1 },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "provider": { "enum": ["hermes", "openclaw"] },
+    "agentId": { "type": "string", "minLength": 1 },
+    "runId": { "type": "string", "minLength": 1 },
+    "sequence": { "type": "integer", "minimum": 1 },
+    "type": { "enum": ["run.created", "run.updated", "run.finished", "hitl.requested", "hitl.resolved"] },
+    "payload": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "maxLength": 240 },
+        "summary": { "type": "string", "maxLength": 4000 },
+        "status": { "enum": ["running", "completed", "failed", "cancelled", "awaiting_hitl"] },
+        "artifactUrls": { "type": "array", "items": { "type": "string", "format": "uri" }, "maxItems": 20 },
+        "hitl": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "label": { "type": "string", "maxLength": 240 },
+            "description": { "type": "string", "maxLength": 4000 },
+            "risk": { "enum": ["low", "medium", "high", "critical"] },
+            "expiresAt": { "type": "string", "format": "date-time" }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

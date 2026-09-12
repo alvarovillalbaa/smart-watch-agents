@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+coverage/
+dist/
+.build/
+.swiftpm/
+DerivedData/
+*.xcuserstate
+local-data/
+.gradle/
+**/build/
+*.iml
+local.properties
+google-services.json

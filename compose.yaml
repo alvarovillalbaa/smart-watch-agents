@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: watch_agents
+      POSTGRES_USER: watch_agents
+      POSTGRES_PASSWORD: watch_agents
+    volumes:
+      - watch_agents_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U watch_agents -d watch_agents"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build:
+      context: .
+      dockerfile: services/control-plane/Dockerfile
+    env_file: .env
+    environment:
+      PORT: 8787
+      DATABASE_URL: postgres://watch_agents:watch_agents@postgres:5432/watch_agents
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8787:8787"
+
+volumes:
+  watch_agents_postgres:

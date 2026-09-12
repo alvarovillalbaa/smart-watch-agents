@@ -1,0 +1,12 @@
+{
+  "name": "watch-agents",
+  "private": true,
+  "type": "module",
+  "workspaces": ["services/*", "packages/*"],
+  "scripts": {
+    "dev": "npm --workspace @watch-agents/control-plane run dev",
+    "test": "npm --workspace @watch-agents/control-plane test && npm --workspace @watch-agents/agent-connector test",
+    "demo": "node demos/demo-agent.mjs",
+    "hubctl": "node scripts/hubctl.mjs"
+  }
+}

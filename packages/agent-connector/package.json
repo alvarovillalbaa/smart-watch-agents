@@ -1,0 +1,7 @@
+{
+  "name": "@watch-agents/agent-connector",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": "./src/index.mjs",
+  "scripts": { "test": "node --test test/**/*.test.mjs" }
+}
