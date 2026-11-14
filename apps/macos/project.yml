@@ -1,0 +1,79 @@
+name: WatchAgentsMac
+options:
+  minimumXcodeGenVersion: 2.46.0
+packages:
+  AgentHubCore:
+    path: ../../packages/apple-core
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    WATCH_AGENTS_GROUP: group.dev.watchagents
+    ENABLE_APP_SANDBOX: YES
+targets:
+  WatchAgentsMac:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources: [Sources]
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: Watch Agents
+        CFBundleShortVersionString: "0.2.0"
+        CFBundleVersion: "2"
+        LSUIElement: true
+        WatchAgentsGroupIdentifier: $(WATCH_AGENTS_GROUP)
+        CFBundleURLTypes:
+          - CFBundleURLName: dev.watchagents.mac
+            CFBundleURLSchemes: [watchagents]
+    entitlements:
+      path: WatchAgentsMac.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+        com.apple.security.application-groups: [$(WATCH_AGENTS_GROUP)]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.watchagents.mac
+        PRODUCT_NAME: WatchAgentsMac
+    dependencies:
+      - package: AgentHubCore
+        product: AgentHubCore
+      - package: AgentHubCore
+        product: AgentHubWidgetModel
+      - target: WatchAgentsStatus
+        embed: true
+  WatchAgentsStatus:
+    type: app-extension
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources: [Widget]
+    info:
+      path: Widget-Info.plist
+      properties:
+        CFBundleDisplayName: Watch Agents Status
+        CFBundleShortVersionString: "0.2.0"
+        CFBundleVersion: "2"
+        WatchAgentsGroupIdentifier: $(WATCH_AGENTS_GROUP)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: WatchAgentsStatus.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.application-groups: [$(WATCH_AGENTS_GROUP)]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.watchagents.mac.status
+        PRODUCT_NAME: WatchAgentsStatus
+        APPLICATION_EXTENSION_API_ONLY: YES
+        SKIP_INSTALL: YES
+    dependencies:
+      - package: AgentHubCore
+        product: AgentHubWidgetModel
+schemes:
+  WatchAgentsMac:
+    build:
+      targets:
+        WatchAgentsMac: all

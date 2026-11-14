@@ -15,3 +15,7 @@ local-data/
 *.iml
 local.properties
 google-services.json
+apps/macos/*.xcodeproj/
+apps/macos/Info.plist
+apps/macos/Widget-Info.plist
+apps/macos/*.entitlements
