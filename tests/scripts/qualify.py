@@ -2,6 +2,7 @@
 import hashlib
 import json
 import os
+import plistlib
 from pathlib import Path
 import shutil
 import signal
@@ -10,6 +11,7 @@ import subprocess
 import tempfile
 import time
 import uuid
+import urllib.request
 import zipfile
 
 repo = Path(__file__).resolve().parents[2]
@@ -29,6 +31,7 @@ receipt = {'mode': mode, 'commands': [], 'passed': False, 'cleanup': False}
 postgres = None
 postgres_handles = []
 keychain_owned = False
+mac_keychain_owned = False
 
 def vector(root):
     names = subprocess.check_output(['git', 'ls-files', '-z'], cwd=repo).split(b'\0')
@@ -84,7 +87,7 @@ def execute(name, argv, timeout, accepted=(0,), cwd=None):
     return process.returncode
 
 try:
-    if mode == 'native':
+    if mode in ['native', 'mac']:
         # An existing unknown item must never be deleted, even on a fresh runner.
         prior = execute('keychain-before', ['security', 'find-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(44,))
         keychain_owned = prior == 44
@@ -94,8 +97,49 @@ try:
         vector_data = json.loads((output / 'native-vector.json').read_text())
         if vector_data['schema'] != 'watch-agents.native-action-vector' or vector_data['version'] != 2:
             raise RuntimeError('Native client did not emit its real public request vector')
-    elif mode in ['http', 'chrome']:
-        if mode == 'http':
+        if mode == 'mac':
+            execute('mac-keychain-before', ['security', 'find-generic-password', '-s', 'dev.watch-agents.mac-device'], 10, accepted=(44,))
+            mac_keychain_owned = True
+            # The package's owned identity case is complete. The app probe must
+            # independently refuse an existing item before touching Keychain.
+            execute('package-keychain-cleanup', ['security', 'delete-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(0, 44))
+            execute('package-keychain-after', ['security', 'find-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(44,))
+            archive = scratch / 'xcodegen.zip'
+            with urllib.request.urlopen('https://github.com/yonaskolb/XcodeGen/releases/download/2.46.0/xcodegen.zip', timeout=45) as response:
+                with archive.open('xb') as target:
+                    shutil.copyfileobj(response, target)
+            digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+            if archive.stat().st_size != 4278764 or digest != '4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806':
+                raise RuntimeError('Public pinned XcodeGen archive differs')
+            (output / 'xcodegen.json').write_text(json.dumps({'version': '2.46.0', 'bytes': archive.stat().st_size, 'sha256': digest}))
+            xcodegen = scratch / 'xcodegen'
+            execute('xcodegen-unpack', ['ditto', '-x', '-k', str(archive), str(xcodegen)], 20)
+            execute('xcode-version', ['xcodebuild', '-version'], 20)
+            execute('mac-generate', [str(xcodegen / 'xcodegen/bin/xcodegen'), 'generate', '--spec', 'apps/macos/project.yml'], 30)
+            derived = scratch / 'derived'
+            execute('mac-build', ['xcodebuild', '-project', 'apps/macos/WatchAgentsMac.xcodeproj', '-scheme', 'WatchAgentsMac', '-configuration', 'Debug', '-derivedDataPath', str(derived), 'CODE_SIGNING_ALLOWED=NO', 'build'], 480)
+            app = derived / 'Build/Products/Debug/WatchAgentsMac.app'
+            widget = app / 'Contents/PlugIns/WatchAgentsStatus.appex'
+            for name, bundle, entitlements in [('widget', widget, work / 'apps/macos/WatchAgentsStatus.entitlements'), ('app', app, work / 'apps/macos/WatchAgentsMac.entitlements')]:
+                execute('sign-' + name, ['codesign', '--force', '--sign', '-', '--entitlements', str(entitlements), str(bundle)], 30)
+                execute('verify-' + name, ['codesign', '--verify', '--strict', '--verbose=2', str(bundle)], 20)
+                execute('inspect-' + name, ['codesign', '-dvvv', '--entitlements', ':-', str(bundle)], 15)
+                with (bundle / 'Contents/Info.plist').open('rb') as handle:
+                    info = plistlib.load(handle)
+                (output / (name + '-info.json')).write_text(json.dumps(info, indent=2, default=str))
+            widget_entitlements = plistlib.loads((work / 'apps/macos/WatchAgentsStatus.entitlements').read_bytes())
+            if widget_entitlements.get('com.apple.security.network.client') or 'AgentHubCore' in (work / 'apps/macos/Widget/WatchAgentsWidget.swift').read_text():
+                raise RuntimeError('Widget gained network/credential client ownership')
+            execute('mac-storage-probe', [str(app / 'Contents/MacOS/WatchAgentsMac'), '--qualify-storage'], 45)
+            probe = json.loads((output / 'mac-storage-probe.stdout.txt').read_text().strip().splitlines()[-1])
+            (output / 'mac-storage.json').write_text(json.dumps(probe, indent=2))
+            if not probe['passed'] or not probe.get('ownedKeychainItemsAbsent'):
+                raise RuntimeError('Actual app storage qualification failed')
+            receipt['appGroupSnapshot'] = probe.get('appGroupSnapshot', False)
+            execute('mac-package', ['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', str(app), str(output / 'WatchAgentsMac-0.2.0-adhoc-debug.zip')], 60)
+            receipt['macBundlePackaged'] = True
+    elif mode in ['http', 'chrome', 'mac-http']:
+        if mode in ['http', 'mac-http']:
             native = Path(os.environ['WATCH_AGENTS_NATIVE_INPUT'])
             if json.loads((native / 'source.json').read_text())['sha'] != head:
                 raise RuntimeError('Native vector belongs to a different source')
@@ -127,9 +171,9 @@ try:
             raise RuntimeError('Owned PostgreSQL never became ready')
         execute('createdb', [str(binaries / 'createdb'), '-h', '127.0.0.1', '-p', str(port), 'watch_agents_t2'], 15)
         env['WATCH_AGENTS_T2_DATABASE_URL'] = 'postgresql://127.0.0.1:' + str(port) + '/watch_agents_t2'
-        if mode == 'http':
+        if mode in ['http', 'mac-http']:
             env['WATCH_AGENTS_HTTP_RECEIPT'] = str(output / 'http-receipt.json')
-            execute('http-tests', ['node', '--test', 'tests/integration/action-http.test.mjs'], 180)
+            execute('http-tests', ['node', '--test', 'tests/integration/' + ('macos-http.test.mjs' if mode == 'mac-http' else 'action-http.test.mjs')], 180)
             result = json.loads((output / 'http-receipt.json').read_text())
             if not all(result[key] for key in ['serverClosed', 'poolClosed', 'nativeVectorAccepted']):
                 raise RuntimeError('Actual native interoperability or HTTP teardown was not established')
@@ -175,11 +219,18 @@ try:
 except Exception as error:
     receipt['error'] = repr(error)
 finally:
-    if mode == 'native' and keychain_owned:
+    if mode in ['native', 'mac'] and keychain_owned:
         try:
             execute('keychain-cleanup', ['security', 'delete-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(0, 44))
             execute('keychain-after', ['security', 'find-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(44,))
             receipt['ownedKeychainItemAbsent'] = True
+        except Exception as error:
+            receipt['cleanupError'] = repr(error)
+    if mode == 'mac' and mac_keychain_owned:
+        try:
+            execute('mac-keychain-cleanup', ['security', 'delete-generic-password', '-s', 'dev.watch-agents.mac-device'], 10, accepted=(0, 44))
+            execute('mac-keychain-after', ['security', 'find-generic-password', '-s', 'dev.watch-agents.mac-device'], 10, accepted=(44,))
+            receipt['ownedMacKeychainItemAbsent'] = True
         except Exception as error:
             receipt['cleanupError'] = repr(error)
     if postgres:
@@ -203,7 +254,7 @@ finally:
     if scratch.stat().st_ino == identity and (scratch / 'owner').read_text() == nonce and groups_closed and not receipt.get('cleanupError'):
         shutil.rmtree(scratch)
         receipt['cleanup'] = not scratch.exists()
-    receipt['passed'] = receipt['passed'] and receipt['cleanup'] and receipt['sourceUnchanged'] and (mode != 'native' or receipt.get('ownedKeychainItemAbsent', False))
+    receipt['passed'] = receipt['passed'] and receipt['cleanup'] and receipt['sourceUnchanged'] and (mode not in ['native', 'mac'] or receipt.get('ownedKeychainItemAbsent', False)) and (mode != 'mac' or receipt.get('ownedMacKeychainItemAbsent', False))
     (output / 'receipt.json').write_text(json.dumps(receipt, indent=2))
     print(json.dumps(receipt), flush=True)
 if not receipt['passed']:
