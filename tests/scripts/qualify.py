@@ -197,6 +197,19 @@ try:
         receipt['appGroupSnapshot'] = probe.get('appGroupSnapshot', False)
         execute('mac-package', ['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', str(app), str(output / 'WatchAgentsMac-0.2.0-adhoc-debug.zip')], 60)
         receipt['macBundlePackaged'] = True
+    elif mode == 'site':
+        execute('node-version', ['node', '--version'], 10)
+        browser_tools = scratch / 'browser-tools'; browser_tools.mkdir()
+        shutil.copyfile(work / 'tests/fixtures/browser-tools/package.json', browser_tools / 'package.json')
+        execute('browser-dependencies', ['npm', 'install', '--ignore-scripts', '--no-audit', '--no-fund'], 180, cwd=browser_tools)
+        shutil.copyfile(browser_tools / 'package-lock.json', output / 'browser-lock.json')
+        env['PLAYWRIGHT_BROWSERS_PATH'] = str(scratch / 'browsers')
+        env['WATCH_AGENTS_BROWSER_TOOLS'] = str(browser_tools)
+        execute('browser-install', ['node', str(browser_tools / 'node_modules/playwright/cli.js'), 'install', '--with-deps', 'chromium'], 240)
+        execute('public-site-browser', ['node', 'tests/e2e/site.mjs'], 180)
+        result = json.loads((output / 'site/receipt.json').read_text())
+        if not result['passed'] or not result['browserClosed'] or not result['contextsClosed']:
+            raise RuntimeError('Public site behavior or owned browser closure was not established')
     elif mode == 'container':
         execute('container-qualification', ['python3', 'tests/scripts/container.py'], 600)
         result = json.loads((output / 'container/receipt.json').read_text())

@@ -1,0 +1,29 @@
+name: Temporary Watch Agents public site qualification
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  site:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.x'
+      - name: Actual anonymous public desktop and narrow-screen authored preview
+        env:
+          WATCH_AGENTS_MODE: site
+          WATCH_AGENTS_OUTPUT: ${{ runner.temp }}/watch-agents-site
+          WATCH_AGENTS_SITE_URL: https://watch-agents-alvaro-lj6cop3uf-my-team-4f230354.vercel.app/
+        run: python3 tests/scripts/qualify.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: watch-agents-site-${{ github.run_id }}
+          path: ${{ runner.temp }}/watch-agents-site
+          if-no-files-found: error
+          retention-days: 7
