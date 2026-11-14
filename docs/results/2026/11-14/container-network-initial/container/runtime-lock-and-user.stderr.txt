@@ -1,0 +1,4 @@
+ Network watchagents-t2-c14d6c4a76c64a_default  Creating
+ Network watchagents-t2-c14d6c4a76c64a_default  Created
+ Volume "watchagents-t2-c14d6c4a76c64a_watch_agents_postgres"  Creating
+ Volume "watchagents-t2-c14d6c4a76c64a_watch_agents_postgres"  Created

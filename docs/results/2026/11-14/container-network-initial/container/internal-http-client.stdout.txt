@@ -1,0 +1,1 @@
+{"passed":true,"health":true,"anonymousAdminRefused":true,"pairingAndEmptyRead":true,"actualInternalNetworkClient":true}

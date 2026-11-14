@@ -1,0 +1,5 @@
+
+> @watch-agents/control-plane@0.1.0 migrate
+> node src/migrate.mjs
+
+Watch Agents schema migrations applied or verified.

@@ -1,0 +1,81 @@
+{
+  "name": "watchagents-t2-c14d6c4a76c64a",
+  "networks": {
+    "default": {
+      "name": "watchagents-t2-c14d6c4a76c64a_default",
+      "ipam": {},
+      "internal": true
+    }
+  },
+  "services": {
+    "api": {
+      "build": {
+        "context": "/tmp/watch-agents-t2-8z166dik/source",
+        "dockerfile": "services/control-plane/Dockerfile"
+      },
+      "command": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "entrypoint": null,
+      "environment": {
+        "DATABASE_URL": "postgres://watch_agents:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@postgres:5432/watch_agents",
+        "HUB_BOOTSTRAP_SECRET": "authored-compose-bootstrap-authored-compose-bootstrap-authored-compose-bootstrap-",
+        "HUB_CONNECTOR_TOKEN": "authored-compose-connector-authored-compose-connector-authored-compose-connector-",
+        "HUB_DB_PASSWORD": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "HUB_PUBLIC_URL": "http://127.0.0.1:8787",
+        "PORT": "8787"
+      },
+      "networks": {
+        "default": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "host_ip": "127.0.0.1",
+          "target": 8787,
+          "published": "8787",
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "postgres": {
+      "command": null,
+      "entrypoint": null,
+      "environment": {
+        "POSTGRES_DB": "watch_agents",
+        "POSTGRES_PASSWORD": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "POSTGRES_USER": "watch_agents"
+      },
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -U watch_agents -d watch_agents"
+        ],
+        "timeout": "3s",
+        "interval": "5s",
+        "retries": 20
+      },
+      "image": "postgres:16-alpine",
+      "networks": {
+        "default": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "watch_agents_postgres",
+          "target": "/var/lib/postgresql/data",
+          "volume": {}
+        }
+      ]
+    }
+  },
+  "volumes": {
+    "watch_agents_postgres": {
+      "name": "watchagents-t2-c14d6c4a76c64a_watch_agents_postgres"
+    }
+  }
+}

@@ -1,0 +1,2 @@
+Untagged: watchagents-t2-c14d6c4a76c64a-api:latest
+Deleted: sha256:5442dfa0206fbc947f965389349fbff2b297c43df7b7956699ab63f20df588df

@@ -1,0 +1,45 @@
+{
+  "schema": "watch-agents.container-proof",
+  "version": 2,
+  "source": "dfa13ff6753f65a1a7dbb6b88381ee27342a2f11",
+  "originalRun": 43605608554,
+  "originalJobRemainsFailed": true,
+  "artifactBytes": 66167,
+  "artifactSha256": "8670c0ab134c967691980557c3d89581ca3e19701ecb53c11409493c0ccde03d",
+  "sourceFiles": 313,
+  "commands": 33,
+  "sourceUnchanged": true,
+  "allRecordedStreamsVerified": true,
+  "B01": {
+    "passed": true,
+    "uid": 1000,
+    "node": "24.22.3",
+    "pg": "8.22.0"
+  },
+  "B02": {
+    "passed": true,
+    "health": true,
+    "anonymousAdminRefused": true,
+    "pairingAndEmptyRead": true,
+    "actualInternalNetworkClient": true
+  },
+  "B03": {
+    "passed": true,
+    "health": true,
+    "anonymousAdminRefused": true,
+    "pairingAndEmptyRead": true,
+    "actualPublishedLoopbackApi": true,
+    "postgresNotPublished": true,
+    "ordinaryComposeNetwork": true,
+    "noAgentEventOrProviderRequest": true
+  },
+  "nodeBaseDigestFromActualBuild": "sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5",
+  "postgresBaseDigest": "postgres@sha256:f377d590e5474681d4d7838635031a2b50647923b7abfa803ce9b5ff35d5c663",
+  "actualImageId": "sha256:5442dfa0206fbc947f965389349fbff2b297c43df7b7956699ab63f20df588df",
+  "actualImageBytes": 174061200,
+  "ownedResourcesRemoved": true,
+  "scratchBytesRemoved": 5201198,
+  "missingCacheInspectionCorrectedFromExistingBuildLog": true,
+  "newDockerExecution": false,
+  "passed": true
+}

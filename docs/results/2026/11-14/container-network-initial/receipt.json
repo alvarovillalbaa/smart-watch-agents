@@ -1,0 +1,26 @@
+{
+  "mode": "container",
+  "commands": [
+    {
+      "name": "container-qualification",
+      "argv": [
+        "python3",
+        "tests/scripts/container.py"
+      ],
+      "exit": 1,
+      "timedOut": false,
+      "timeoutSeconds": 600,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 16965,
+      "stderrBytes": 0,
+      "stdoutSha256": "5f26832315cc38bf1c4f32964e5830afd82298952208332906e6cb90d1080792",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "passed": false,
+  "cleanup": true,
+  "error": "RuntimeError('container-qualification failed')",
+  "sourceUnchanged": true,
+  "scratchBytes": 5201198
+}

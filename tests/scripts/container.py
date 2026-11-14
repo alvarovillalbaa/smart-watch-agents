@@ -3,6 +3,7 @@ import hashlib
 import http.client
 import json
 import os
+import re
 from pathlib import Path
 import signal
 import subprocess
@@ -130,7 +131,12 @@ console.log(JSON.stringify({passed:true,health:true,anonymousAdminRefused:true,p
     assert request('/v1/runs', enrollment['token']) == (200, {'runs': []})
     receipt['B03'] = {'passed': True, 'health': True, 'anonymousAdminRefused': True, 'pairingAndEmptyRead': True, 'actualPublishedLoopbackApi': True, 'postgresNotPublished': True, 'ordinaryComposeNetwork': True, 'noAgentEventOrProviderRequest': True}
     run('actual-image', ['docker', 'image', 'inspect', project + '-api', '--format', '{{json .}}'])
-    run('base-digests', ['docker', 'image', 'inspect', 'node:24-alpine', 'postgres:16-alpine', '--format', '{{json .RepoDigests}}'])
+    build_log = (output / 'container-build.stdout.txt').read_text() + (output / 'container-build.stderr.txt').read_text()
+    node_digests = set(re.findall(r'FROM docker\.io/library/node:24-alpine@(sha256:[a-f0-9]{64})', build_log))
+    assert len(node_digests) == 1, 'BuildKit must report the exact resolved base'
+    postgres_digests = json.loads(run('postgres-base-digest', ['docker', 'image', 'inspect', 'postgres:16-alpine', '--format', '{{json .RepoDigests}}']))
+    assert len(postgres_digests) == 1
+    receipt['baseDigests'] = {'node': next(iter(node_digests)), 'postgres': postgres_digests[0]}
     receipt['passed'] = True
 except Exception as error:
     receipt['error'] = repr(error)
