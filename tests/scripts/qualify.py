@@ -1,0 +1,171 @@
+"""Remote T2 qualification, complete streams and owned PostgreSQL/process teardown."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import signal
+import socket
+import subprocess
+import tempfile
+import time
+import uuid
+
+repo = Path(__file__).resolve().parents[2]
+output = Path(os.environ['WATCH_AGENTS_OUTPUT'])
+output.mkdir(exist_ok=False)
+scratch = Path(tempfile.mkdtemp(prefix='watch-agents-t2-'))
+identity = scratch.stat().st_ino
+nonce = uuid.uuid4().hex
+(scratch / 'owner').write_text(nonce)
+work = scratch / 'source'
+work.mkdir()
+(scratch / 'tmp').mkdir()
+env = dict(os.environ, npm_config_cache=str(scratch / 'npm-cache'), TMPDIR=str(scratch / 'tmp'))
+deadline = time.monotonic() + 17 * 60
+mode = os.environ['WATCH_AGENTS_MODE']
+receipt = {'mode': mode, 'commands': [], 'passed': False, 'cleanup': False}
+postgres = None
+postgres_handles = []
+keychain_owned = False
+
+def vector(root):
+    names = subprocess.check_output(['git', 'ls-files', '-z'], cwd=repo).split(b'\0')
+    return [{'path': os.fsdecode(name), 'bytes': (root / os.fsdecode(name)).stat().st_size,
+             'sha256': hashlib.sha256((root / os.fsdecode(name)).read_bytes()).hexdigest()} for name in names if name]
+
+before = vector(repo)
+(output / 'source-before.json').write_text(json.dumps(before, indent=2))
+head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo).decode().strip()
+(output / 'source.json').write_text(json.dumps({'sha': head}))
+for row in before:
+    target = work / row['path']
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(repo / row['path'], target)
+
+def group_absent(pid):
+    try:
+        os.killpg(pid, 0)
+        return False
+    except ProcessLookupError:
+        return True
+
+def execute(name, argv, timeout, accepted=(0,)):
+    remaining = int(deadline - time.monotonic() - 30)
+    if remaining < 1:
+        raise RuntimeError('Qualification deadline reached before ' + name)
+    timeout = min(timeout, remaining)
+    process = subprocess.Popen(argv, cwd=work, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
+    timed_out = False
+    try:
+        stdout, stderr = process.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        timed_out = True
+        os.killpg(process.pid, signal.SIGTERM)
+        try:
+            stdout, stderr = process.communicate(timeout=10)
+        except subprocess.TimeoutExpired:
+            os.killpg(process.pid, signal.SIGKILL)
+            stdout, stderr = process.communicate(timeout=10)
+    for _ in range(30):
+        if group_absent(process.pid):
+            break
+        time.sleep(0.1)
+    (output / (name + '.stdout.txt')).write_bytes(stdout)
+    (output / (name + '.stderr.txt')).write_bytes(stderr)
+    row = {'name': name, 'argv': argv, 'exit': process.returncode, 'timedOut': timed_out, 'timeoutSeconds': timeout,
+           'leaderReaped': process.poll() is not None, 'groupAbsent': group_absent(process.pid),
+           'stdoutBytes': len(stdout), 'stderrBytes': len(stderr), 'stdoutSha256': hashlib.sha256(stdout).hexdigest(), 'stderrSha256': hashlib.sha256(stderr).hexdigest()}
+    receipt['commands'].append(row)
+    print(json.dumps(row), flush=True)
+    if process.returncode not in accepted or timed_out or not row['groupAbsent']:
+        raise RuntimeError(name + ' failed')
+    return process.returncode
+
+try:
+    if mode == 'native':
+        # An existing unknown item must never be deleted, even on a fresh runner.
+        prior = execute('keychain-before', ['security', 'find-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(44,))
+        keychain_owned = prior == 44
+        env['WATCH_AGENTS_VECTOR_OUT'] = str(output / 'native-vector.json')
+        execute('swift-version', ['swift', '--version'], 15)
+        execute('swift-tests', ['swift', 'test', '--package-path', 'packages/apple-core'], 300)
+        vector_data = json.loads((output / 'native-vector.json').read_text())
+        if vector_data['schema'] != 'watch-agents.native-action-vector' or vector_data['version'] != 2:
+            raise RuntimeError('Native client did not emit its real public request vector')
+    elif mode == 'http':
+        native = Path(os.environ['WATCH_AGENTS_NATIVE_INPUT'])
+        if json.loads((native / 'source.json').read_text())['sha'] != head:
+            raise RuntimeError('Native vector belongs to a different source')
+        if not json.loads((native / 'receipt.json').read_text())['passed']:
+            raise RuntimeError('Native prerequisite did not pass')
+        shutil.copyfile(native / 'native-vector.json', output / 'native-vector.json')
+        env['WATCH_AGENTS_NATIVE_VECTOR'] = str(output / 'native-vector.json')
+        execute('node-version', ['node', '--version'], 10)
+        execute('dependencies', ['npm', 'ci', '--ignore-scripts', '--no-audit', '--no-fund'], 180)
+        shutil.copyfile(work / 'package-lock.json', output / 'package-lock.json')
+        binaries = Path('/usr/lib/postgresql/16/bin')
+        if not (binaries / 'postgres').is_file():
+            raise RuntimeError('The declared Ubuntu24.04 PostgreSQL16 runtime is unavailable')
+        data = scratch / 'pg-data'
+        execute('initdb', [str(binaries / 'initdb'), '-D', str(data), '-A', 'trust', '--no-locale', '--encoding=UTF8'], 30)
+        with socket.socket() as probe:
+            probe.bind(('127.0.0.1', 0))
+            port = probe.getsockname()[1]
+        postgres_handles = [open(output / 'postgres.stdout.txt', 'wb'), open(output / 'postgres.stderr.txt', 'wb')]
+        postgres = subprocess.Popen([str(binaries / 'postgres'), '-D', str(data), '-h', '127.0.0.1', '-p', str(port), '-k', str(scratch / 'tmp'), '-c', 'max_connections=12'], stdout=postgres_handles[0], stderr=postgres_handles[1], start_new_session=True)
+        for attempt in range(30):
+            code = execute('pg-ready-' + str(attempt), [str(binaries / 'pg_isready'), '-h', '127.0.0.1', '-p', str(port)], 5, accepted=(0, 1, 2))
+            if code == 0:
+                break
+            if postgres.poll() is not None:
+                raise RuntimeError('Owned PostgreSQL stopped during startup')
+            time.sleep(0.2)
+        else:
+            raise RuntimeError('Owned PostgreSQL never became ready')
+        execute('createdb', [str(binaries / 'createdb'), '-h', '127.0.0.1', '-p', str(port), 'watch_agents_t2'], 15)
+        env['WATCH_AGENTS_T2_DATABASE_URL'] = 'postgresql://127.0.0.1:' + str(port) + '/watch_agents_t2'
+        env['WATCH_AGENTS_HTTP_RECEIPT'] = str(output / 'http-receipt.json')
+        execute('http-tests', ['node', '--test', 'tests/integration/action-http.test.mjs'], 180)
+        result = json.loads((output / 'http-receipt.json').read_text())
+        if not all(result[key] for key in ['serverClosed', 'poolClosed', 'nativeVectorAccepted']):
+            raise RuntimeError('Actual native interoperability or HTTP teardown was not established')
+    else:
+        raise RuntimeError('Unknown qualification mode')
+    receipt['passed'] = True
+except Exception as error:
+    receipt['error'] = repr(error)
+finally:
+    if mode == 'native' and keychain_owned:
+        try:
+            execute('keychain-cleanup', ['security', 'delete-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(0, 44))
+            execute('keychain-after', ['security', 'find-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(44,))
+            receipt['ownedKeychainItemAbsent'] = True
+        except Exception as error:
+            receipt['cleanupError'] = repr(error)
+    if postgres:
+        if postgres.poll() is None:
+            os.killpg(postgres.pid, signal.SIGINT)
+            try:
+                postgres.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                os.killpg(postgres.pid, signal.SIGKILL)
+                postgres.wait(timeout=10)
+        for handle in postgres_handles:
+            handle.close()
+        receipt['postgres'] = {'exit': postgres.returncode, 'leaderReaped': postgres.poll() is not None, 'groupAbsent': group_absent(postgres.pid)}
+    after = vector(repo)
+    copied = vector(work)
+    (output / 'source-after.json').write_text(json.dumps(after, indent=2))
+    (output / 'copied-source-after.json').write_text(json.dumps(copied, indent=2))
+    receipt['sourceUnchanged'] = before == after == copied
+    receipt['scratchBytes'] = sum(p.stat().st_size for p in scratch.rglob('*') if p.is_file() and not p.is_symlink())
+    groups_closed = all(row['groupAbsent'] for row in receipt['commands']) and (not postgres or receipt.get('postgres', {}).get('groupAbsent'))
+    if scratch.stat().st_ino == identity and (scratch / 'owner').read_text() == nonce and groups_closed and not receipt.get('cleanupError'):
+        shutil.rmtree(scratch)
+        receipt['cleanup'] = not scratch.exists()
+    receipt['passed'] = receipt['passed'] and receipt['cleanup'] and receipt['sourceUnchanged'] and (mode != 'native' or receipt.get('ownedKeychainItemAbsent', False))
+    (output / 'receipt.json').write_text(json.dumps(receipt, indent=2))
+    print(json.dumps(receipt), flush=True)
+if not receipt['passed']:
+    raise SystemExit(1)
