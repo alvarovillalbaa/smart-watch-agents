@@ -1,0 +1,13 @@
+{
+  "body" : "{}",
+  "headers" : {
+    "x-watch-nonce" : "f221889a-6aba-4c29-8dce-be161de254a2",
+    "x-watch-protocol" : "2",
+    "x-watch-signature" : "37lLKzE9Z\/beSJcsa2ZhXQrOW4GupQG4ckmxtcrxUnylgVluV8laAVaOixp5QhLbz+YTP1BzCpLxHLRjHUEUAw==",
+    "x-watch-timestamp" : "1794665774"
+  },
+  "path" : "\/v1\/hitl\/native%20%2F%E6%89%B9%E5%87%86\/approve",
+  "publicKeyPem" : "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEYEhBThVc6ez0u6bRV848NLeeUHhY\n+yEDLAycdPCCOXkuCLtPyk3rmbZbxu+EvsSOuhUFAW1aGZ36UufoBLrv\/A==\n-----END PUBLIC KEY-----",
+  "schema" : "watch-agents.native-action-vector",
+  "version" : 2
+}

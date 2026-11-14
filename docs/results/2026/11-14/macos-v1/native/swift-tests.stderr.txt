@@ -1,0 +1,25 @@
+Building for debugging...
+[0/10] Write sources
+[3/10] /private/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/source/packages/apple-core/.build/arm64-apple-macosx/debug/AgentHubCorePackageTests.derived/runner.swift
+[5/10] Write sources
+[7/10] Write swift-version-7974D3F7F03D5E95.txt
+[9/16] Emitting module AgentHubWidgetModel
+[10/16] Compiling AgentHubWidgetModel WidgetSnapshot.swift
+[11/16] Emitting module AgentHubCore
+[12/17] Compiling AgentHubCore Models.swift
+[13/17] Compiling AgentHubCore AgentHubClient.swift
+[14/17] Compiling AgentHubCore DeviceIdentity.swift
+[15/19] Compiling AgentHubCore PreparedAction.swift
+[16/24] Compiling AgentHubCoreTests AgentHubCoreTests.swift
+[17/25] Compiling AgentHubWidgetModelTests WidgetSnapshotTests.swift
+[18/25] Emitting module AgentHubWidgetModelTests
+[19/25] Emitting module AgentHubCoreTests
+[20/25] Compiling AgentHubCoreTests ActionProtocolTests.swift
+[21/25] Compiling AgentHubCoreTests PreparedActionTests.swift
+[22/27] Compiling AgentHubCorePackageTests runner.swift
+[23/27] Emitting module AgentHubCorePackageTests
+[23/27] Write Objects.LinkFileList
+[24/27] Linking AgentHubCorePackageTests
+[26/27] Emitting module AgentHubUI
+[27/27] Compiling AgentHubUI RunStatusBadge.swift
+Build complete! (21.89s)

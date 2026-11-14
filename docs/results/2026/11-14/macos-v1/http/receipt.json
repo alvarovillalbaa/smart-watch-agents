@@ -1,0 +1,145 @@
+{
+  "mode": "mac-http",
+  "commands": [
+    {
+      "name": "node-version",
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 9,
+      "stderrBytes": 0,
+      "stdoutSha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "dependencies",
+      "argv": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 180,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 28,
+      "stderrBytes": 0,
+      "stdoutSha256": "807af07d191e1cdf70f66317f71974614a7b81bc853f171ac0aeade57e149609",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "initdb",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/initdb",
+        "-D",
+        "/tmp/watch-agents-t2-aoofym26/pg-data",
+        "-A",
+        "trust",
+        "--no-locale",
+        "--encoding=UTF8"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 30,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 853,
+      "stderrBytes": 0,
+      "stdoutSha256": "77f604c49de0ae7551869e0cfb924ffbbe165a08b90ab4e38d352b2c028bdd59",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pg-ready-0",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-p",
+        "34307"
+      ],
+      "exit": 1,
+      "timedOut": false,
+      "timeoutSeconds": 5,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 40,
+      "stderrBytes": 0,
+      "stdoutSha256": "56e22db4c0c36584643fcb7a5c557af8412308034dc2dc6fae3530146d15a2ad",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pg-ready-1",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-p",
+        "34307"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 5,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 40,
+      "stderrBytes": 0,
+      "stdoutSha256": "32e3af6eae026ae31b59ef9e1cb5622f44acff38fa91cc05be8974c16808ac28",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "createdb",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/createdb",
+        "-h",
+        "127.0.0.1",
+        "-p",
+        "34307",
+        "watch_agents_t2"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 15,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "http-tests",
+      "argv": [
+        "node",
+        "--test",
+        "tests/integration/macos-http.test.mjs"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 180,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 227,
+      "stderrBytes": 0,
+      "stdoutSha256": "a941d1a9c083102cc0f46a384c18a0c200e37948c9ac5e3444fedeaee90aad66",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "passed": true,
+  "cleanup": true,
+  "postgres": {
+    "exit": 0,
+    "leaderReaped": true,
+    "groupAbsent": true
+  },
+  "sourceUnchanged": true,
+  "scratchBytes": 52767395
+}

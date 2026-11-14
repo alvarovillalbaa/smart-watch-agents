@@ -1,0 +1,17 @@
+Executable=/private/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/derived/Build/Products/Debug/WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex/Contents/MacOS/WatchAgentsStatus
+Identifier=dev.watchagents.mac.status
+Format=bundle with Mach-O thin (arm64)
+CodeDirectory v=20400 size=435 flags=0x2(adhoc) hashes=3+7 location=embedded
+Hash type=sha256 size=32
+CandidateCDHash sha256=369b7a46675ee3dbfd77e1b04bade31e7e47353a
+CandidateCDHashFull sha256=369b7a46675ee3dbfd77e1b04bade31e7e47353af6838f546ffe5c6284efaddb
+Hash choices=sha256
+CMSDigest=369b7a46675ee3dbfd77e1b04bade31e7e47353af6838f546ffe5c6284efaddb
+CMSDigestType=2
+CDHash=369b7a46675ee3dbfd77e1b04bade31e7e47353a
+Signature=adhoc
+Info.plist entries=22
+TeamIdentifier=not set
+Sealed Resources version=2 rules=13 files=2
+Internal requirements count=0 size=12
+warning: Specifying ':' in the path is deprecated and will not work in a future release

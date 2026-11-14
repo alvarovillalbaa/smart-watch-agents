@@ -1,4 +1,4 @@
-name: Temporary Watch Agents macOS qualification
+name: Temporary Watch Agents macOS signing repair
 on:
   workflow_dispatch:
 permissions:
@@ -11,9 +11,9 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-      - name: Owned native tests, app and WidgetKit build, storage and package
+      - name: Re-sign the exact qualified bundle with expanded effective entitlements
         env:
-          WATCH_AGENTS_MODE: mac
+          WATCH_AGENTS_MODE: mac-sign
           WATCH_AGENTS_OUTPUT: ${{ runner.temp }}/watch-agents-mac
         run: python3 tests/scripts/qualify.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -21,33 +21,5 @@ jobs:
         with:
           name: watch-agents-mac-${{ github.run_id }}
           path: ${{ runner.temp }}/watch-agents-mac
-          if-no-files-found: error
-          retention-days: 7
-  mac-http:
-    needs: mac
-    runs-on: ubuntu-24.04
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: '24.x'
-      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
-        with:
-          name: watch-agents-mac-${{ github.run_id }}
-          path: ${{ runner.temp }}/watch-agents-native-input
-      - name: New macOS device kind and actual native-wire receipt
-        env:
-          WATCH_AGENTS_MODE: mac-http
-          WATCH_AGENTS_NATIVE_INPUT: ${{ runner.temp }}/watch-agents-native-input
-          WATCH_AGENTS_OUTPUT: ${{ runner.temp }}/watch-agents-mac-http
-        run: python3 tests/scripts/qualify.py
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
-        with:
-          name: watch-agents-mac-http-${{ github.run_id }}
-          path: ${{ runner.temp }}/watch-agents-mac-http
           if-no-files-found: error
           retention-days: 7

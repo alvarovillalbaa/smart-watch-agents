@@ -1,0 +1,11 @@
+{
+  "schema": "watch-agents.macos-http-evidence",
+  "version": 1,
+  "passed": true,
+  "serverClosed": true,
+  "poolClosed": true,
+  "acceptedPlatform": "macos",
+  "nativeVectorAccepted": true,
+  "responses": 2,
+  "uniqueCommands": 1
+}

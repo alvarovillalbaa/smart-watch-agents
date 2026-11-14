@@ -1,0 +1,4 @@
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:macOS, arch:arm64, id:f9e678ac89c6c5680c9307c917182d37bcbe8674, name:My Mac }
+{ platform:macOS, arch:x86_64, id:f9e678ac89c6c5680c9307c917182d37bcbe8674, name:My Mac }
+{ platform:macOS, name:Any Mac }

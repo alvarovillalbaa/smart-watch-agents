@@ -86,6 +86,32 @@ def execute(name, argv, timeout, accepted=(0,), cwd=None):
         raise RuntimeError(name + ' failed')
     return process.returncode
 
+def sign_mac_bundle(app):
+    widget = app / 'Contents/PlugIns/WatchAgentsStatus.appex'
+    with (app / 'Contents/Info.plist').open('rb') as handle:
+        group = plistlib.load(handle)['WatchAgentsGroupIdentifier']
+    if '$(' in group or not isinstance(group, str) or not group:
+        raise RuntimeError('Built bundle has an unresolved App Group')
+    for name, bundle, template in [('widget', widget, 'WatchAgentsStatus.entitlements'), ('app', app, 'WatchAgentsMac.entitlements')]:
+        with (bundle / 'Contents/Info.plist').open('rb') as handle:
+            info = plistlib.load(handle)
+        if info['WatchAgentsGroupIdentifier'] != group:
+            raise RuntimeError('App and widget group identities differ')
+        entitlements = plistlib.loads((work / 'apps/macos' / template).read_bytes())
+        if entitlements['com.apple.security.application-groups'] != ['$(WATCH_AGENTS_GROUP)']:
+            raise RuntimeError('Unexpected entitlement template')
+        entitlements['com.apple.security.application-groups'] = [group]
+        effective = scratch / (name + '-effective.entitlements')
+        effective.write_bytes(plistlib.dumps(entitlements))
+        execute('sign-' + name, ['codesign', '--force', '--sign', '-', '--entitlements', str(effective), str(bundle)], 30)
+        execute('verify-' + name, ['codesign', '--verify', '--strict', '--verbose=2', str(bundle)], 20)
+        execute('inspect-' + name, ['codesign', '-dvvv', '--entitlements', ':-', str(bundle)], 15)
+        actual = plistlib.loads((output / ('inspect-' + name + '.stdout.txt')).read_bytes())
+        if actual != entitlements:
+            raise RuntimeError('Actual signed entitlements differ from effective values')
+        (output / (name + '-info.json')).write_text(json.dumps(info, indent=2, default=str))
+        (output / (name + '-effective-entitlements.json')).write_text(json.dumps(actual, indent=2))
+
 try:
     if mode in ['native', 'mac']:
         # An existing unknown item must never be deleted, even on a fresh runner.
@@ -120,13 +146,7 @@ try:
             execute('mac-build', ['xcodebuild', '-project', 'apps/macos/WatchAgentsMac.xcodeproj', '-scheme', 'WatchAgentsMac', '-configuration', 'Debug', '-derivedDataPath', str(derived), 'CODE_SIGNING_ALLOWED=NO', 'build'], 480)
             app = derived / 'Build/Products/Debug/WatchAgentsMac.app'
             widget = app / 'Contents/PlugIns/WatchAgentsStatus.appex'
-            for name, bundle, entitlements in [('widget', widget, work / 'apps/macos/WatchAgentsStatus.entitlements'), ('app', app, work / 'apps/macos/WatchAgentsMac.entitlements')]:
-                execute('sign-' + name, ['codesign', '--force', '--sign', '-', '--entitlements', str(entitlements), str(bundle)], 30)
-                execute('verify-' + name, ['codesign', '--verify', '--strict', '--verbose=2', str(bundle)], 20)
-                execute('inspect-' + name, ['codesign', '-dvvv', '--entitlements', ':-', str(bundle)], 15)
-                with (bundle / 'Contents/Info.plist').open('rb') as handle:
-                    info = plistlib.load(handle)
-                (output / (name + '-info.json')).write_text(json.dumps(info, indent=2, default=str))
+            sign_mac_bundle(app)
             widget_entitlements = plistlib.loads((work / 'apps/macos/WatchAgentsStatus.entitlements').read_bytes())
             if widget_entitlements.get('com.apple.security.network.client') or 'AgentHubCore' in (work / 'apps/macos/Widget/WatchAgentsWidget.swift').read_text():
                 raise RuntimeError('Widget gained network/credential client ownership')
@@ -138,6 +158,45 @@ try:
             receipt['appGroupSnapshot'] = probe.get('appGroupSnapshot', False)
             execute('mac-package', ['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', str(app), str(output / 'WatchAgentsMac-0.2.0-adhoc-debug.zip')], 60)
             receipt['macBundlePackaged'] = True
+    elif mode == 'mac-sign':
+        # Repair only the observed packaging defect. Reuse the exact compiled
+        # app; do not replay the12 accepted Swift cases or accepted HTTP case.
+        previous = work / 'docs/results/2026/11-14/macos-v1/native'
+        original = previous / 'original-artifact.zip'
+        if original.stat().st_size != 569253 or hashlib.sha256(original.read_bytes()).hexdigest() != 'f9f538c66ec0542bc479cdb0e9eabc3737cceda5d995d80460e9cf37177e1ec2':
+            raise RuntimeError('Original native evidence archive differs')
+        with zipfile.ZipFile(original) as evidence:
+            source = json.loads(evidence.read('source-before.json'))
+            templates = {name: evidence.read('inspect-' + name + '.stdout.txt') for name in ['app', 'widget']}
+        native_inputs = [row for row in source if row['path'].startswith(('apps/macos/', 'packages/apple-core/'))]
+        for row in native_inputs:
+            data = (work / row['path']).read_bytes()
+            if len(data) != row['bytes'] or hashlib.sha256(data).hexdigest() != row['sha256']:
+                raise RuntimeError('Qualified native source changed; compiled bundle cannot be reused')
+        (output / 'compiled-input-bridge.json').write_text(json.dumps({'compiledSource': '611fc4c6980a11ecba260e7d5e078ae3fb7da2f2', 'inputs': native_inputs}, indent=2))
+        package = previous / 'WatchAgentsMac-0.2.0-adhoc-debug.zip'
+        if package.stat().st_size != 525952 or hashlib.sha256(package.read_bytes()).hexdigest() != '50458ebdc2ae73a573f5ad455ee06621becd4d64a72e195f7f7c7e6bc26cf409':
+            raise RuntimeError('Original compiled archive differs')
+        execute('keychain-before', ['security', 'find-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(44,)); keychain_owned = True
+        execute('mac-keychain-before', ['security', 'find-generic-password', '-s', 'dev.watch-agents.mac-device'], 10, accepted=(44,)); mac_keychain_owned = True
+        unpacked = scratch / 'compiled-bundle'
+        execute('compiled-unpack', ['ditto', '-x', '-k', str(package), str(unpacked)], 20)
+        app = unpacked / 'WatchAgentsMac.app'
+        # Same source-derived entitlement templates, exact built group values.
+        for name, template in [('WatchAgentsMac', 'app'), ('WatchAgentsStatus', 'widget')]:
+            values = plistlib.loads(templates[template])
+            if values.get('com.apple.security.app-sandbox') != True or values.get('com.apple.security.application-groups') != ['$(WATCH_AGENTS_GROUP)'] or bool(values.get('com.apple.security.network.client')) != (template == 'app'):
+                raise RuntimeError('Original source-generated entitlements differ')
+            (work / 'apps/macos' / (name + '.entitlements')).write_bytes(plistlib.dumps(values))
+        sign_mac_bundle(app)
+        execute('mac-storage-probe', [str(app / 'Contents/MacOS/WatchAgentsMac'), '--qualify-storage'], 45)
+        probe = json.loads((output / 'mac-storage-probe.stdout.txt').read_text().strip().splitlines()[-1])
+        (output / 'mac-storage.json').write_text(json.dumps(probe, indent=2))
+        if not probe['passed'] or not probe.get('ownedKeychainItemsAbsent'):
+            raise RuntimeError('Repaired actual signing context failed storage qualification')
+        receipt['appGroupSnapshot'] = probe.get('appGroupSnapshot', False)
+        execute('mac-package', ['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', str(app), str(output / 'WatchAgentsMac-0.2.0-adhoc-debug.zip')], 60)
+        receipt['macBundlePackaged'] = True
     elif mode in ['http', 'chrome', 'mac-http']:
         if mode in ['http', 'mac-http']:
             native = Path(os.environ['WATCH_AGENTS_NATIVE_INPUT'])
@@ -219,14 +278,14 @@ try:
 except Exception as error:
     receipt['error'] = repr(error)
 finally:
-    if mode in ['native', 'mac'] and keychain_owned:
+    if mode in ['native', 'mac', 'mac-sign'] and keychain_owned:
         try:
             execute('keychain-cleanup', ['security', 'delete-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(0, 44))
             execute('keychain-after', ['security', 'find-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(44,))
             receipt['ownedKeychainItemAbsent'] = True
         except Exception as error:
             receipt['cleanupError'] = repr(error)
-    if mode == 'mac' and mac_keychain_owned:
+    if mode in ['mac', 'mac-sign'] and mac_keychain_owned:
         try:
             execute('mac-keychain-cleanup', ['security', 'delete-generic-password', '-s', 'dev.watch-agents.mac-device'], 10, accepted=(0, 44))
             execute('mac-keychain-after', ['security', 'find-generic-password', '-s', 'dev.watch-agents.mac-device'], 10, accepted=(44,))
@@ -254,7 +313,7 @@ finally:
     if scratch.stat().st_ino == identity and (scratch / 'owner').read_text() == nonce and groups_closed and not receipt.get('cleanupError'):
         shutil.rmtree(scratch)
         receipt['cleanup'] = not scratch.exists()
-    receipt['passed'] = receipt['passed'] and receipt['cleanup'] and receipt['sourceUnchanged'] and (mode not in ['native', 'mac'] or receipt.get('ownedKeychainItemAbsent', False)) and (mode != 'mac' or receipt.get('ownedMacKeychainItemAbsent', False))
+    receipt['passed'] = receipt['passed'] and receipt['cleanup'] and receipt['sourceUnchanged'] and (mode not in ['native', 'mac', 'mac-sign'] or receipt.get('ownedKeychainItemAbsent', False)) and (mode not in ['mac', 'mac-sign'] or receipt.get('ownedMacKeychainItemAbsent', False))
     (output / 'receipt.json').write_text(json.dumps(receipt, indent=2))
     print(json.dumps(receipt), flush=True)
 if not receipt['passed']:

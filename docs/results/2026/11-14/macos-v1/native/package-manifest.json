@@ -1,0 +1,72 @@
+{
+  "bytes": 525952,
+  "sha256": "50458ebdc2ae73a573f5ad455ee06621becd4d64a72e195f7f7c7e6bc26cf409",
+  "members": [
+    {
+      "path": "WatchAgentsMac.app/Contents/_CodeSignature/CodeResources",
+      "bytes": 2904,
+      "mode": "0o100644",
+      "sha256": "59b09e0e8a7cd33dfe74c47b4dcc056f07b9b3bbbae422a28027a2264f2ea8be"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/MacOS/WatchAgentsMac",
+      "bytes": 58992,
+      "mode": "0o100755",
+      "sha256": "9c39f7351a0fc48eaa147a4c66ebaa8103a56815674b8484f014fd9b8ddc9a6e"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/MacOS/__preview.dylib",
+      "bytes": 16760,
+      "mode": "0o100755",
+      "sha256": "a9a39abbe5937ba95b8df0c119381e52d981daead74aa11f8b2e16a73ed603a7"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/MacOS/WatchAgentsMac.debug.dylib",
+      "bytes": 1589496,
+      "mode": "0o100755",
+      "sha256": "5fc9625d464b71b9f5f8356a95c6bc19b0a661dc31761c1fbb81e86d4d891e8f"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex/Contents/_CodeSignature/CodeResources",
+      "bytes": 2672,
+      "mode": "0o100644",
+      "sha256": "45db47ece5b24860a287116eddebe9bf583f0089aa16724ed5ae96ee19a324ee"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex/Contents/MacOS/WatchAgentsStatus.debug.dylib",
+      "bytes": 331792,
+      "mode": "0o100755",
+      "sha256": "b70a103f6abb06d76b3b08ecd1a29fe3672d6653c035f5a68a8efa1eeeb9862e"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex/Contents/MacOS/WatchAgentsStatus",
+      "bytes": 58896,
+      "mode": "0o100755",
+      "sha256": "9e4e8959d77941b81d00f49fe2673f6601a6b227ddebc36a98c5924be1d2e56b"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex/Contents/MacOS/__preview.dylib",
+      "bytes": 16768,
+      "mode": "0o100755",
+      "sha256": "c2dd71ec5a2c280540ed50d5755aadabfb8d3a82e37b36868e324a4a2de4b54c"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex/Contents/Info.plist",
+      "bytes": 1583,
+      "mode": "0o100644",
+      "sha256": "1b78e4a138317213af051d74d30e68de879c2e7a94d84248a1f437f2b82eec00"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/Info.plist",
+      "bytes": 1692,
+      "mode": "0o100644",
+      "sha256": "ca84da9d017aee84aaf6c742fc898b8507cf2aa5d04288b0ea289ec6e64e781c"
+    },
+    {
+      "path": "WatchAgentsMac.app/Contents/PkgInfo",
+      "bytes": 8,
+      "mode": "0o100644",
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    }
+  ]
+}

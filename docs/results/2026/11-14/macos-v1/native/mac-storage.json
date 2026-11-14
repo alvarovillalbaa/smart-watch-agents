@@ -1,0 +1,11 @@
+{
+  "appGroupError": "Error Domain=NSCocoaErrorDomain Code=513 \"You don\u2019t have permission to save the file \u201cgroup.dev.watchagents\u201d in the folder \u201cGroup Containers\u201d.\" UserInfo={NSFilePath=/Users/runner/Library/Group Containers/group.dev.watchagents, NSURL=file:///Users/runner/Library/Group%20Containers/group.dev.watchagents, NSUnderlyingError=0x8dec28780 {Error Domain=NSPOSIXErrorDomain Code=1 \"Operation not permitted\"}}",
+  "appGroupSnapshot": false,
+  "keychainRoundTripAndOriginalContext": true,
+  "localForget": true,
+  "oversizePreservedPriorState": true,
+  "ownedKeychainItemsAbsent": true,
+  "passed": true,
+  "schema": "watch-agents.mac-storage-evidence",
+  "version": 1
+}

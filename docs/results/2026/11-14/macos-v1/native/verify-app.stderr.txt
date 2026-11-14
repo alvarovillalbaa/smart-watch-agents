@@ -1,0 +1,8 @@
+--prepared:/private/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/derived/Build/Products/Debug/WatchAgentsMac.app/Contents/MacOS/__preview.dylib
+--validated:/private/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/derived/Build/Products/Debug/WatchAgentsMac.app/Contents/MacOS/__preview.dylib
+--prepared:/private/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/derived/Build/Products/Debug/WatchAgentsMac.app/Contents/MacOS/WatchAgentsMac.debug.dylib
+--validated:/private/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/derived/Build/Products/Debug/WatchAgentsMac.app/Contents/MacOS/WatchAgentsMac.debug.dylib
+--prepared:/private/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/derived/Build/Products/Debug/WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex
+--validated:/private/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/derived/Build/Products/Debug/WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex
+/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/derived/Build/Products/Debug/WatchAgentsMac.app: valid on disk
+/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-o3_vestx/derived/Build/Products/Debug/WatchAgentsMac.app: satisfies its Designated Requirement
