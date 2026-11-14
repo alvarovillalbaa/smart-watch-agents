@@ -113,17 +113,18 @@ def sign_mac_bundle(app):
         (output / (name + '-effective-entitlements.json')).write_text(json.dumps(actual, indent=2))
 
 try:
-    if mode in ['native', 'mac']:
+    if mode in ['native', 'mac', 'mac-build']:
         # An existing unknown item must never be deleted, even on a fresh runner.
         prior = execute('keychain-before', ['security', 'find-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(44,))
         keychain_owned = prior == 44
-        env['WATCH_AGENTS_VECTOR_OUT'] = str(output / 'native-vector.json')
         execute('swift-version', ['swift', '--version'], 15)
-        execute('swift-tests', ['swift', 'test', '--package-path', 'packages/apple-core'], 300)
-        vector_data = json.loads((output / 'native-vector.json').read_text())
-        if vector_data['schema'] != 'watch-agents.native-action-vector' or vector_data['version'] != 2:
-            raise RuntimeError('Native client did not emit its real public request vector')
-        if mode == 'mac':
+        if mode != 'mac-build':
+            env['WATCH_AGENTS_VECTOR_OUT'] = str(output / 'native-vector.json')
+            execute('swift-tests', ['swift', 'test', '--package-path', 'packages/apple-core'], 300)
+            vector_data = json.loads((output / 'native-vector.json').read_text())
+            if vector_data['schema'] != 'watch-agents.native-action-vector' or vector_data['version'] != 2:
+                raise RuntimeError('Native client did not emit its real public request vector')
+        if mode in ['mac', 'mac-build']:
             execute('mac-keychain-before', ['security', 'find-generic-password', '-s', 'dev.watch-agents.mac-device'], 10, accepted=(44,))
             mac_keychain_owned = True
             # The package's owned identity case is complete. The app probe must
@@ -296,14 +297,14 @@ try:
 except Exception as error:
     receipt['error'] = repr(error)
 finally:
-    if mode in ['native', 'mac', 'mac-sign'] and keychain_owned:
+    if mode in ['native', 'mac', 'mac-build', 'mac-sign'] and keychain_owned:
         try:
             execute('keychain-cleanup', ['security', 'delete-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(0, 44))
             execute('keychain-after', ['security', 'find-generic-password', '-s', 'dev.watch-agents.identity'], 10, accepted=(44,))
             receipt['ownedKeychainItemAbsent'] = True
         except Exception as error:
             receipt['cleanupError'] = repr(error)
-    if mode in ['mac', 'mac-sign'] and mac_keychain_owned:
+    if mode in ['mac', 'mac-build', 'mac-sign'] and mac_keychain_owned:
         try:
             execute('mac-keychain-cleanup', ['security', 'delete-generic-password', '-s', 'dev.watch-agents.mac-device'], 10, accepted=(0, 44))
             execute('mac-keychain-after', ['security', 'find-generic-password', '-s', 'dev.watch-agents.mac-device'], 10, accepted=(44,))
@@ -331,7 +332,7 @@ finally:
     if scratch.stat().st_ino == identity and (scratch / 'owner').read_text() == nonce and groups_closed and not receipt.get('cleanupError'):
         shutil.rmtree(scratch)
         receipt['cleanup'] = not scratch.exists()
-    receipt['passed'] = receipt['passed'] and receipt['cleanup'] and receipt['sourceUnchanged'] and (mode not in ['native', 'mac', 'mac-sign'] or receipt.get('ownedKeychainItemAbsent', False)) and (mode not in ['mac', 'mac-sign'] or receipt.get('ownedMacKeychainItemAbsent', False))
+    receipt['passed'] = receipt['passed'] and receipt['cleanup'] and receipt['sourceUnchanged'] and (mode not in ['native', 'mac', 'mac-build', 'mac-sign'] or receipt.get('ownedKeychainItemAbsent', False)) and (mode not in ['mac', 'mac-build', 'mac-sign'] or receipt.get('ownedMacKeychainItemAbsent', False))
     (output / 'receipt.json').write_text(json.dumps(receipt, indent=2))
     print(json.dumps(receipt), flush=True)
 if not receipt['passed']:

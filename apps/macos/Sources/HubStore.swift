@@ -58,7 +58,7 @@ final class HubStore {
       let client = AgentHubClient(baseURL: pairing.origin, token: pairing.token)
       async let values = client.runs(limit: 100); async let counts = client.metrics()
       let (newRuns, newMetrics) = try await (values, counts); guard context == epoch else { return }
-      runs = newRuns; metrics = newMetrics; fetchedAt = Date(); review = nil; if announce { message = "Read from " + pairing.origin.absoluteString + ". Showing up to100 recent runs."; error = false }; updateWidget()
+      runs = newRuns; metrics = newMetrics; fetchedAt = Date(); review = nil; if announce || error { message = "Read from " + pairing.origin.absoluteString + ". Showing up to100 recent runs."; error = false }; updateWidget()
     } catch { if context == epoch { message = error.localizedDescription + ". The previous view is preserved."; self.error = true; updateWidget(readFailed: true) } }
   }
   func choose(_ run: AgentRun, kind: AgentHubActionKind) {

@@ -1,0 +1,25 @@
+name: Temporary Watch Agents final Mac bundle
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mac:
+    runs-on: macos-26
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Compile the recovery-state repair and package the actual entitled bundle
+        env:
+          WATCH_AGENTS_MODE: mac-build
+          WATCH_AGENTS_OUTPUT: ${{ runner.temp }}/watch-agents-mac-final
+        run: python3 tests/scripts/qualify.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: watch-agents-mac-final-${{ github.run_id }}
+          path: ${{ runner.temp }}/watch-agents-mac-final
+          if-no-files-found: error
+          retention-days: 7
