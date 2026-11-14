@@ -3,7 +3,7 @@
 Last updated: 2026-11-14
 
 Standing owner all-work approval covers this dependency before desktop/new-tab
-clients. Run one temporary two-job public GitHub workflow: macOS14 native Swift
+clients. Run one temporary two-job public GitHub workflow: macOS26 native Swift
 signing/compilation, then Ubuntu24.04 Node24/actual owned PostgreSQL16 and HTTP.
 Each job caps20minutes, internal17minutes. No browser, customer hub/database,
 provider call, paid enrollment, push notification, app launch or real device.
@@ -38,3 +38,10 @@ PostgreSQL runs in its separate tracked process group and is stopped/reaped;
 all scratch is removed only after command/daemon guards pass. No caches,
 database files, node_modules, private key, token or Git history is artifacted.
 Preserve permanent CI; retire only this temporary control after qualification.
+
+The initial macOS14 dispatch43598339293 was provider-cancelled before any step:
+configuration macos-14-arm64-us-default is unsupported. No artifact or native/
+HTTP execution exists for it. Permanent CI43598329467 separately compiled the
+production Apple module, then failed a nested #require test macro. Split that
+test assertion without weakening it. Use macOS26, the actual supported image
+already observed in permanent CI, and run the unexecuted native/HTTP scope.

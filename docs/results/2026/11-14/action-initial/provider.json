@@ -1,0 +1,136 @@
+{
+  "source": "52efe4491b686ad1dc60a4c46949c5418fa8d912",
+  "temporary": {
+    "id": 43598339293,
+    "conclusion": "cancelled",
+    "jobs": [
+      {
+        "id": 132457542108,
+        "name": "native",
+        "status": "completed",
+        "conclusion": "cancelled",
+        "run_id": 43598339293,
+        "logs_url": null,
+        "steps": null
+      },
+      {
+        "id": 132457547698,
+        "name": "http",
+        "status": "completed",
+        "conclusion": "skipped",
+        "run_id": 43598339293,
+        "logs_url": null,
+        "steps": null
+      }
+    ],
+    "artifacts": []
+  },
+  "permanent": {
+    "id": 43598329467,
+    "conclusion": "failure",
+    "jobs": [
+      {
+        "id": 132457509477,
+        "name": "node",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 43598329467,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run npm test",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          }
+        ]
+      },
+      {
+        "id": 132457509651,
+        "name": "apple-core",
+        "status": "completed",
+        "conclusion": "failure",
+        "run_id": 43598329467,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run swift test --package-path packages/apple-core",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 3
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          }
+        ]
+      }
+    ]
+  },
+  "annotation": {
+    "annotation_level": "failure",
+    "message": "The configuration 'macos-14-arm64-us-default' is not supported"
+  }
+}

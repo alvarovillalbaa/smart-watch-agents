@@ -40,7 +40,8 @@ struct ActionProtocolTests {
     #expect(request.value(forHTTPHeaderField: "x-watch-protocol") == "2")
     #expect(nonce == nonce.lowercased()); #expect(UUID(uuidString: nonce) != nil)
     #expect(abs((Double(timestamp) ?? 0) - Date().timeIntervalSince1970) < 10)
-    let path = try #require(URLComponents(url: try #require(request.url), resolvingAgainstBaseURL: false)?.percentEncodedPath)
+    let requestURL = try #require(request.url)
+    let path = try #require(URLComponents(url: requestURL, resolvingAgainstBaseURL: false)?.percentEncodedPath)
     let body = request.httpBody ?? Data()
     // URLSession may deliver the body as a stream to a protocol implementation.
     let bytes: Data
