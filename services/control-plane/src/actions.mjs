@@ -17,7 +17,7 @@ export function authenticateAction(req, device, rawBody) {
   requireValue(typeof signature === 'string' && signature.length <= 160 && /^[A-Za-z0-9+/]+={0,2}$/.test(signature), 400, 'Invalid device signature encoding');
   const bytes = Buffer.from(signature, 'base64'); requireValue(bytes.toString('base64') === signature, 400, 'Invalid device signature encoding');
   const message = actionMessage({ method: req.method, path: req.url, timestamp, nonce, bodySha256: digest(rawBody) });
-  const key = publicDeviceKey(device.public_key_pem), raw = device.platform === 'watchos';
+  const key = publicDeviceKey(device.public_key_pem), raw = ['watchos','macos','chrome'].includes(device.platform);
   requireValue(!raw || bytes.length === 64, 400, 'Invalid raw P-256 signature');
   let valid = false; try { valid = verify('sha256', Buffer.from(message), { key, dsaEncoding: raw ? 'ieee-p1363' : 'der' }, bytes); } catch {}
   requireValue(valid, 403, 'Invalid device signature'); return { nonce, timestamp: Number(timestamp), requestHash: digest(message) };

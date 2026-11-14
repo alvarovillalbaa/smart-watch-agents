@@ -15,6 +15,9 @@ bound HITL approvals or follow-up prompts.
   pieces for watchOS, iOS, and macOS.
 - `apps/watchos`: native SwiftUI watch app source and XcodeGen project spec.
 - `apps/wearos`: native Kotlin/Compose Wear OS app.
+- `apps/chrome`: ManifestV3 new-tab client with pairing, source status/review,
+  signed requests and original-hub retry. Source/browser qualification pending;
+  [developer setup](docs/references/chrome-setup.md).
 
 ## Quick start
 

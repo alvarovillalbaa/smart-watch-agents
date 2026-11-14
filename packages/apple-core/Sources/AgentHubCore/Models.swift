@@ -15,6 +15,7 @@ public struct AgentRun: Codable, Identifiable, Sendable {
   public let updatedAt: Date
   public let hitlId: String?
   public let hitlLabel: String?
+  public let hitlDescription: String?
   public let hitlRisk: String?
   public let hitlExpiresAt: Date?
   public let followUpPrompt: String?

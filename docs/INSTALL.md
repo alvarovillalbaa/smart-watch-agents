@@ -27,6 +27,11 @@ there is no silent downgrade. Use separate bootstrap/connector secrets of at
 least32characters and synchronize host/device clocks. No production migration
 or real-device upgrade is implied by this source change.
 
+Migration3 adds Chrome/macOS device kinds with the same raw P-256 signature
+format as WatchOS. See [desktop contract1](../contracts/desktop-clients-v1.md)
+and the [Chrome developer setup](references/chrome-setup.md). Client source and
+new-platform/browser acceptance remain distinct until their receipts exist.
+
 Register each runtime with `npm run hubctl -- agent add hermes my-hermes` or
 `npm run hubctl -- agent add openclaw my-openclaw`. Configure its connector with
 the public URL and connector token. Create one-time device codes with

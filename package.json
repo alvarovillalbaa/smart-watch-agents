@@ -4,6 +4,7 @@
   "type": "module",
   "workspaces": ["services/*", "packages/*"],
   "scripts": {
+    "package:chrome": "node scripts/package-chrome.mjs --out dist/watch-agents-chrome-0.2.0",
     "dev": "npm --workspace @watch-agents/control-plane run dev",
     "test": "npm --workspace @watch-agents/control-plane test && npm --workspace @watch-agents/agent-connector test",
     "demo": "node demos/demo-agent.mjs",

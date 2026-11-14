@@ -40,8 +40,9 @@ nonce/inode-owned scratch removed. The pg_isready startup exit2 is an explicit
 not-ready observation; the next probe0 established readiness before testing.
 
 This dependency is closed; do not replay these cases unchanged to manufacture
-progress. Temporary418306115 is disabled and its recipe moved inert; verify
-provider deletion after publication. Permanent CI is preserved. Next required
+progress. Temporary418306115 was disabled and its recipe moved inert; its
+provider state was read back deleted after publication96c5f01. Permanent CI is
+preserved. Next required
 work remains macOS widgets/Chrome new-tab clients, their native/browser/package
 acceptance and release. Kotlin native compilation, watch devices/push, actual
 hub/runtime deployment, production data/auth operations and broader security

@@ -132,7 +132,7 @@ async function handler(req, res) {
     }
     if (req.method === 'POST' && url.pathname === '/v1/devices/pair') {
       const body = await readJson(req);
-      if (!body || Array.isArray(body) || Object.keys(body).some(key => !['code','platform','publicKeyPem','label','pushToken','privacyMode'].includes(key)) || !['watchos', 'wearos'].includes(body.platform) || typeof body.code !== 'string' || !/^[A-F0-9]{8}$/.test(body.code) || (body.label !== undefined && (typeof body.label !== 'string' || !body.label.trim() || body.label.length > 100)) || (body.pushToken != null && (typeof body.pushToken !== 'string' || body.pushToken.length > 4096)) || (body.privacyMode !== undefined && !['redacted','summary'].includes(body.privacyMode))) throw new ActionError(400, 'Invalid device enrollment');
+      if (!body || Array.isArray(body) || Object.keys(body).some(key => !['code','platform','publicKeyPem','label','pushToken','privacyMode'].includes(key)) || !['watchos', 'wearos', 'macos', 'chrome'].includes(body.platform) || typeof body.code !== 'string' || !/^[A-F0-9]{8}$/.test(body.code) || (body.label !== undefined && (typeof body.label !== 'string' || !body.label.trim() || body.label.length > 100)) || (body.pushToken != null && (typeof body.pushToken !== 'string' || body.pushToken.length > 4096)) || (body.privacyMode !== undefined && !['redacted','summary'].includes(body.privacyMode))) throw new ActionError(400, 'Invalid device enrollment');
       const publicKey = publicDeviceKey(body.publicKeyPem).export({ type: 'spki', format: 'pem' });
       const client = await pool.connect(), id = randomUUID(), token = randomBytes(32).toString('base64url');
       try {
@@ -154,7 +154,7 @@ async function handler(req, res) {
     if (req.method === 'GET' && url.pathname === '/v1/runs') {
       const device = await requireDevice(req, res); if (!device) return;
       const limit = Math.min(Math.max(Number(url.searchParams.get('limit') || 20), 1), 100); const state = url.searchParams.get('state');
-      const result = await pool.query(`SELECT r.*, a.provider, a.display_name, h.id AS hitl_id, h.label AS hitl_label, h.risk AS hitl_risk, h.expires_at AS hitl_expires_at, f.prompt AS follow_up_prompt, f.status AS follow_up_status
+      const result = await pool.query(`SELECT r.*, a.provider, a.display_name, h.id AS hitl_id, h.label AS hitl_label, h.description AS hitl_description, h.risk AS hitl_risk, h.expires_at AS hitl_expires_at, f.prompt AS follow_up_prompt, f.status AS follow_up_status
         FROM runs r JOIN agents a ON a.key=r.agent_key LEFT JOIN hitl_requests h ON h.run_id=r.id AND h.status='pending' AND h.source_sequence=r.sequence AND r.status='awaiting_hitl' AND h.expires_at > now() LEFT JOIN follow_up_drafts f ON f.run_id=r.id AND f.source_sequence=r.sequence AND r.status IN ('completed','failed','cancelled')
         WHERE ($1::text IS NULL OR r.status=$1) ORDER BY r.updated_at DESC LIMIT $2`, [state, limit]);
       return json(res, 200, { runs: result.rows });

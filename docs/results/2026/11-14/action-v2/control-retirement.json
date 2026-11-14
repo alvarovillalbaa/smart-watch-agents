@@ -1,0 +1,8 @@
+{
+  "id": 418306115,
+  "path": ".github/workflows/action-qualification.yml",
+  "state": "deleted",
+  "observedAfterSource": "96c5f018e7388cb0b691d3c61c9d8473daeef778",
+  "inertRecipe": "tests/fixtures/action-qualification.yml.disabled",
+  "permanentCIUnchanged": true
+}

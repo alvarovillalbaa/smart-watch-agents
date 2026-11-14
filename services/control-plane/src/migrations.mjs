@@ -2,7 +2,8 @@ import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 const versions = [
   [1, new URL('./schema.sql', import.meta.url)],
-  [2, new URL('./migrations/002-action-receipts.sql', import.meta.url)]
+  [2, new URL('./migrations/002-action-receipts.sql', import.meta.url)],
+  [3, new URL('./migrations/003-desktop-client-platforms.sql', import.meta.url)]
 ];
 async function sources() { return Promise.all(versions.map(async ([version, url]) => { const sql = await readFile(url, 'utf8'); return { version, sql, sha256: createHash('sha256').update(sql).digest('hex') }; })); }
 export async function migrate(pool) {
