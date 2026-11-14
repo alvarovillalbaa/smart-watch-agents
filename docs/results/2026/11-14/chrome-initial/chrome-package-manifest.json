@@ -1,0 +1,56 @@
+{
+  "schema": "watch-agents.chrome-package",
+  "version": "0.2.0",
+  "files": [
+    {
+      "path": "manifest.json",
+      "bytes": 643,
+      "sha256": "731267c143394a0f58f36c445fc0529b5374efdee1ed1c9d33ab8c8c2d95e93c"
+    },
+    {
+      "path": "client.mjs",
+      "bytes": 14532,
+      "sha256": "2563da6ad82368f5f5402c97abe04f86608b151f1722d50966f46d16033e2650"
+    },
+    {
+      "path": "demo.mjs",
+      "bytes": 1572,
+      "sha256": "744cab631c65e290023a990e49b187bd83a4a426e803041fd9e169a578657561"
+    },
+    {
+      "path": "newtab.mjs",
+      "bytes": 13733,
+      "sha256": "e5204ad3c8e749de34547907b7827c12a73b681ed9e42ea455bc6a04bbe05248"
+    },
+    {
+      "path": "newtab.html",
+      "bytes": 4844,
+      "sha256": "2ce29a1e26c2a88ecc11860618f27c03af8464d24e846f0949c150aa638e79e9"
+    },
+    {
+      "path": "style.css",
+      "bytes": 9507,
+      "sha256": "46e91611898b07460a71604da82e20d15057ce7f81b0df75f248f20a074ca79d"
+    },
+    {
+      "path": "icons/icon128.png",
+      "bytes": 899,
+      "sha256": "01ab3378d7ec5e6b8c826d653b3e9360b1d973185d08c8f7252d9c6050a55dd7"
+    },
+    {
+      "path": "icons/icon16.png",
+      "bytes": 188,
+      "sha256": "22b24c73cecb7fdac61c451e1647cca26e1848ff4203a19b5a895c9d9661d59d"
+    },
+    {
+      "path": "icons/icon32.png",
+      "bytes": 233,
+      "sha256": "343085cdfac3610293b9fa02610693cb34c134868d0a6317795dce7f1bf92ef3"
+    },
+    {
+      "path": "icons/icon48.png",
+      "bytes": 314,
+      "sha256": "d5cf41a8ed958c043d84070d3c7245ad524376d9b90edcdbdfd05779b8070258"
+    }
+  ]
+}

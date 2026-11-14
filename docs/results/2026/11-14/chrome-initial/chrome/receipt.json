@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "id": "C01",
+      "passed": true,
+      "extensionId": "apeljehfopempcecmmgebfijgfjnajlj",
+      "commandCount": 2,
+      "privateKeyNonextractable": true,
+      "reloadPairingEqual": true,
+      "literalMarkupExecuted": false,
+      "pageErrors": []
+    },
+    {
+      "id": "C02",
+      "passed": true,
+      "extensionId": "apeljehfopempcecmmgebfijgfjnajlj",
+      "responseAbortedAfterActualCommit": true,
+      "originalHubCommands": 1,
+      "currentHubCommands": 0,
+      "originalReceiptReconciled": true,
+      "pageErrors": []
+    },
+    {
+      "id": "C03",
+      "passed": true,
+      "extensionId": "apeljehfopempcecmmgebfijgfjnajlj",
+      "lateOldReadRejected": true,
+      "broadcastPairingChanged": true,
+      "previousCodeCleared": true,
+      "pageErrors": []
+    },
+    {
+      "id": "C04",
+      "passed": true,
+      "extensionId": "apeljehfopempcecmmgebfijgfjnajlj",
+      "injectedQuotaPreservedPairing": true,
+      "acceptedButUnstoredEnrollmentVisible": true,
+      "explicitCorruptStateRecovery": true,
+      "pageErrors": []
+    },
+    {
+      "id": "C05-390",
+      "passed": false,
+      "extensionId": "apeljehfopempcecmmgebfijgfjnajlj",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(dimensions.touch > 0)\n\n    at file:///tmp/watch-agents-t2-m22dtys1/source/tests/e2e/chrome.mjs:88:597\n    at async attempt (file:///tmp/watch-agents-t2-m22dtys1/source/tests/e2e/chrome.mjs:41:103)\n    at async file:///tmp/watch-agents-t2-m22dtys1/source/tests/e2e/chrome.mjs:86:34",
+      "pageErrors": []
+    },
+    {
+      "id": "C05-320",
+      "passed": false,
+      "extensionId": "apeljehfopempcecmmgebfijgfjnajlj",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(dimensions.touch > 0)\n\n    at file:///tmp/watch-agents-t2-m22dtys1/source/tests/e2e/chrome.mjs:88:597\n    at async attempt (file:///tmp/watch-agents-t2-m22dtys1/source/tests/e2e/chrome.mjs:41:103)\n    at async file:///tmp/watch-agents-t2-m22dtys1/source/tests/e2e/chrome.mjs:86:34",
+      "pageErrors": []
+    }
+  ],
+  "contexts": [
+    {
+      "id": "C01",
+      "closed": true
+    },
+    {
+      "id": "C02",
+      "closed": true
+    },
+    {
+      "id": "C03",
+      "closed": true
+    },
+    {
+      "id": "C04",
+      "closed": true
+    },
+    {
+      "id": "C05-390",
+      "closed": true
+    },
+    {
+      "id": "C05-320",
+      "closed": true
+    }
+  ],
+  "serversClosed": true,
+  "poolsClosed": true,
+  "passed": false
+}
