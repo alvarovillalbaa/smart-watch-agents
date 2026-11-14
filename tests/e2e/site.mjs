@@ -41,6 +41,7 @@ try {
       await page.screenshot({ path: join(output, id + '-landing.png'), fullPage: true, animations: 'disabled' });
       const preview = page.getByRole('link', { name: /Explore the new-tab preview/ }); if (options.hasTouch) await preview.tap(); else await preview.click();
       await page.getByRole('button', { name: 'Load authored preview' }).waitFor({ state: 'visible' }); assert.equal(new URL(page.url()).pathname, '/preview/newtab.html');
+      if (options.hasTouch) { const session = await context.newCDPSession(page); await session.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 }); row.explicitTouchEmulationAfterNavigation = true; }
       assert.equal(await page.locator('#connection-label').innerText(), 'Authored preview'); assert.equal(await page.locator('.run-card').count(), 0); assert.equal(await page.locator('#setup').isHidden(), true); assert.equal(await page.locator('#refresh').isHidden(), true);
       const load = page.getByRole('button', { name: 'Load authored preview' }); if (options.hasTouch) await load.tap(); else await load.click();
       assert.equal(await page.locator('.run-card').count(), 3); assert.match(await page.locator('#status').innerText(), /Authored preview only/);

@@ -1,0 +1,87 @@
+wa
+watch agents
+YOUR PERSONAL CONTROL HUB
+Authored preview
+Load authored preview
+
+A LITTLE ROOM FOR THE BIG PICTURE
+
+What are your
+agents working on?
+
+Your Hermes and OpenClaw runs, decisions and next steps. One private view of the hub you own.
+
+Authored preview only. These example runs are not connected to an agent or hub, and actions are unavailable.
+
+IN PROGRESS
+1
+
+Runs doing the work
+
+NEEDS YOUR EYES
+1
+
+Pending decisions
+
+READY TO CONTINUE
+1
+
+Stored follow-up drafts
+
+LAST 7 DAYS
+9
+
+Run starts · Authored example
+
+YOUR WORKSPACE
+
+Runs & next steps
+Last read Nov 14, 02:45 PM · latest100 runs
+Find a run
+Show
+All runs
+In progress
+Needs attention
+Finished
+Prepare the launch research
+In progress
+
+hermes / Research agent · authored
+
+An authored example of an agent gathering source material. This card is not connected to a runtime.
+
+Updated Nov 14, 12:00 PM
+Review the proposed next step
+Awaiting decision
+
+openclaw / Operations agent · authored
+
+An authored example of a request that waits for your decision.
+
+Updated Nov 14, 11:00 AM
+Review approval
+Authored preview · actions unavailable
+Organize the reference notes
+Completed
+
+hermes / Notes agent · authored
+
+An authored example of completed work with a stored follow-up draft.
+
+Updated Nov 14, 10:00 AM
+Review follow-up
+Authored preview · actions unavailable
+
+THIS DEVICE
+
+Saved requests
+
+A hub acknowledgement stays with its original request. If a response is lost, retry that exact request here.
+
+No requests saved on this device.
+
+watch agents / new tab
+
+Self-hosted. Single owner. Every agent action starts with your decision.
+
+Source & setup ↗

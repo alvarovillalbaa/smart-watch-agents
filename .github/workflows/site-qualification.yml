@@ -17,6 +17,7 @@ jobs:
       - name: Actual anonymous public desktop and narrow-screen authored preview
         env:
           WATCH_AGENTS_MODE: site
+          WATCH_AGENTS_CASES: S02-390,S03-320
           WATCH_AGENTS_OUTPUT: ${{ runner.temp }}/watch-agents-site
           WATCH_AGENTS_SITE_URL: https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/
         run: python3 tests/scripts/qualify.py
