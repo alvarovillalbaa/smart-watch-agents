@@ -4,7 +4,7 @@ services:
     environment:
       POSTGRES_DB: watch_agents
       POSTGRES_USER: watch_agents
-      POSTGRES_PASSWORD: watch_agents
+      POSTGRES_PASSWORD: ${HUB_DB_PASSWORD:?Set a unique HUB_DB_PASSWORD in .env}
     volumes:
       - watch_agents_postgres:/var/lib/postgresql/data
     healthcheck:
@@ -20,12 +20,12 @@ services:
     env_file: .env
     environment:
       PORT: 8787
-      DATABASE_URL: postgres://watch_agents:watch_agents@postgres:5432/watch_agents
+      DATABASE_URL: postgres://watch_agents:${HUB_DB_PASSWORD:?Set HUB_DB_PASSWORD}@postgres:5432/watch_agents
     depends_on:
       postgres:
         condition: service_healthy
     ports:
-      - "8787:8787"
+      - "127.0.0.1:8787:8787"
 
 volumes:
   watch_agents_postgres:

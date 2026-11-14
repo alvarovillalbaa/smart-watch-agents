@@ -1,0 +1,15 @@
+**
+!package.json
+!package-lock.json
+!services/
+!services/control-plane/
+!services/control-plane/package.json
+!services/control-plane/src/
+!services/control-plane/src/**
+!packages/
+!packages/agent-connector/
+!packages/agent-connector/package.json
+!contracts/
+!contracts/**
+!scripts/
+!scripts/hubctl.mjs

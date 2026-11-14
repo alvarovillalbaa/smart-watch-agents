@@ -2,8 +2,11 @@
 
 ## Hub
 
-Copy `.env.example` to `.env`, generate unique `HUB_BOOTSTRAP_SECRET` and
-`HUB_CONNECTOR_TOKEN` values, configure a public TLS URL, then run:
+Use Node24 for direct scripts, or Docker Compose for the complete hub. Copy
+`.env.example` to `.env`, generate distinct random32+character
+`HUB_BOOTSTRAP_SECRET` and `HUB_CONNECTOR_TOKEN`, and a unique hex-only
+`HUB_DB_PASSWORD` (for example, `openssl rand -hex 32`). Configure your public
+TLS URL, then run:
 
 ```sh
 docker compose up -d postgres
@@ -12,8 +15,11 @@ docker compose run --rm --no-deps api npm --workspace @watch-agents/control-plan
 docker compose up -d api
 ```
 
-Put Caddy, Traefik, or your existing TLS proxy in front of port 8787. Never
-expose PostgreSQL. For push delivery, provide an APNs `.p8` key via
+The API binds127.0.0.1:8787 on the Docker host. Put your existing TLS proxy on
+that host in front of it; a containerized proxy needs its own explicit shared
+network. PostgreSQL has no published port. The image installs the committed npm
+lock with lifecycle scripts off and runs as the node user. It does not
+automatically migrate an existing database. For push delivery, provide an APNs `.p8` key via
 `APNS_PRIVATE_KEY` (with escaped newlines) and a Firebase service-account JSON
 string in `FCM_SERVICE_ACCOUNT_JSON`.
 
@@ -29,13 +35,21 @@ or real-device upgrade is implied by this source change.
 
 Migration3 adds Chrome/macOS device kinds with the same raw P-256 signature
 format as WatchOS. See [desktop contract1](../contracts/desktop-clients-v1.md)
-and the [Chrome developer setup](references/chrome-setup.md). Client source and
-new-platform/browser acceptance remain distinct until their receipts exist.
+and the [Chrome developer setup](references/chrome-setup.md). Packaged Chrome and
+native qualification have their own receipts; see the README for precise scope.
 
 Register each runtime with `npm run hubctl -- agent add hermes my-hermes` or
 `npm run hubctl -- agent add openclaw my-openclaw`. Configure its connector with
 the public URL and connector token. Create one-time device codes with
 `npm run hubctl -- pair create`.
+
+## Chrome and macOS
+
+Use the [Chrome setup](references/chrome-setup.md) for the unpacked new-tab
+extension. The public webpage is only an authored preview; it cannot pair or
+control a hub. The [Mac setup](references/macos-setup.md) covers the menu-bar
+companion, matching App Group, widget installation and existing signing team.
+The ad-hoc debug CI archive is an inspection build, not a notarized installer.
 
 ## Apple Watch
 
