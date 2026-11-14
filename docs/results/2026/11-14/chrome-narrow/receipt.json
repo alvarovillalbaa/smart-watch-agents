@@ -1,0 +1,200 @@
+{
+  "mode": "chrome",
+  "commands": [
+    {
+      "name": "node-version",
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 9,
+      "stderrBytes": 0,
+      "stdoutSha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "dependencies",
+      "argv": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 180,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 25,
+      "stderrBytes": 0,
+      "stdoutSha256": "c564ed6fb14a0a63233502bfa240f54cfcb3a8ea9936ce00a7110fe55ff45a81",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "initdb",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/initdb",
+        "-D",
+        "/tmp/watch-agents-t2-smvytsfs/pg-data",
+        "-A",
+        "trust",
+        "--no-locale",
+        "--encoding=UTF8"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 30,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 853,
+      "stderrBytes": 0,
+      "stdoutSha256": "fb9d13ce142f0f87a8820ca002a043689c3832c7011f6a0a70075c8fddf11494",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pg-ready-0",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-p",
+        "52459"
+      ],
+      "exit": 1,
+      "timedOut": false,
+      "timeoutSeconds": 5,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 40,
+      "stderrBytes": 0,
+      "stdoutSha256": "da8cf8f2bbddb1bfddcaf2574561a9fffefcb1066074826f7fe1fd727a98e157",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pg-ready-1",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-p",
+        "52459"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 5,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 40,
+      "stderrBytes": 0,
+      "stdoutSha256": "3f2d3451fda16e247a8e7dfbfd07515788e4086916b1a1ec77a7d4b7f030f751",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "createdb",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/createdb",
+        "-h",
+        "127.0.0.1",
+        "-p",
+        "52459",
+        "watch_agents_t2"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 15,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "chrome-package",
+      "argv": [
+        "node",
+        "scripts/package-chrome.mjs",
+        "--out",
+        "/tmp/watch-agents-t2-smvytsfs/extension-package"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 60,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 136,
+      "stderrBytes": 0,
+      "stdoutSha256": "51b30fa1affb4a095fa945039f5892e5207db3b2d5b68f5907c237f727933298",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "browser-dependencies",
+      "argv": [
+        "npm",
+        "install",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 180,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 24,
+      "stderrBytes": 0,
+      "stdoutSha256": "4aaef3acc3c4b16766abf61c4f4aa2d3bd413e2fe822d3edd6cfa9d7e7334efa",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "browser-install",
+      "argv": [
+        "node",
+        "/tmp/watch-agents-t2-smvytsfs/browser-tools/node_modules/playwright/cli.js",
+        "install",
+        "--with-deps",
+        "chromium"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 240,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 16050,
+      "stderrBytes": 237,
+      "stdoutSha256": "96b9fc2dab641fe921bbd72c23e7e87ef1a6a137ebf06a10ce4c9603611c2522",
+      "stderrSha256": "3b419c69ff321ee6851fa5489a2bb0c9a2ef093815a709dbd05391f89767267f"
+    },
+    {
+      "name": "chrome-browser",
+      "argv": [
+        "node",
+        "tests/e2e/chrome.mjs"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 300,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 2857,
+      "stderrBytes": 0,
+      "stdoutSha256": "a23eaa69c9d4e4bfa08386b668a5149d30f3e9a4bc510eca9f8e98667f38be4b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "passed": true,
+  "cleanup": true,
+  "postgres": {
+    "exit": 0,
+    "leaderReaped": true,
+    "groupAbsent": true
+  },
+  "sourceUnchanged": true,
+  "scratchBytes": 1089590959
+}

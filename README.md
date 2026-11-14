@@ -16,7 +16,8 @@ bound HITL approvals or follow-up prompts.
 - `apps/watchos`: native SwiftUI watch app source and XcodeGen project spec.
 - `apps/wearos`: native Kotlin/Compose Wear OS app.
 - `apps/chrome`: ManifestV3 new-tab client with pairing, source status/review,
-  signed requests and original-hub retry. Source/browser qualification pending;
+  signed requests and original-hub retry. Six actual packaged browser identities
+  [accepted across two runs](docs/results/2026/11-14/chrome-narrow/result.md);
   [developer setup](docs/references/chrome-setup.md).
 
 ## Quick start
@@ -44,8 +45,8 @@ the owner may opt into summaries per device.
 The [desktop/new-tab workstream](docs/specs/desktop-hub-v1.md) is in progress.
 [Protocol2 prerequisite checks passed](docs/results/2026/11-14/action-v2/result.md):
 actual Swift/CryptoKit-to-Node interoperability and21 HTTP/PostgreSQL cases.
-No live database or agent was changed. Later macOS widgets/Chrome clients,
-Kotlin compilation, actual watches/push and deployment remain unverified.
+No live database or agent was changed. macOS widgets, Chrome distribution/hosted
+preview, Kotlin compilation, actual watches/push and deployment remain unverified.
 Legacy API/schema remain historical; source/fixture proof is not device proof.
 
 ## License

@@ -1,0 +1,115 @@
+{
+  "cases": [
+    {
+      "id": "C05-390",
+      "passed": true,
+      "extensionId": "aofihobbiakdmcmkpfmmnamljcamncll",
+      "dimensions": {
+        "client": 390,
+        "scroll": 390,
+        "touch": 1
+      },
+      "touchEvents": [
+        {
+          "type": "pointerdown",
+          "pointerType": "mouse",
+          "trusted": true,
+          "target": "pair"
+        },
+        {
+          "type": "pointerdown",
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "approve"
+        },
+        {
+          "type": "pointerdown",
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "review-cancel"
+        },
+        {
+          "type": "pointerdown",
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "approve"
+        },
+        {
+          "type": "pointerdown",
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "review-send"
+        }
+      ],
+      "keyboardFocus": {
+        "id": "filter",
+        "outline": "solid"
+      },
+      "actualTouchReviewAndAction": true,
+      "reloadReceiptPreserved": true,
+      "pageErrors": []
+    },
+    {
+      "id": "C05-320",
+      "passed": true,
+      "extensionId": "aofihobbiakdmcmkpfmmnamljcamncll",
+      "dimensions": {
+        "client": 320,
+        "scroll": 320,
+        "touch": 1
+      },
+      "touchEvents": [
+        {
+          "type": "pointerdown",
+          "pointerType": "mouse",
+          "trusted": true,
+          "target": "pair"
+        },
+        {
+          "type": "pointerdown",
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "approve"
+        },
+        {
+          "type": "pointerdown",
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "review-cancel"
+        },
+        {
+          "type": "pointerdown",
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "approve"
+        },
+        {
+          "type": "pointerdown",
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "review-send"
+        }
+      ],
+      "keyboardFocus": {
+        "id": "filter",
+        "outline": "solid"
+      },
+      "actualTouchReviewAndAction": true,
+      "reloadReceiptPreserved": true,
+      "pageErrors": []
+    }
+  ],
+  "contexts": [
+    {
+      "id": "C05-390",
+      "closed": true
+    },
+    {
+      "id": "C05-320",
+      "closed": true
+    }
+  ],
+  "serversClosed": true,
+  "poolsClosed": true,
+  "passed": true
+}

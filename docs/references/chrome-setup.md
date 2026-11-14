@@ -2,8 +2,9 @@
 
 Last updated: 2026-11-14
 
-Source is implemented; packaged browser qualification is pending. Do not infer
-runtime/browser acceptance from these instructions. macOS widget client and
+The [packaged browser checks passed](../results/2026/11-14/chrome-narrow/result.md)
+across two focused invocations, retaining the initial capability failures.
+Read their actual scope; these instructions are not extra runtime proof. macOS widget client and
 full0.2 delivery remain unfinished. No Chrome Web Store account is required
 for the developer ZIP; no store publication/signing is claimed.
 
