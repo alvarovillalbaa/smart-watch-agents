@@ -10,6 +10,7 @@ import subprocess
 import tempfile
 import time
 import uuid
+import zipfile
 
 repo = Path(__file__).resolve().parents[2]
 output = Path(os.environ['WATCH_AGENTS_OUTPUT'])
@@ -50,12 +51,12 @@ def group_absent(pid):
     except ProcessLookupError:
         return True
 
-def execute(name, argv, timeout, accepted=(0,)):
+def execute(name, argv, timeout, accepted=(0,), cwd=None):
     remaining = int(deadline - time.monotonic() - 30)
     if remaining < 1:
         raise RuntimeError('Qualification deadline reached before ' + name)
     timeout = min(timeout, remaining)
-    process = subprocess.Popen(argv, cwd=work, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
+    process = subprocess.Popen(argv, cwd=cwd or work, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, start_new_session=True)
     timed_out = False
     try:
         stdout, stderr = process.communicate(timeout=timeout)
@@ -93,14 +94,15 @@ try:
         vector_data = json.loads((output / 'native-vector.json').read_text())
         if vector_data['schema'] != 'watch-agents.native-action-vector' or vector_data['version'] != 2:
             raise RuntimeError('Native client did not emit its real public request vector')
-    elif mode == 'http':
-        native = Path(os.environ['WATCH_AGENTS_NATIVE_INPUT'])
-        if json.loads((native / 'source.json').read_text())['sha'] != head:
-            raise RuntimeError('Native vector belongs to a different source')
-        if not json.loads((native / 'receipt.json').read_text())['passed']:
-            raise RuntimeError('Native prerequisite did not pass')
-        shutil.copyfile(native / 'native-vector.json', output / 'native-vector.json')
-        env['WATCH_AGENTS_NATIVE_VECTOR'] = str(output / 'native-vector.json')
+    elif mode in ['http', 'chrome']:
+        if mode == 'http':
+            native = Path(os.environ['WATCH_AGENTS_NATIVE_INPUT'])
+            if json.loads((native / 'source.json').read_text())['sha'] != head:
+                raise RuntimeError('Native vector belongs to a different source')
+            if not json.loads((native / 'receipt.json').read_text())['passed']:
+                raise RuntimeError('Native prerequisite did not pass')
+            shutil.copyfile(native / 'native-vector.json', output / 'native-vector.json')
+            env['WATCH_AGENTS_NATIVE_VECTOR'] = str(output / 'native-vector.json')
         execute('node-version', ['node', '--version'], 10)
         execute('dependencies', ['npm', 'ci', '--ignore-scripts', '--no-audit', '--no-fund'], 180)
         shutil.copyfile(work / 'package-lock.json', output / 'package-lock.json')
@@ -125,11 +127,48 @@ try:
             raise RuntimeError('Owned PostgreSQL never became ready')
         execute('createdb', [str(binaries / 'createdb'), '-h', '127.0.0.1', '-p', str(port), 'watch_agents_t2'], 15)
         env['WATCH_AGENTS_T2_DATABASE_URL'] = 'postgresql://127.0.0.1:' + str(port) + '/watch_agents_t2'
-        env['WATCH_AGENTS_HTTP_RECEIPT'] = str(output / 'http-receipt.json')
-        execute('http-tests', ['node', '--test', 'tests/integration/action-http.test.mjs'], 180)
-        result = json.loads((output / 'http-receipt.json').read_text())
-        if not all(result[key] for key in ['serverClosed', 'poolClosed', 'nativeVectorAccepted']):
-            raise RuntimeError('Actual native interoperability or HTTP teardown was not established')
+        if mode == 'http':
+            env['WATCH_AGENTS_HTTP_RECEIPT'] = str(output / 'http-receipt.json')
+            execute('http-tests', ['node', '--test', 'tests/integration/action-http.test.mjs'], 180)
+            result = json.loads((output / 'http-receipt.json').read_text())
+            if not all(result[key] for key in ['serverClosed', 'poolClosed', 'nativeVectorAccepted']):
+                raise RuntimeError('Actual native interoperability or HTTP teardown was not established')
+        else:
+            package = scratch / 'extension-package'
+            execute('chrome-package', ['node', 'scripts/package-chrome.mjs', '--out', str(package)], 60)
+            shutil.copyfile(str(package) + '.zip', output / 'WatchAgentsChrome-0.2.0.zip')
+            shutil.copyfile(str(package) + '.manifest.json', output / 'chrome-package-manifest.json')
+            manifest = json.loads(Path(str(package) + '.manifest.json').read_text())
+            installed = scratch / 'installed-extension'
+            installed.mkdir()
+            with zipfile.ZipFile(str(package) + '.zip') as archive:
+                if sorted(archive.namelist()) != sorted(row['path'] for row in manifest['files']):
+                    raise RuntimeError('Extension archive membership differs')
+                for row in manifest['files']:
+                    path = Path(row['path'])
+                    if path.is_absolute() or '..' in path.parts:
+                        raise RuntimeError('Unsafe extension archive path')
+                    data = archive.read(row['path'])
+                    if len(data) != row['bytes'] or hashlib.sha256(data).hexdigest() != row['sha256'] or data != (package / path).read_bytes():
+                        raise RuntimeError('Extension archive bytes differ')
+                    target = installed / path
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes(data)
+            tools = scratch / 'browser-tools'
+            tools.mkdir()
+            shutil.copyfile(work / 'tests/fixtures/browser-tools/package.json', tools / 'package.json')
+            execute('browser-dependencies', ['npm', 'install', '--ignore-scripts', '--no-audit', '--no-fund'], 180, cwd=tools)
+            shutil.copyfile(tools / 'package-lock.json', output / 'browser-lock.json')
+            env['PLAYWRIGHT_BROWSERS_PATH'] = str(scratch / 'browsers')
+            execute('browser-install', ['node', str(tools / 'node_modules/playwright/cli.js'), 'install', '--with-deps', 'chromium'], 240)
+            (scratch / 'browser-profiles').mkdir()
+            env['WATCH_AGENTS_PROFILE_ROOT'] = str(scratch / 'browser-profiles')
+            env['WATCH_AGENTS_BROWSER_TOOLS'] = str(tools)
+            env['WATCH_AGENTS_CHROME_UNPACKED'] = str(installed)
+            execute('chrome-browser', ['node', 'tests/e2e/chrome.mjs'], 300)
+            result = json.loads((output / 'chrome/receipt.json').read_text())
+            if not result['passed'] or not result['serversClosed'] or not result['poolsClosed']:
+                raise RuntimeError('Actual extension behavior or teardown was not established')
     else:
         raise RuntimeError('Unknown qualification mode')
     receipt['passed'] = True
