@@ -1,0 +1,1 @@
+{"appGroupSnapshot":true,"keychainRoundTripAndOriginalContext":true,"localForget":true,"oversizePreservedPriorState":true,"ownedKeychainItemsAbsent":true,"ownedSharedSnapshotRemoved":true,"passed":true,"schema":"watch-agents.mac-storage-evidence","version":1}

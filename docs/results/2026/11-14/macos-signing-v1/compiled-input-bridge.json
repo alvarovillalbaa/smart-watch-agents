@@ -1,0 +1,95 @@
+{
+  "compiledSource": "611fc4c6980a11ecba260e7d5e078ae3fb7da2f2",
+  "inputs": [
+    {
+      "path": "apps/macos/Sources/DeviceStore.swift",
+      "bytes": 2616,
+      "sha256": "0d93c85df022c3d3a9f03671abdc312da1b1a86846931a0431a7c456cad2d44b"
+    },
+    {
+      "path": "apps/macos/Sources/HubStore.swift",
+      "bytes": 9094,
+      "sha256": "26aa5e907dd44381c054ca65cb3fdaf80fb01b4440ae6916d2418836c4c046a6"
+    },
+    {
+      "path": "apps/macos/Sources/HubView.swift",
+      "bytes": 8683,
+      "sha256": "c6c26e881e90b1b40414d3e27b3614de57e71d51ad81003059a74c170cddca3e"
+    },
+    {
+      "path": "apps/macos/Sources/StorageQualification.swift",
+      "bytes": 5859,
+      "sha256": "d9887298f01fafc91ae34392e40fb67f8f7635478ff582429c667910fdec2944"
+    },
+    {
+      "path": "apps/macos/Sources/WatchAgentsApp.swift",
+      "bytes": 2323,
+      "sha256": "a48e502b713aca414773e9857b145177272975e95b05836c6de8277299f0af10"
+    },
+    {
+      "path": "apps/macos/Widget/WatchAgentsWidget.swift",
+      "bytes": 3355,
+      "sha256": "e3f8beac1efbdb76b781e4e116fcd5a7239c9b63b61625592dd568c884b4c105"
+    },
+    {
+      "path": "apps/macos/project.yml",
+      "bytes": 2328,
+      "sha256": "44f977d72e94e0c6f9dab5169d36896b37d80573cfd9730fb23b9e6713b8e19e"
+    },
+    {
+      "path": "packages/apple-core/Package.swift",
+      "bytes": 702,
+      "sha256": "36c87927108e1a149215117475203dfa72cade83cd1ec95018dcd5d7926feb50"
+    },
+    {
+      "path": "packages/apple-core/Sources/AgentHubCore/AgentHubClient.swift",
+      "bytes": 6099,
+      "sha256": "0ef3fe16e581a4a0fe4c2c8121f6b59ada930d4cb1700bae10b6146bcc284295"
+    },
+    {
+      "path": "packages/apple-core/Sources/AgentHubCore/DeviceIdentity.swift",
+      "bytes": 2421,
+      "sha256": "fafd3c31e37a16b23c3e83e6e291f386c073e48628f645a08a07d8fc679ceec8"
+    },
+    {
+      "path": "packages/apple-core/Sources/AgentHubCore/Models.swift",
+      "bytes": 1298,
+      "sha256": "0ee8870a75ea8b516026c62824a15574ee54d4f9d5e6ed1be570888f4b47317e"
+    },
+    {
+      "path": "packages/apple-core/Sources/AgentHubCore/PreparedAction.swift",
+      "bytes": 2129,
+      "sha256": "63b5788e15ecf8045fe86a085f64614792435113ad9e1bbda9b96351e623ac0b"
+    },
+    {
+      "path": "packages/apple-core/Sources/AgentHubUI/RunStatusBadge.swift",
+      "bytes": 521,
+      "sha256": "47f220c89e2de2a130d0ce0d791271af6c1cc5e41898aced0872d97afabfddbd"
+    },
+    {
+      "path": "packages/apple-core/Sources/AgentHubWidgetModel/WidgetSnapshot.swift",
+      "bytes": 4396,
+      "sha256": "a59584f9243d8e7c0b9cf401c27f001ba1711f4800a91a1428746999a8ebc2e8"
+    },
+    {
+      "path": "packages/apple-core/Tests/AgentHubCoreTests/ActionProtocolTests.swift",
+      "bytes": 5081,
+      "sha256": "b7657cdcba1e0fd8125d2c3172ea933e232f9edc2594206c3d1e9268f596fd99"
+    },
+    {
+      "path": "packages/apple-core/Tests/AgentHubCoreTests/AgentHubCoreTests.swift",
+      "bytes": 157,
+      "sha256": "76255b3edf32177c5e6e367bdc6f1d8463c0826dc8079d9230bb8fdf01aced0d"
+    },
+    {
+      "path": "packages/apple-core/Tests/AgentHubCoreTests/PreparedActionTests.swift",
+      "bytes": 4807,
+      "sha256": "d43556fbd8801438fc1adc616d40d68e9c1f2c98a89b592a82acb5025fa503cd"
+    },
+    {
+      "path": "packages/apple-core/Tests/AgentHubWidgetModelTests/WidgetSnapshotTests.swift",
+      "bytes": 3668,
+      "sha256": "8cf701a1e3d417324abb0f1b02ae4cef08370d1a373bf6f720ce7c1947158afc"
+    }
+  ]
+}

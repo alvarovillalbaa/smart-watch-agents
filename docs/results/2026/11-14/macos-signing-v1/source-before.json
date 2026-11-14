@@ -1,0 +1,1037 @@
+[
+  {
+    "path": ".codex/environments/environment.toml",
+    "bytes": 182,
+    "sha256": "57d2b8c04409e6f5a5d8b55e860edbe774fa62c122ed8791eb1e31430c45fcda"
+  },
+  {
+    "path": ".env.example",
+    "bytes": 621,
+    "sha256": "ae25fe5469fedc13de88d3715bc6b3038b6e86dfb09749424046d3ef52120251"
+  },
+  {
+    "path": ".github/workflows/ci.yml",
+    "bytes": 377,
+    "sha256": "0ac866713c63c365d1c16c861528c7a1801dd34d16471b3ef8578c6b077f2ce5"
+  },
+  {
+    "path": ".github/workflows/mac-qualification.yml",
+    "bytes": 831,
+    "sha256": "dc8f0c0b19a2f78c371513c19f4fa9a2299f96dadc0660e1f1d7a56a1fc9beb7"
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 287,
+    "sha256": "1774ba235e0fb3d62846a840a54edcfc6f6e13e392eee7024a3786aba8418463"
+  },
+  {
+    "path": "AGENTS.md",
+    "bytes": 2187,
+    "sha256": "baad3a2e197c0bbe3fe9406c4607a9b808f0136ef7c8e2c2c206b726dc36c11a"
+  },
+  {
+    "path": "LICENSE",
+    "bytes": 1082,
+    "sha256": "dcc3a789fd4176b36207052500eece41f8a56aeb1535855972649fcff227a0a7"
+  },
+  {
+    "path": "README.md",
+    "bytes": 2689,
+    "sha256": "9dcc00f90bb0e0387bbd478beeeb73e13cf2aa110204b0a1b87e556fbacb2d11"
+  },
+  {
+    "path": "apps/chrome/client.mjs",
+    "bytes": 14532,
+    "sha256": "2563da6ad82368f5f5402c97abe04f86608b151f1722d50966f46d16033e2650"
+  },
+  {
+    "path": "apps/chrome/demo.mjs",
+    "bytes": 1572,
+    "sha256": "744cab631c65e290023a990e49b187bd83a4a426e803041fd9e169a578657561"
+  },
+  {
+    "path": "apps/chrome/manifest.json",
+    "bytes": 643,
+    "sha256": "731267c143394a0f58f36c445fc0529b5374efdee1ed1c9d33ab8c8c2d95e93c"
+  },
+  {
+    "path": "apps/chrome/newtab.html",
+    "bytes": 4844,
+    "sha256": "2ce29a1e26c2a88ecc11860618f27c03af8464d24e846f0949c150aa638e79e9"
+  },
+  {
+    "path": "apps/chrome/newtab.mjs",
+    "bytes": 13733,
+    "sha256": "e5204ad3c8e749de34547907b7827c12a73b681ed9e42ea455bc6a04bbe05248"
+  },
+  {
+    "path": "apps/chrome/style.css",
+    "bytes": 9507,
+    "sha256": "46e91611898b07460a71604da82e20d15057ce7f81b0df75f248f20a074ca79d"
+  },
+  {
+    "path": "apps/macos/Sources/DeviceStore.swift",
+    "bytes": 2616,
+    "sha256": "0d93c85df022c3d3a9f03671abdc312da1b1a86846931a0431a7c456cad2d44b"
+  },
+  {
+    "path": "apps/macos/Sources/HubStore.swift",
+    "bytes": 9094,
+    "sha256": "26aa5e907dd44381c054ca65cb3fdaf80fb01b4440ae6916d2418836c4c046a6"
+  },
+  {
+    "path": "apps/macos/Sources/HubView.swift",
+    "bytes": 8683,
+    "sha256": "c6c26e881e90b1b40414d3e27b3614de57e71d51ad81003059a74c170cddca3e"
+  },
+  {
+    "path": "apps/macos/Sources/StorageQualification.swift",
+    "bytes": 5859,
+    "sha256": "d9887298f01fafc91ae34392e40fb67f8f7635478ff582429c667910fdec2944"
+  },
+  {
+    "path": "apps/macos/Sources/WatchAgentsApp.swift",
+    "bytes": 2323,
+    "sha256": "a48e502b713aca414773e9857b145177272975e95b05836c6de8277299f0af10"
+  },
+  {
+    "path": "apps/macos/Widget/WatchAgentsWidget.swift",
+    "bytes": 3355,
+    "sha256": "e3f8beac1efbdb76b781e4e116fcd5a7239c9b63b61625592dd568c884b4c105"
+  },
+  {
+    "path": "apps/macos/project.yml",
+    "bytes": 2328,
+    "sha256": "44f977d72e94e0c6f9dab5169d36896b37d80573cfd9730fb23b9e6713b8e19e"
+  },
+  {
+    "path": "apps/watchos/Sources/WatchAgentsApp.swift",
+    "bytes": 6660,
+    "sha256": "a8feb7478c503c64f3f67ce3511f4e01407bda628fbeb3658187704c5fb471fb"
+  },
+  {
+    "path": "apps/watchos/project.yml",
+    "bytes": 525,
+    "sha256": "b9761980f2985b695b72baf4df3f2dc525e945239bf893569c4157172aefee49"
+  },
+  {
+    "path": "apps/wearos/app/build.gradle.kts",
+    "bytes": 851,
+    "sha256": "1e0047e14b45e1c4ddede7d939137d638e34f2635911248f36e6a1694e3bfe76"
+  },
+  {
+    "path": "apps/wearos/app/src/main/AndroidManifest.xml",
+    "bytes": 772,
+    "sha256": "bbd14f08d680e132c797d255a38641c989914948f4245ad42457084744ffff27"
+  },
+  {
+    "path": "apps/wearos/app/src/main/java/dev/watchagents/wear/HubApi.kt",
+    "bytes": 4853,
+    "sha256": "5475d612e18d8d54fced84651796a18c307b32ee5f2ccc524450af0abec1b2fd"
+  },
+  {
+    "path": "apps/wearos/app/src/main/java/dev/watchagents/wear/MainActivity.kt",
+    "bytes": 3221,
+    "sha256": "be58c22c83e319855dfca8e4418e088fb29d215f89e40a6b86cfc2e0f8e8ec7b"
+  },
+  {
+    "path": "apps/wearos/app/src/main/java/dev/watchagents/wear/WatchAgentsMessagingService.kt",
+    "bytes": 785,
+    "sha256": "0c33b297662f22b2d26f82bf79790baca81073624d9def07a93a153fd3d170c8"
+  },
+  {
+    "path": "apps/wearos/app/src/main/res/values/styles.xml",
+    "bytes": 92,
+    "sha256": "8e22507db74268110646362602988adc28622a5e5d92a4633c4f940371fcb87a"
+  },
+  {
+    "path": "apps/wearos/build.gradle.kts",
+    "bytes": 286,
+    "sha256": "69c537fae2b12de37e32f8066bde16b54ff30c858003ba6454182e34f37c8384"
+  },
+  {
+    "path": "apps/wearos/settings.gradle.kts",
+    "bytes": 277,
+    "sha256": "3b037431835733dac143104764cc9c8841894855a526db1fbe8212d07a103a6a"
+  },
+  {
+    "path": "compose.yaml",
+    "bytes": 743,
+    "sha256": "69db78dd641e145c46921bedc068fdaf74567b73c348ee1f827decc31c02183d"
+  },
+  {
+    "path": "contracts/action-v2.md",
+    "bytes": 2207,
+    "sha256": "330611f85924296a57bf2a7e336aad63fd09e8b3d06e7266bdf6f6a38ce3906a"
+  },
+  {
+    "path": "contracts/desktop-clients-v1.md",
+    "bytes": 2139,
+    "sha256": "059c2d49b9673a52f2dc6394083241baf037a7ca502c8e3e6f161dc3ea0d9ed0"
+  },
+  {
+    "path": "contracts/events.schema.json",
+    "bytes": 1652,
+    "sha256": "fe55b42f35a27f569644a7cb70a6f177a7d9a487f494f729d3ef19ad481de4ac"
+  },
+  {
+    "path": "contracts/openapi.yaml",
+    "bytes": 1875,
+    "sha256": "bfd1e6256d14a40cb4112f24dd9cea7133b9cbdb6cb2912521760578759f7a28"
+  },
+  {
+    "path": "demos/demo-agent.mjs",
+    "bytes": 1139,
+    "sha256": "362a13ad56cd2cfdb4e0151290d0579a4b1cce79f9cbcddd34197918e6dd1e79"
+  },
+  {
+    "path": "docs/ARCHITECTURE.md",
+    "bytes": 1040,
+    "sha256": "dc8c04cf5242d388fecce5d571340912f5c3e96115e338fa9b28c77a3b272ffd"
+  },
+  {
+    "path": "docs/INSTALL.md",
+    "bytes": 2375,
+    "sha256": "7a35f409a6d297a1cc5c5a50b87fd7c503fc108aac8928b09b3ca91856026145"
+  },
+  {
+    "path": "docs/SECURITY.md",
+    "bytes": 1719,
+    "sha256": "b5b22472c5310ac977c89f1529ebd3787746dbec072fd3a9b6ac8def6c30b64d"
+  },
+  {
+    "path": "docs/proposals/action-checks-v2.md",
+    "bytes": 3099,
+    "sha256": "62570ec71a11d6e1693e1d41bb5d12933eb1c54bdefc868aabdb12192439112b"
+  },
+  {
+    "path": "docs/proposals/chrome-checks-v1.md",
+    "bytes": 2800,
+    "sha256": "9cc012e1a6f5208093f359c128fd4a61ad51fea297a2e7c3bfac5098d3bf1b48"
+  },
+  {
+    "path": "docs/proposals/macos-checks-v1.md",
+    "bytes": 2681,
+    "sha256": "8631afc3ab7f50bc1eb4b4b240508bf42dc3637fd615531c457883168e304d2a"
+  },
+  {
+    "path": "docs/references/chrome-setup.md",
+    "bytes": 3467,
+    "sha256": "d1453613464f901cf69fb5dabe417a7731294d1a6cd6d8df310f8cbfc9a33b33"
+  },
+  {
+    "path": "docs/references/macos-setup.md",
+    "bytes": 2857,
+    "sha256": "d391d04649099f0522e4e7e13bb05243a4e73698fdab19bd98e952fb8fd83b44"
+  },
+  {
+    "path": "docs/references/protocol-sources.md",
+    "bytes": 1490,
+    "sha256": "5c20c595b524552a4c626ad28d7a970ef3abc665ef2576906908f5653abc5c3b"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-initial/permanent-apple.decoded.log",
+    "bytes": 15304,
+    "sha256": "dd5039d9a8aee7ad25ce0740952f100350548b579550100abb41852ffb22f3d6"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-initial/provider.json",
+    "bytes": 3435,
+    "sha256": "cc3134f4c4350ee375d44554244a93942336f769ffa4d127cb71fe583d35abc8"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-initial/result.md",
+    "bytes": 1447,
+    "sha256": "4449c236fe6feb42808cbbaab16cb79b686111cfe1651c89b57047eac5464b58"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/control-retirement.json",
+    "bytes": 270,
+    "sha256": "3b884321e62b8dcd6cb34e308e9d1d03f45178fac094aecbead32624808bc454"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/http/http-receipt.json",
+    "bytes": 215,
+    "sha256": "74520bd2ac0f477cb59747b3047923fd7271bfe1f0df1c6a0ac320f369d50156"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/http/native-vector.json",
+    "bytes": 631,
+    "sha256": "f0b6f9266cd017cd729d9314e053519071b6f4662b6e248d148e52a42aa2ee91"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/http/original-ci.zip",
+    "bytes": 18915,
+    "sha256": "cdc10f50ecbc7774c0f19af3de49d8ee62606cd65dd13987bc07383ab6b99933"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/http/receipt.json",
+    "bytes": 3923,
+    "sha256": "586d1f17efc4efcbf309949b015a63d2506845d2fa7d2478cb966a52979c9829"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/http/source.json",
+    "bytes": 51,
+    "sha256": "fd4fb4663129acd77e29ad0629721981a8733aac2b705fd8933c1434d824ff55"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/native/native-vector.json",
+    "bytes": 631,
+    "sha256": "f0b6f9266cd017cd729d9314e053519071b6f4662b6e248d148e52a42aa2ee91"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/native/original-ci.zip",
+    "bytes": 14631,
+    "sha256": "9f5268b96af70ea2c70e4cd73dba62b80ec279a591a8173f4da2dd62919256ad"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/native/receipt.json",
+    "bytes": 2730,
+    "sha256": "48b3fc54bf8a705793a68a8f14c848f37f1dd3935eb7590be90ca4b8ca88fb16"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/native/source.json",
+    "bytes": 51,
+    "sha256": "fd4fb4663129acd77e29ad0629721981a8733aac2b705fd8933c1434d824ff55"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/provider.json",
+    "bytes": 1696,
+    "sha256": "6b7bb1ac5d92e3a8477937176e695e1e38f568d0e5d829e7519d11c3979b3156"
+  },
+  {
+    "path": "docs/results/2026/11-14/action-v2/result.md",
+    "bytes": 3274,
+    "sha256": "9ff5ef4e02c759226efb4c4ee9c3a27777ec18aa4ef973d1d5e73bbac3c639fa"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/WatchAgentsChrome-0.2.0.zip",
+    "bytes": 17438,
+    "sha256": "6ab5735f306328e7ff883e85957a4e4efbfb3867abce3d716ad457dc9364c8ff"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/chrome-package-manifest.json",
+    "bytes": 1558,
+    "sha256": "e0a2a73108ee9a7bab21f1f1152fc237790143112f0a8d3d4b5d00d673409646"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/chrome/C01-installed-dark.png",
+    "bytes": 177978,
+    "sha256": "5cdd1ee8ca7d224203903ed4387c655358d85bed970dbc8a2576d76e8e04a28f"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/chrome/C02-original-hub-retry.png",
+    "bytes": 127703,
+    "sha256": "0280f1f21e7d9527a5714760425609cbb1ae5bc6ce69218865f930b00a004dff"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/chrome/C04-explicit-storage-recovery.png",
+    "bytes": 158342,
+    "sha256": "c34386e2913e1b110f8343bad629a984da29268daf7acd147d4244bf26af3409"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/chrome/C05-320-failure.png",
+    "bytes": 116065,
+    "sha256": "d526d5e2f6665896aed3c7c80daf745fb31617325babd92f02a48b2ae07176fd"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/chrome/receipt.json",
+    "bytes": 2571,
+    "sha256": "40e7630f0ea800e703774080448eba72ab63c088084a357a9b0c12391d21a105"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/original-ci.zip",
+    "bytes": 707351,
+    "sha256": "92bf4407824fd99fa274dbb7c1e9dd1571c39ead6fc68719db3e7b6e9443effb"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/provider.json",
+    "bytes": 862,
+    "sha256": "408fb6f5662b1e39f641d7782954fdb8315e8f38703c1f2cc6c61850381f5b8f"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/receipt.json",
+    "bytes": 5628,
+    "sha256": "269aa58c81bfc4330f94bd71f5e0f3a76ed7393a3be99677b0fbfcb2ed86a2f9"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/result.md",
+    "bytes": 2630,
+    "sha256": "622d6c698a4a78418f6d8d08100a431dab0961b80e6b28ca04086d7bde2bc3a2"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-initial/source.json",
+    "bytes": 51,
+    "sha256": "3e8dbce5e9f88d51afa0b74923d94c7141bea80dc9720f63dec0ba01b9b45c51"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/WatchAgentsChrome-0.2.0.zip",
+    "bytes": 17438,
+    "sha256": "076819629653720a16fb72588098a6b0ab27cea715e79a364d0bdf8367908c6f"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/chrome-package-manifest.json",
+    "bytes": 1558,
+    "sha256": "e0a2a73108ee9a7bab21f1f1152fc237790143112f0a8d3d4b5d00d673409646"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/chrome/C05-320-touch.png",
+    "bytes": 115359,
+    "sha256": "c0fed9adfe995724fd821049443b40da01d7a4dca6ccd610da4ee93df7b8aa33"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/chrome/C05-390-touch.png",
+    "bytes": 114798,
+    "sha256": "aca7a4b0a9c3172211af3d04f6d41bb8484ebb9914b262bcac9f6ff737cbfc8f"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/chrome/receipt.json",
+    "bytes": 2543,
+    "sha256": "eced05a231cd641c8285111f3ce6bd264414f800947b1b1d3232e6993b686205"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/original-ci.zip",
+    "bytes": 267535,
+    "sha256": "56b363d11d189d3ea5110bef3fe8fefa8331a68e84617b2dba1480c8d2ac3e66"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/provider.json",
+    "bytes": 862,
+    "sha256": "0e7332b0e33050fb412f558dcbe4c703301f342429dd530127f05bf75895f296"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/receipt.json",
+    "bytes": 5575,
+    "sha256": "9acb511a68e7bc2b6da525f0dfe8c3e1cad055442a0fbbf6b61e07fba127c45c"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/result.md",
+    "bytes": 2422,
+    "sha256": "82600d0464475a4ec073b5085d10abaa81cc92595982039e18875e3a436bc9d5"
+  },
+  {
+    "path": "docs/results/2026/11-14/chrome-narrow/source.json",
+    "bytes": 51,
+    "sha256": "6c0b42373eb98b1d0e60472821abfd6d4025b0417ecae6595597b74fdf44053e"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/copied-source-after.json",
+    "bytes": 20528,
+    "sha256": "5b29430b76dd684cf43e76a438915b96120846a2c290a47963ed0f35a997b93e"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/createdb.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/createdb.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/dependencies.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/dependencies.stdout.txt",
+    "bytes": 28,
+    "sha256": "807af07d191e1cdf70f66317f71974614a7b81bc853f171ac0aeade57e149609"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/http-receipt.json",
+    "bytes": 234,
+    "sha256": "0f8383a9e69a7cfdc00da2134cbdff231967ea86b2c1ab08ccd6dc2ee9b5e44c"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/http-tests.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/http-tests.stdout.txt",
+    "bytes": 227,
+    "sha256": "a941d1a9c083102cc0f46a384c18a0c200e37948c9ac5e3444fedeaee90aad66"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/initdb.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/initdb.stdout.txt",
+    "bytes": 853,
+    "sha256": "77f604c49de0ae7551869e0cfb924ffbbe165a08b90ab4e38d352b2c028bdd59"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/native-vector.json",
+    "bytes": 627,
+    "sha256": "187c67377cbbe9cd532b92654abcd5dd0c6601873e54193a11fbab522e51b8de"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/node-version.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/node-version.stdout.txt",
+    "bytes": 9,
+    "sha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/original-artifact.zip",
+    "bytes": 27789,
+    "sha256": "0fbe8d68502caf25eb004207e68f7225d8566bbc8bc568cd7faaa339715199a6"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/package-lock.json",
+    "bytes": 6127,
+    "sha256": "3a6fab6ff2521b6e0a75062f9c2aa1043bf92f4a714c3d02a9aaf5518aa864af"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/pg-ready-0.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/pg-ready-0.stdout.txt",
+    "bytes": 40,
+    "sha256": "56e22db4c0c36584643fcb7a5c557af8412308034dc2dc6fae3530146d15a2ad"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/pg-ready-1.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/pg-ready-1.stdout.txt",
+    "bytes": 40,
+    "sha256": "32e3af6eae026ae31b59ef9e1cb5622f44acff38fa91cc05be8974c16808ac28"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/postgres.stderr.txt",
+    "bytes": 1505,
+    "sha256": "97c57cffb203f19e4f0a6bbda99e6734f7f374afe10a2d77a6f30aceb48b6273"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/postgres.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/receipt.json",
+    "bytes": 3925,
+    "sha256": "16da78cdc537b0f439b55b45448ae612eb8a530856ec8fc61fe437e408029f64"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/source-after.json",
+    "bytes": 20528,
+    "sha256": "5b29430b76dd684cf43e76a438915b96120846a2c290a47963ed0f35a997b93e"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/source-before.json",
+    "bytes": 20528,
+    "sha256": "5b29430b76dd684cf43e76a438915b96120846a2c290a47963ed0f35a997b93e"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/http/source.json",
+    "bytes": 51,
+    "sha256": "45a4b91786308659b72842f664917205bc7d5ba8fa46c78bd10722fc3e48f8a0"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/WatchAgentsMac-0.2.0-adhoc-debug.zip",
+    "bytes": 525952,
+    "sha256": "50458ebdc2ae73a573f5ad455ee06621becd4d64a72e195f7f7c7e6bc26cf409"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/app-info.json",
+    "bytes": 947,
+    "sha256": "a480c88013998374f31163b741ac2c61ab14f44ff72c86c84d7cb06e8e982432"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/copied-source-after.json",
+    "bytes": 20528,
+    "sha256": "5b29430b76dd684cf43e76a438915b96120846a2c290a47963ed0f35a997b93e"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/inspect-app.stderr.txt",
+    "bytes": 893,
+    "sha256": "8d0928abd27cd38592cb5c4c18906dc48018c8b82a04aa6a2417f1258ba61310"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/inspect-app.stdout.txt",
+    "bytes": 384,
+    "sha256": "c6383aaf4a3d57e49325ad1c40e12fc0242ed150f29d8d43e81618ec5c496281"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/inspect-widget.stderr.txt",
+    "bytes": 940,
+    "sha256": "cad5a9612c0a84bb49eb879eb7a9756085a53a430c945d77424ae29d96176eba"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/inspect-widget.stdout.txt",
+    "bytes": 333,
+    "sha256": "9b0412d86593b8e2aa6189bd527c9f68203e9d763f877c6a19605cae792db571"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/keychain-after.stderr.txt",
+    "bytes": 92,
+    "sha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/keychain-after.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/keychain-before.stderr.txt",
+    "bytes": 92,
+    "sha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/keychain-before.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/keychain-cleanup.stderr.txt",
+    "bytes": 92,
+    "sha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/keychain-cleanup.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-build.stderr.txt",
+    "bytes": 288,
+    "sha256": "d6bf858bb8aa8cb64c76f61d6cdb8f9b07431af7a6ed770c3070dc8837be7d34"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-build.stdout.txt",
+    "bytes": 213422,
+    "sha256": "3a606fe87357ce7bcb6654b42f7244611e73d94e112d6c43e36e8e00ca55d830"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-generate.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-generate.stdout.txt",
+    "bytes": 222,
+    "sha256": "488c4afd6b6b3e33d1e3b114d8b73c8e12ebf288d0bdfc94a4b97ba8fbaf994f"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-keychain-after.stderr.txt",
+    "bytes": 92,
+    "sha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-keychain-after.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-keychain-before.stderr.txt",
+    "bytes": 92,
+    "sha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-keychain-before.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-keychain-cleanup.stderr.txt",
+    "bytes": 92,
+    "sha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-keychain-cleanup.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-package.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-package.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-storage-probe.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-storage-probe.stdout.txt",
+    "bytes": 673,
+    "sha256": "97c98fad853d187a1bf19a9dc112686376153b2b72c8eca88383a3b8192d2127"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/mac-storage.json",
+    "bytes": 712,
+    "sha256": "460c290c2618862c5ed77c358d33bb7add514f969066c9d4e1e5038c9df783f2"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/native-vector.json",
+    "bytes": 627,
+    "sha256": "187c67377cbbe9cd532b92654abcd5dd0c6601873e54193a11fbab522e51b8de"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/original-artifact.zip",
+    "bytes": 569253,
+    "sha256": "f9f538c66ec0542bc479cdb0e9eabc3737cceda5d995d80460e9cf37177e1ec2"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/package-keychain-after.stderr.txt",
+    "bytes": 92,
+    "sha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/package-keychain-after.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/package-keychain-cleanup.stderr.txt",
+    "bytes": 27,
+    "sha256": "2ab28655e407f758e702aaba84ebf73bc5b93af0161c56b0b07f86624f827689"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/package-keychain-cleanup.stdout.txt",
+    "bytes": 659,
+    "sha256": "6ca2218a551a637e082b0f2834e852524ae25f07f926fa3cc60d95f81f2be21b"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/package-manifest.json",
+    "bytes": 2646,
+    "sha256": "2373133778fa4ccc10d11785f15a915c886da566ec3720643107724c605dee1c"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/receipt.json",
+    "bytes": 13588,
+    "sha256": "9a490cf7b5359ebfd2d72f919e92f6141f663f700722a6ad5f80a0a1b98c35f3"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/sign-app.stderr.txt",
+    "bytes": 152,
+    "sha256": "ccc9465ee4b13733e250505cda467efde828a11a2b023a1f07a336e86f5883bd"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/sign-app.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/sign-widget.stderr.txt",
+    "bytes": 193,
+    "sha256": "2812aeaf46b1693df1d25ca6ea11ed0533441788f74fa1c9d6e4a96e2999bd68"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/sign-widget.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/source-after.json",
+    "bytes": 20528,
+    "sha256": "5b29430b76dd684cf43e76a438915b96120846a2c290a47963ed0f35a997b93e"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/source-before.json",
+    "bytes": 20528,
+    "sha256": "5b29430b76dd684cf43e76a438915b96120846a2c290a47963ed0f35a997b93e"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/source.json",
+    "bytes": 51,
+    "sha256": "45a4b91786308659b72842f664917205bc7d5ba8fa46c78bd10722fc3e48f8a0"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/swift-tests.stderr.txt",
+    "bytes": 1284,
+    "sha256": "22e41d937c45ad6642e02b463f4f9e9ee0c0eff17a80d34a1711a3f56f2a56ac"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/swift-tests.stdout.txt",
+    "bytes": 2363,
+    "sha256": "eb90dc6e816e94977633994d4d9cf48f5a7c955e4b264ea84a1812c13bea877c"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/swift-version.stderr.txt",
+    "bytes": 30,
+    "sha256": "542ca724f46d8a3dffb85c3cd4b6e0d2fdf6c1bd4c484e6978dd9ed2f22cd639"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/swift-version.stdout.txt",
+    "bytes": 98,
+    "sha256": "b674f79b747370a1c05ae7cec551fffe557816c6c807f35f39f933ecbcca80d7"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/verify-app.stderr.txt",
+    "bytes": 1374,
+    "sha256": "81edd672586b5c58679d7224ba5475f21042a261c74cfc4b3fdf212dea897b59"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/verify-app.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/verify-widget.stderr.txt",
+    "bytes": 1261,
+    "sha256": "4aeb5fe3460a1faf7657d6a1ca46259d01b32cffbbb5dc85abf632ba509b5c63"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/verify-widget.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/widget-info.json",
+    "bytes": 885,
+    "sha256": "c7e0a879eb006b55e0870066e894220f96f1e617c176dc07766398ba74636c95"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/xcode-version.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/xcode-version.stdout.txt",
+    "bytes": 32,
+    "sha256": "18730ed2ae28a2c9cf0c2d5db549033a4f07089331391a7133b7b32187454fa9"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/xcodegen-unpack.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/xcodegen-unpack.stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/native/xcodegen.json",
+    "bytes": 117,
+    "sha256": "bc66fc627f55e491934ba0a252015b03f618f1e0885eca5ac0fa8c24631fccf8"
+  },
+  {
+    "path": "docs/results/2026/11-14/macos-v1/result.md",
+    "bytes": 3464,
+    "sha256": "5b73bf6c9371f337fada4991a0cfd40223e68462d97ce88eb75e13b906de2dd5"
+  },
+  {
+    "path": "docs/specs/desktop-hub-v1.md",
+    "bytes": 2227,
+    "sha256": "4c1d25d721579ab5a68a26a734842fbc075248bbf5e14e994183cbca94f57dc8"
+  },
+  {
+    "path": "package-lock.json",
+    "bytes": 6127,
+    "sha256": "3a6fab6ff2521b6e0a75062f9c2aa1043bf92f4a714c3d02a9aaf5518aa864af"
+  },
+  {
+    "path": "package.json",
+    "bytes": 493,
+    "sha256": "67c9b7f3673196f1ced4e34b726e24aae38bdfa4ac45d6c2c2b1e72d24224887"
+  },
+  {
+    "path": "packages/agent-connector/package.json",
+    "bytes": 179,
+    "sha256": "65ab2827489e38a7d95d08ecf1d21df6b28f4d1bd9ffe1143beb52f0f5c9c67e"
+  },
+  {
+    "path": "packages/agent-connector/src/index.mjs",
+    "bytes": 1964,
+    "sha256": "61934b4630a4ab9f5d0f6b1c1bad8ce2adee1962eebf878fefc1d8ad55bac64b"
+  },
+  {
+    "path": "packages/agent-connector/test/index.test.mjs",
+    "bytes": 687,
+    "sha256": "67777fc2fed55897da46740448ae7026dff0a3135be1989855af6acfc73f856d"
+  },
+  {
+    "path": "packages/apple-core/Package.swift",
+    "bytes": 702,
+    "sha256": "36c87927108e1a149215117475203dfa72cade83cd1ec95018dcd5d7926feb50"
+  },
+  {
+    "path": "packages/apple-core/Sources/AgentHubCore/AgentHubClient.swift",
+    "bytes": 6099,
+    "sha256": "0ef3fe16e581a4a0fe4c2c8121f6b59ada930d4cb1700bae10b6146bcc284295"
+  },
+  {
+    "path": "packages/apple-core/Sources/AgentHubCore/DeviceIdentity.swift",
+    "bytes": 2421,
+    "sha256": "fafd3c31e37a16b23c3e83e6e291f386c073e48628f645a08a07d8fc679ceec8"
+  },
+  {
+    "path": "packages/apple-core/Sources/AgentHubCore/Models.swift",
+    "bytes": 1298,
+    "sha256": "0ee8870a75ea8b516026c62824a15574ee54d4f9d5e6ed1be570888f4b47317e"
+  },
+  {
+    "path": "packages/apple-core/Sources/AgentHubCore/PreparedAction.swift",
+    "bytes": 2129,
+    "sha256": "63b5788e15ecf8045fe86a085f64614792435113ad9e1bbda9b96351e623ac0b"
+  },
+  {
+    "path": "packages/apple-core/Sources/AgentHubUI/RunStatusBadge.swift",
+    "bytes": 521,
+    "sha256": "47f220c89e2de2a130d0ce0d791271af6c1cc5e41898aced0872d97afabfddbd"
+  },
+  {
+    "path": "packages/apple-core/Sources/AgentHubWidgetModel/WidgetSnapshot.swift",
+    "bytes": 4396,
+    "sha256": "a59584f9243d8e7c0b9cf401c27f001ba1711f4800a91a1428746999a8ebc2e8"
+  },
+  {
+    "path": "packages/apple-core/Tests/AgentHubCoreTests/ActionProtocolTests.swift",
+    "bytes": 5081,
+    "sha256": "b7657cdcba1e0fd8125d2c3172ea933e232f9edc2594206c3d1e9268f596fd99"
+  },
+  {
+    "path": "packages/apple-core/Tests/AgentHubCoreTests/AgentHubCoreTests.swift",
+    "bytes": 157,
+    "sha256": "76255b3edf32177c5e6e367bdc6f1d8463c0826dc8079d9230bb8fdf01aced0d"
+  },
+  {
+    "path": "packages/apple-core/Tests/AgentHubCoreTests/PreparedActionTests.swift",
+    "bytes": 4807,
+    "sha256": "d43556fbd8801438fc1adc616d40d68e9c1f2c98a89b592a82acb5025fa503cd"
+  },
+  {
+    "path": "packages/apple-core/Tests/AgentHubWidgetModelTests/WidgetSnapshotTests.swift",
+    "bytes": 3668,
+    "sha256": "8cf701a1e3d417324abb0f1b02ae4cef08370d1a373bf6f720ce7c1947158afc"
+  },
+  {
+    "path": "script/build_and_run.sh",
+    "bytes": 1592,
+    "sha256": "d5e350af70bf3f95d2dd2fa67ad6243ea107db53b04454446b467b0ae8ee7031"
+  },
+  {
+    "path": "scripts/chrome-assets.py",
+    "bytes": 1467,
+    "sha256": "e77b2d91c54caa56f9c90f7de785ba8bbdd9b19ddff2803a81df332763d49a02"
+  },
+  {
+    "path": "scripts/hubctl.mjs",
+    "bytes": 1157,
+    "sha256": "cb6c5208584a6d5c2c08007eb2ea1cf18b5a0f191c59b0fa513bd24d07fb76dd"
+  },
+  {
+    "path": "scripts/package-chrome.mjs",
+    "bytes": 1709,
+    "sha256": "64d0ac96be088fee1dca11366f43932884c48570e5cc4da9ff84d4015a0f5a17"
+  },
+  {
+    "path": "services/control-plane/Dockerfile",
+    "bytes": 357,
+    "sha256": "bebede3ea1a69f95e0ef3e091e6b9131e95324021f3f61b0543266006047dbca"
+  },
+  {
+    "path": "services/control-plane/package.json",
+    "bytes": 332,
+    "sha256": "66a571c493f0dc4d80ab2d416079f01c9ce3323848f132568a76fb6cd211e0f2"
+  },
+  {
+    "path": "services/control-plane/src/actions.mjs",
+    "bytes": 5811,
+    "sha256": "f2fcd5f967be3589ad2d52c276ceb4a7dfcd99cbeb3a17acf0a697535f7ba0c0"
+  },
+  {
+    "path": "services/control-plane/src/domain.mjs",
+    "bytes": 1889,
+    "sha256": "48a3eddbbcc2c760aee65d81533f0b11c20f6a96f95a3791529a58bf1beeb856"
+  },
+  {
+    "path": "services/control-plane/src/migrate.mjs",
+    "bytes": 368,
+    "sha256": "1de50653b4335784318cead57e2b14b965c29c9b3eb02543dc291849cd1a3d15"
+  },
+  {
+    "path": "services/control-plane/src/migrations.mjs",
+    "bytes": 2109,
+    "sha256": "631a690f60d7abbccfed141eac18e0206d21e1d984d1b0931daab9f93c3f427b"
+  },
+  {
+    "path": "services/control-plane/src/migrations/002-action-receipts.sql",
+    "bytes": 531,
+    "sha256": "402f233f3f8dd9dd1aa10e9dc64bcd03e859cf869dfb4e4948143cda5bd4fe34"
+  },
+  {
+    "path": "services/control-plane/src/migrations/003-desktop-client-platforms.sql",
+    "bytes": 182,
+    "sha256": "f05373b27255a3ac49cbd3edae3d566f651776a80c08f219bab49f47d0f9f5d4"
+  },
+  {
+    "path": "services/control-plane/src/notifier.mjs",
+    "bytes": 3229,
+    "sha256": "5729d07c4455b1e9598d29fb7d53d07aa550eb1f8364fdec75cd1e17c8f7646d"
+  },
+  {
+    "path": "services/control-plane/src/schema.sql",
+    "bytes": 3176,
+    "sha256": "7bddbc4096cf7e56845c97194c361b8610f841cd3d912d4d962c76f05f303925"
+  },
+  {
+    "path": "services/control-plane/src/server.mjs",
+    "bytes": 17383,
+    "sha256": "5fa2d65ee75df9532c0f1232cd1e59e77ab187b4704a3b7aa1e38beae2604349"
+  },
+  {
+    "path": "services/control-plane/test/domain.test.mjs",
+    "bytes": 712,
+    "sha256": "ce728a815837e73e0dc8e7e2c10644dee9d286775d140a03fcb0779788eee215"
+  },
+  {
+    "path": "tests/e2e/chrome.mjs",
+    "bytes": 18570,
+    "sha256": "2606d91b5a5502163f9bc9662cb12c036c18107982e7c4e4520757ec132286fe"
+  },
+  {
+    "path": "tests/fixtures/action-qualification.yml.disabled",
+    "bytes": 1921,
+    "sha256": "23091721715720e3081c85232304cbb75f8bafdf9628559dba8af143ced58237"
+  },
+  {
+    "path": "tests/fixtures/browser-tools/package.json",
+    "bytes": 151,
+    "sha256": "ca5db3dc465016ea946f48e8fa97041f6851c837df61fb7ee69573fe64db0f2c"
+  },
+  {
+    "path": "tests/fixtures/chrome-qualification.yml.disabled",
+    "bytes": 1052,
+    "sha256": "c99819b84265ce0f38905a807f6cf65e1809a193ce233b1199faa7eeda75c963"
+  },
+  {
+    "path": "tests/fixtures/macos-qualification-initial.yml.disabled",
+    "bytes": 1969,
+    "sha256": "487b0dbfb35e750618500556d722f89b149541f915bad0421833f1f98147b0db"
+  },
+  {
+    "path": "tests/integration/action-http.test.mjs",
+    "bytes": 17072,
+    "sha256": "702e50392b0ebfef91819886d173665c808aa0fc1330f3d213e8f6c8771c43a8"
+  },
+  {
+    "path": "tests/integration/macos-http.test.mjs",
+    "bytes": 3890,
+    "sha256": "110060f06f3335a0e4a016cf3348179e552c8738d216f6151efe4376c4617845"
+  },
+  {
+    "path": "tests/scripts/qualify.py",
+    "bytes": 21526,
+    "sha256": "619d16889162bb4d1335e3c46ab8bcd8b39a467a08172a8e0d661d5e7a17a604"
+  }
+]

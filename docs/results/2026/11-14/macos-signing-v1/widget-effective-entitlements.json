@@ -1,0 +1,6 @@
+{
+  "com.apple.security.app-sandbox": true,
+  "com.apple.security.application-groups": [
+    "group.dev.watchagents"
+  ]
+}

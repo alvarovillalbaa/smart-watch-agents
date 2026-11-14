@@ -1,0 +1,17 @@
+Executable=/private/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle/WatchAgentsMac.app/Contents/MacOS/WatchAgentsMac
+Identifier=dev.watchagents.mac
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20400 size=428 flags=0x2(adhoc) hashes=3+7 location=embedded
+Hash type=sha256 size=32
+CandidateCDHash sha256=a23c3126fcda16f0f701cb34bf358dd6a1dd3d6d
+CandidateCDHashFull sha256=a23c3126fcda16f0f701cb34bf358dd6a1dd3d6dd5dbbc6f81b125a6e92c7050
+Hash choices=sha256
+CMSDigest=a23c3126fcda16f0f701cb34bf358dd6a1dd3d6dd5dbbc6f81b125a6e92c7050
+CMSDigestType=2
+CDHash=a23c3126fcda16f0f701cb34bf358dd6a1dd3d6d
+Signature=adhoc
+Info.plist entries=23
+TeamIdentifier=not set
+Sealed Resources version=2 rules=13 files=3
+Internal requirements count=0 size=12
+warning: Specifying ':' in the path is deprecated and will not work in a future release

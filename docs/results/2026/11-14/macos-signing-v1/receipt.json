@@ -1,0 +1,295 @@
+{
+  "mode": "mac-sign",
+  "commands": [
+    {
+      "name": "keychain-before",
+      "argv": [
+        "security",
+        "find-generic-password",
+        "-s",
+        "dev.watch-agents.identity"
+      ],
+      "exit": 44,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 92,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+    },
+    {
+      "name": "mac-keychain-before",
+      "argv": [
+        "security",
+        "find-generic-password",
+        "-s",
+        "dev.watch-agents.mac-device"
+      ],
+      "exit": 44,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 92,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+    },
+    {
+      "name": "compiled-unpack",
+      "argv": [
+        "ditto",
+        "-x",
+        "-k",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/source/docs/results/2026/11-14/macos-v1/native/WatchAgentsMac-0.2.0-adhoc-debug.zip",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 20,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "sign-widget",
+      "argv": [
+        "codesign",
+        "--force",
+        "--sign",
+        "-",
+        "--entitlements",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/widget-effective.entitlements",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle/WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 30,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 180,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "43e6b7b558ba0d2b164e6b980ecffd68cd7c3076138fc2f2d250bebbad0b0e56"
+    },
+    {
+      "name": "verify-widget",
+      "argv": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle/WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 20,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 1183,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "74ccb1b2d0515bb153d82422f99ec8e6ed174ec6cce56c33002fe885dc99cd37"
+    },
+    {
+      "name": "inspect-widget",
+      "argv": [
+        "codesign",
+        "-dvvv",
+        "--entitlements",
+        ":-",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle/WatchAgentsMac.app/Contents/PlugIns/WatchAgentsStatus.appex"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 15,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 333,
+      "stderrBytes": 927,
+      "stdoutSha256": "8807cb0efcadf2c35f29c7013b261c858be12e20c359ca7662653729dec915bb",
+      "stderrSha256": "4e65ec742a2f5dadf6781dc476ffcc9b4bca206eef22728a15f8d8be08392161"
+    },
+    {
+      "name": "sign-app",
+      "argv": [
+        "codesign",
+        "--force",
+        "--sign",
+        "-",
+        "--entitlements",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/app-effective.entitlements",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle/WatchAgentsMac.app"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 30,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 139,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "dd1cce4613b27be29c7a981913a71edab4b5681a211a8b3156dda50b01239a3b"
+    },
+    {
+      "name": "verify-app",
+      "argv": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle/WatchAgentsMac.app"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 20,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 1270,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e87f97803e7ceaf10034de0503826c19b96a4894dd3c38581648b48f012201e1"
+    },
+    {
+      "name": "inspect-app",
+      "argv": [
+        "codesign",
+        "-dvvv",
+        "--entitlements",
+        ":-",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle/WatchAgentsMac.app"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 15,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 384,
+      "stderrBytes": 880,
+      "stdoutSha256": "2a3685986606a3ec35bd16941bef20e832c3d4c10398433ca28bd88ad3bfa9e1",
+      "stderrSha256": "c636cea3003b762cf339f96270739acb083e8e4b00e872ba55b28cc7a0cbc2c1"
+    },
+    {
+      "name": "mac-storage-probe",
+      "argv": [
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle/WatchAgentsMac.app/Contents/MacOS/WatchAgentsMac",
+        "--qualify-storage"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 45,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 260,
+      "stderrBytes": 0,
+      "stdoutSha256": "da6176a87cc7cd99c572cf221e3ef5418944deb8a0450b32dc86994e8de1fce8",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "mac-package",
+      "argv": [
+        "ditto",
+        "-c",
+        "-k",
+        "--sequesterRsrc",
+        "--keepParent",
+        "/var/folders/h5/t85nd63d71x27_8gl5gw3l_w0000gn/T/watch-agents-t2-avb7__0n/compiled-bundle/WatchAgentsMac.app",
+        "/Users/runner/work/_temp/watch-agents-mac/WatchAgentsMac-0.2.0-adhoc-debug.zip"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 60,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "keychain-cleanup",
+      "argv": [
+        "security",
+        "delete-generic-password",
+        "-s",
+        "dev.watch-agents.identity"
+      ],
+      "exit": 44,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 92,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+    },
+    {
+      "name": "keychain-after",
+      "argv": [
+        "security",
+        "find-generic-password",
+        "-s",
+        "dev.watch-agents.identity"
+      ],
+      "exit": 44,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 92,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+    },
+    {
+      "name": "mac-keychain-cleanup",
+      "argv": [
+        "security",
+        "delete-generic-password",
+        "-s",
+        "dev.watch-agents.mac-device"
+      ],
+      "exit": 44,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 92,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+    },
+    {
+      "name": "mac-keychain-after",
+      "argv": [
+        "security",
+        "find-generic-password",
+        "-s",
+        "dev.watch-agents.mac-device"
+      ],
+      "exit": 44,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 92,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+    }
+  ],
+  "passed": true,
+  "cleanup": true,
+  "appGroupSnapshot": true,
+  "macBundlePackaged": true,
+  "ownedKeychainItemAbsent": true,
+  "ownedMacKeychainItemAbsent": true,
+  "sourceUnchanged": true,
+  "scratchBytes": 5792825
+}
