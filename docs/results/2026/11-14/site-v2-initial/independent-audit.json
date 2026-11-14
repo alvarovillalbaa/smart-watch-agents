@@ -1,0 +1,12 @@
+{
+  "source": "f0a04920365aec8f8c47cbce76a787a4be7a99cd",
+  "sourceFiles": 409,
+  "vectorsMatchGit": true,
+  "commandStreamsVerified": 8,
+  "processGroupsAbsent": true,
+  "httpBodies": 9,
+  "httpBytes": 59896,
+  "ownedScratchRemoved": true,
+  "scratchBytes": 1025782133,
+  "originalPassedUnchanged": false
+}

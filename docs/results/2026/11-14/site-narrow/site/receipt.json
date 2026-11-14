@@ -1,0 +1,415 @@
+{
+  "schema": "watch-agents.public-browser-evidence",
+  "version": 1,
+  "base": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app",
+  "cases": [
+    {
+      "id": "S02-390",
+      "passed": true,
+      "closed": true,
+      "landingSize": {
+        "width": 390,
+        "scroll": 390
+      },
+      "explicitTouchEmulationAfterNavigation": true,
+      "keyboardFocus": {
+        "id": "filter",
+        "outline": "solid"
+      },
+      "previewSize": {
+        "width": 390,
+        "scroll": 390,
+        "touch": 1
+      },
+      "touchEvents": [
+        {
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "Load authored preview"
+        }
+      ],
+      "previewActionsDisabled": true,
+      "reloadDoesNotPersistSampleRuns": true,
+      "noHubRequest": true,
+      "pageErrors": []
+    },
+    {
+      "id": "S03-320",
+      "passed": true,
+      "closed": true,
+      "landingSize": {
+        "width": 320,
+        "scroll": 320
+      },
+      "explicitTouchEmulationAfterNavigation": true,
+      "keyboardFocus": {
+        "id": "filter",
+        "outline": "solid"
+      },
+      "previewSize": {
+        "width": 320,
+        "scroll": 320,
+        "touch": 1
+      },
+      "touchEvents": [
+        {
+          "pointerType": "touch",
+          "trusted": true,
+          "target": "Load authored preview"
+        }
+      ],
+      "previewActionsDisabled": true,
+      "reloadDoesNotPersistSampleRuns": true,
+      "noHubRequest": true,
+      "pageErrors": []
+    }
+  ],
+  "http": [
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/build-manifest.json",
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "age": "0",
+        "cache-control": "no-store",
+        "content-disposition": "inline; filename=\"build-manifest.json\"",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 14 Nov 2026 14:48:42 GMT",
+        "etag": "W/\"d8e8b8fa2a8fba9a13d445905a054bc7\"",
+        "last-modified": "Sat, 14 Nov 2026 14:48:42 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "sfo1::78f8q-1794667722897-d93aa6d595e5"
+      },
+      "file": "00.body",
+      "bytes": 3466,
+      "sha256": "ac4097cddf902069c5a192ee1a21c2964a37dc0851ef16f17484a38ba47d027b"
+    },
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/",
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "age": "311",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-disposition": "inline",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "etag": "W/\"0648a9c304b26ccae13afb9cd2fe2aa0\"",
+        "last-modified": "Sat, 14 Nov 2026 14:43:31 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "HIT",
+        "x-vercel-id": "sfo1::zkq26-1794667723030-fb7b972950e3"
+      },
+      "file": "01.body",
+      "bytes": 5357,
+      "sha256": "0dbd9ace0acff978d7e3f83d32e9cc1107e61afe35c1def0c5dfd482394a7398"
+    },
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/site.css",
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "age": "310",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-disposition": "inline; filename=\"site.css\"",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "text/css; charset=utf-8",
+        "date": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "etag": "W/\"5ecc8e653c9a01d9772309eda0261f46\"",
+        "last-modified": "Sat, 14 Nov 2026 14:43:32 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "HIT",
+        "x-vercel-id": "sfo1::zkq26-1794667723060-ed8035a334fe"
+      },
+      "file": "02.body",
+      "bytes": 6657,
+      "sha256": "102745faf694f9731eaad15aed6b68f6d3dbe56980a50cc8eb1ad0fa16bcd2ad"
+    },
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/mark.svg",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "age": "0",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-disposition": "inline; filename=\"mark.svg\"",
+        "content-length": "228",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "image/svg+xml",
+        "date": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "etag": "\"3d1369660b4ff9508a8ac82ce926b3e1\"",
+        "last-modified": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "sfo1::zkq26-1794667723089-8e3b9119cf3f"
+      },
+      "file": "03.body",
+      "bytes": 228,
+      "sha256": "097e81be8a7b7bafc1d7c64aaeae7958e06c6ffc89eb16a936c5248f654d3eb2"
+    },
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/preview/newtab.html",
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "age": "0",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-disposition": "inline; filename=\"newtab.html\"",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "etag": "W/\"222e8efdeeec53dd4acbd4316234c026\"",
+        "last-modified": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "sfo1::2gjwd-1794667723204-9496bef7a11f"
+      },
+      "file": "04.body",
+      "bytes": 4844,
+      "sha256": "2ce29a1e26c2a88ecc11860618f27c03af8464d24e846f0949c150aa638e79e9"
+    },
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/preview/newtab.mjs",
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "age": "0",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-disposition": "inline; filename=\"newtab.mjs\"",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "application/javascript; charset=utf-8",
+        "date": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "etag": "W/\"62bf480d6314cba37f19cfc9e9a28e8f\"",
+        "last-modified": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "sfo1::qmxz8-1794667723327-0c0e45233e46"
+      },
+      "file": "05.body",
+      "bytes": 13733,
+      "sha256": "e5204ad3c8e749de34547907b7827c12a73b681ed9e42ea455bc6a04bbe05248"
+    },
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/preview/style.css",
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "age": "0",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-disposition": "inline; filename=\"style.css\"",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "text/css; charset=utf-8",
+        "date": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "etag": "W/\"481e6fa9596c4e9e953887d657627d6a\"",
+        "last-modified": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "sfo1::qmxz8-1794667723448-c8756ea6d825"
+      },
+      "file": "06.body",
+      "bytes": 9507,
+      "sha256": "46e91611898b07460a71604da82e20d15057ce7f81b0df75f248f20a074ca79d"
+    },
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/preview/client.mjs",
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "age": "0",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-disposition": "inline; filename=\"client.mjs\"",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "application/javascript; charset=utf-8",
+        "date": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "etag": "W/\"5590699e95813e60d03dcdcbd245dd8e\"",
+        "last-modified": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "sfo1::qmxz8-1794667723560-fee018d2a411"
+      },
+      "file": "07.body",
+      "bytes": 14532,
+      "sha256": "2563da6ad82368f5f5402c97abe04f86608b151f1722d50966f46d16033e2650"
+    },
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/preview/demo.mjs",
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "age": "0",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-disposition": "inline; filename=\"demo.mjs\"",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "application/javascript; charset=utf-8",
+        "date": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "etag": "W/\"462b3387d0c8b441d8ce2e43eb0715ca\"",
+        "last-modified": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "sfo1::g9p8n-1794667723679-e70fd63922e5"
+      },
+      "file": "08.body",
+      "bytes": 1572,
+      "sha256": "744cab631c65e290023a990e49b187bd83a4a426e803041fd9e169a578657561"
+    },
+    {
+      "url": "https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/favicon.ico",
+      "status": 200,
+      "headers": {
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "age": "0",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-disposition": "inline; filename=\"mark.svg\"",
+        "content-length": "228",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "image/svg+xml",
+        "date": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "etag": "\"3d1369660b4ff9508a8ac82ce926b3e1\"",
+        "last-modified": "Sat, 14 Nov 2026 14:48:43 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "HIT",
+        "x-vercel-id": "sfo1::g9p8n-1794667723809-0c659767da64"
+      },
+      "file": "09.body",
+      "bytes": 228,
+      "sha256": "097e81be8a7b7bafc1d7c64aaeae7958e06c6ffc89eb16a936c5248f654d3eb2"
+    }
+  ],
+  "browserClosed": true,
+  "contextsClosed": true,
+  "passed": true,
+  "deploymentSource": "a56fda23b0f497f7a6a7224f86bec0a835c7c9c1",
+  "qualifiedInputBridge": [
+    {
+      "path": "site/index.html",
+      "encoding": "raw",
+      "bytes": 5357,
+      "sha256": "0dbd9ace0acff978d7e3f83d32e9cc1107e61afe35c1def0c5dfd482394a7398"
+    },
+    {
+      "path": "site/site.css",
+      "encoding": "raw",
+      "bytes": 6657,
+      "sha256": "102745faf694f9731eaad15aed6b68f6d3dbe56980a50cc8eb1ad0fa16bcd2ad"
+    },
+    {
+      "path": "site/mark.svg",
+      "encoding": "raw",
+      "bytes": 228,
+      "sha256": "097e81be8a7b7bafc1d7c64aaeae7958e06c6ffc89eb16a936c5248f654d3eb2"
+    },
+    {
+      "path": "apps/chrome/newtab.html",
+      "encoding": "raw",
+      "bytes": 4844,
+      "sha256": "2ce29a1e26c2a88ecc11860618f27c03af8464d24e846f0949c150aa638e79e9"
+    },
+    {
+      "path": "apps/chrome/newtab.mjs",
+      "encoding": "raw",
+      "bytes": 13733,
+      "sha256": "e5204ad3c8e749de34547907b7827c12a73b681ed9e42ea455bc6a04bbe05248"
+    },
+    {
+      "path": "apps/chrome/style.css",
+      "encoding": "raw",
+      "bytes": 9507,
+      "sha256": "46e91611898b07460a71604da82e20d15057ce7f81b0df75f248f20a074ca79d"
+    },
+    {
+      "path": "apps/chrome/client.mjs",
+      "encoding": "raw",
+      "bytes": 14532,
+      "sha256": "2563da6ad82368f5f5402c97abe04f86608b151f1722d50966f46d16033e2650"
+    },
+    {
+      "path": "apps/chrome/demo.mjs",
+      "encoding": "raw",
+      "bytes": 1572,
+      "sha256": "744cab631c65e290023a990e49b187bd83a4a426e803041fd9e169a578657561"
+    },
+    {
+      "path": "scripts/build-site.mjs",
+      "encoding": "raw",
+      "bytes": 1742,
+      "sha256": "b2e23fbafad31aa8ccaa3e44a896f5e9748c33bdfe059b5d428b5b535a04322f"
+    },
+    {
+      "path": "vercel.json",
+      "encoding": "canonical-json-v1",
+      "bytes": 702,
+      "sha256": "e3157332713df92ca293fadaeb88584e844e7a2b1ce8ab730b2f14576f64b3fb"
+    }
+  ]
+}

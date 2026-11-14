@@ -8,6 +8,8 @@ also includes watchOS/Wear OS source and an event connector for your runtime.
 [Explore the authored preview](https://watch-agents-alvaro.vercel.app) ·
 [Set up your hub](docs/INSTALL.md) · [Security and scope](docs/SECURITY.md)
 
+[Public desktop/390/320 preview checks passed](docs/results/2026/11-14/site-narrow/result.md).
+
 ## What ships
 
 - `services/control-plane`: PostgreSQL-backed API, pairing, audit log, metrics,
