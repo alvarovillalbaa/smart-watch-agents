@@ -17,7 +17,7 @@ private final class FixtureProtocol: URLProtocol, @unchecked Sendable {
     Self.captured.append(request)
     let response = HTTPURLResponse(url: request.url!, statusCode: 202, httpVersion: nil, headerFields: ["Content-Type": "application/json"])!
     client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-    client?.urlProtocol(self, didLoad: Data("{\"commandId\":\"authored-response\"}".utf8)); client?.urlProtocolDidFinishLoading(self)
+    client?.urlProtocol(self, didLoad: Data("{\"commandId\":\"00000000-0000-4000-8000-000000000001\"}".utf8)); client?.urlProtocolDidFinishLoading(self)
   }
   override func stopLoading() {}
 }

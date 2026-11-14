@@ -32,6 +32,10 @@ public final class DeviceIdentity: DeviceSigning, @unchecked Sendable {
   public func signature(for message: String) throws -> String {
     try key.signature(for: Data(message.utf8)).rawRepresentation.base64EncodedString()
   }
+  public static func forgetLocalIdentity() throws {
+    let status = SecItemDelete([kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: keychainService] as CFDictionary)
+    guard status == errSecSuccess || status == errSecItemNotFound else { throw NSError(domain: "AgentHub", code: Int(status)) }
+  }
 
   private static func readKey() -> Data? {
     let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: keychainService, kSecReturnData as String: true]
