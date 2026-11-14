@@ -18,7 +18,7 @@ jobs:
         env:
           WATCH_AGENTS_MODE: site
           WATCH_AGENTS_OUTPUT: ${{ runner.temp }}/watch-agents-site
-          WATCH_AGENTS_SITE_URL: https://watch-agents-alvaro-2fcs3tr39-my-team-4f230354.vercel.app/
+          WATCH_AGENTS_SITE_URL: https://watch-agents-alvaro-7klho8dqw-my-team-4f230354.vercel.app/
         run: python3 tests/scripts/qualify.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

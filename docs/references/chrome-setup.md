@@ -4,8 +4,9 @@ Last updated: 2026-11-14
 
 The [packaged browser checks passed](../results/2026/11-14/chrome-narrow/result.md)
 across two focused invocations, retaining the initial capability failures.
-Read their actual scope; these instructions are not extra runtime proof. macOS widget client and
-full0.2 delivery remain unfinished. No Chrome Web Store account is required
+Read their actual scope; these instructions are not extra runtime proof. The
+macOS companion/widget has separate native receipts linked from the README.
+No Chrome Web Store account is required
 for the developer ZIP; no store publication/signing is claimed.
 
 Build a NEW directory with Node24+ and Python3 standard library, without an
@@ -21,8 +22,8 @@ status icon, and writes a ZIP/manifest beside the new unpacked folder. The
 source manifest references generated icons, so load the built unpacked folder,
 not the unfinished source directory. In chrome://extensions enable Developer
 mode, choose Load unpacked and select dist/watch-agents-chrome-0.2.0. Open a
-new tab. Hosted webpage preview, when published, is separate authored data and
-cannot pair/control a real hub.
+new tab. The [public webpage preview](https://watch-agents-alvaro.vercel.app)
+uses separate authored data and cannot pair/control a real hub.
 
 Apply explicit migrations through3 to your own selected hub and configure its
 TLS origin (HTTP is permitted only for localhost/127.0.0.1 development).

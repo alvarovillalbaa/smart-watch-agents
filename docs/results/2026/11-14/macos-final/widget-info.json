@@ -1,0 +1,28 @@
+{
+  "BuildMachineOSBuild": "25G332",
+  "CFBundleDevelopmentRegion": "en",
+  "CFBundleDisplayName": "Watch Agents Status",
+  "CFBundleExecutable": "WatchAgentsStatus",
+  "CFBundleIdentifier": "dev.watchagents.mac.status",
+  "CFBundleInfoDictionaryVersion": "6.0",
+  "CFBundleName": "WatchAgentsStatus",
+  "CFBundlePackageType": "XPC!",
+  "CFBundleShortVersionString": "0.2.0",
+  "CFBundleSupportedPlatforms": [
+    "MacOSX"
+  ],
+  "CFBundleVersion": "2",
+  "DTCompiler": "com.apple.compilers.llvm.clang.1_0",
+  "DTPlatformBuild": "25F70",
+  "DTPlatformName": "macosx",
+  "DTPlatformVersion": "26.5",
+  "DTSDKBuild": "25F70",
+  "DTSDKName": "macosx26.5",
+  "DTXcode": "2660",
+  "DTXcodeBuild": "17F113",
+  "LSMinimumSystemVersion": "14.0",
+  "NSExtension": {
+    "NSExtensionPointIdentifier": "com.apple.widgetkit-extension"
+  },
+  "WatchAgentsGroupIdentifier": "group.dev.watchagents"
+}
