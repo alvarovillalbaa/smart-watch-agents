@@ -1,0 +1,7 @@
+ Container watchagents-t2-bd81b4db3bf047-postgres-1  Running
+ Container watchagents-t2-bd81b4db3bf047-api-1  Creating
+ Container watchagents-t2-bd81b4db3bf047-api-1  Created
+ Container watchagents-t2-bd81b4db3bf047-postgres-1  Waiting
+ Container watchagents-t2-bd81b4db3bf047-postgres-1  Healthy
+ Container watchagents-t2-bd81b4db3bf047-api-1  Starting
+ Container watchagents-t2-bd81b4db3bf047-api-1  Started

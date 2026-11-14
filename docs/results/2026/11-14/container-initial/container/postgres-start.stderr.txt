@@ -1,0 +1,105 @@
+ postgres Pulling 
+ 881fc932939e Already exists 
+ ea98517a315c Pulling fs layer 
+ 41713cbe7496 Pulling fs layer 
+ 5788ee6f91dc Pulling fs layer 
+ f997efa53d88 Pulling fs layer 
+ a2d17f5b24d5 Pulling fs layer 
+ f85a33377d83 Pulling fs layer 
+ 86cc7190d1c0 Pulling fs layer 
+ 5959c7ea857a Pulling fs layer 
+ 6bceb0db2fd1 Pulling fs layer 
+ b7106f8586ee Pulling fs layer 
+ f997efa53d88 Waiting 
+ a2d17f5b24d5 Waiting 
+ f85a33377d83 Waiting 
+ 86cc7190d1c0 Waiting 
+ 5959c7ea857a Waiting 
+ 6bceb0db2fd1 Waiting 
+ b7106f8586ee Waiting 
+ 5788ee6f91dc Downloading [==================================================>]     175B/175B
+ 5788ee6f91dc Verifying Checksum 
+ 5788ee6f91dc Download complete 
+ ea98517a315c Downloading [==================================================>]     967B/967B
+ ea98517a315c Verifying Checksum 
+ ea98517a315c Download complete 
+ ea98517a315c Extracting [==================================================>]     967B/967B
+ 41713cbe7496 Downloading [>                                                  ]  16.38kB/900kB
+ ea98517a315c Extracting [==================================================>]     967B/967B
+ ea98517a315c Pull complete 
+ 41713cbe7496 Download complete 
+ 41713cbe7496 Extracting [=>                                                 ]  32.77kB/900kB
+ 41713cbe7496 Extracting [==================================================>]    900kB/900kB
+ 41713cbe7496 Extracting [==================================================>]    900kB/900kB
+ 41713cbe7496 Pull complete 
+ 5788ee6f91dc Extracting [==================================================>]     175B/175B
+ 5788ee6f91dc Extracting [==================================================>]     175B/175B
+ 5788ee6f91dc Pull complete 
+ f997efa53d88 Downloading [==================================================>]     116B/116B
+ f997efa53d88 Verifying Checksum 
+ f997efa53d88 Extracting [==================================================>]     116B/116B
+ f997efa53d88 Extracting [==================================================>]     116B/116B
+ f997efa53d88 Pull complete 
+ f85a33377d83 Downloading [==================================================>]  9.673kB/9.673kB
+ f85a33377d83 Verifying Checksum 
+ f85a33377d83 Download complete 
+ a2d17f5b24d5 Downloading [>                                                  ]  538.1kB/111.5MB
+ 86cc7190d1c0 Downloading [==================================================>]     128B/128B
+ 86cc7190d1c0 Verifying Checksum 
+ 86cc7190d1c0 Download complete 
+ 5959c7ea857a Downloading [==================================================>]     167B/167B
+ 5959c7ea857a Download complete 
+ 6bceb0db2fd1 Downloading [==================================================>]  6.108kB/6.108kB
+ 6bceb0db2fd1 Verifying Checksum 
+ 6bceb0db2fd1 Download complete 
+ b7106f8586ee Downloading [==================================================>]     185B/185B
+ b7106f8586ee Download complete 
+ a2d17f5b24d5 Downloading [==>                                                ]  6.474MB/111.5MB
+ a2d17f5b24d5 Downloading [=======>                                           ]  17.27MB/111.5MB
+ a2d17f5b24d5 Downloading [=============>                                     ]  29.67MB/111.5MB
+ a2d17f5b24d5 Downloading [====================>                              ]   46.4MB/111.5MB
+ a2d17f5b24d5 Downloading [=========================>                         ]   57.6MB/111.5MB
+ a2d17f5b24d5 Downloading [==============================>                    ]  67.21MB/111.5MB
+ a2d17f5b24d5 Downloading [==================================>                ]  77.86MB/111.5MB
+ a2d17f5b24d5 Downloading [=======================================>           ]  87.99MB/111.5MB
+ a2d17f5b24d5 Downloading [============================================>      ]  98.12MB/111.5MB
+ a2d17f5b24d5 Downloading [================================================>  ]  108.2MB/111.5MB
+ a2d17f5b24d5 Verifying Checksum 
+ a2d17f5b24d5 Download complete 
+ a2d17f5b24d5 Extracting [>                                                  ]  557.1kB/111.5MB
+ a2d17f5b24d5 Extracting [====>                                              ]   9.47MB/111.5MB
+ a2d17f5b24d5 Extracting [========>                                          ]  20.05MB/111.5MB
+ a2d17f5b24d5 Extracting [=============>                                     ]  30.64MB/111.5MB
+ a2d17f5b24d5 Extracting [==================>                                ]  41.22MB/111.5MB
+ a2d17f5b24d5 Extracting [=======================>                           ]  51.81MB/111.5MB
+ a2d17f5b24d5 Extracting [==========================>                        ]   59.6MB/111.5MB
+ a2d17f5b24d5 Extracting [===============================>                   ]  69.63MB/111.5MB
+ a2d17f5b24d5 Extracting [===================================>               ]  79.66MB/111.5MB
+ a2d17f5b24d5 Extracting [====================================>              ]  81.89MB/111.5MB
+ a2d17f5b24d5 Extracting [=======================================>           ]  87.46MB/111.5MB
+ a2d17f5b24d5 Extracting [==========================================>        ]  95.81MB/111.5MB
+ a2d17f5b24d5 Extracting [==============================================>    ]  103.6MB/111.5MB
+ a2d17f5b24d5 Extracting [==================================================>]  111.5MB/111.5MB
+ a2d17f5b24d5 Pull complete 
+ f85a33377d83 Extracting [==================================================>]  9.673kB/9.673kB
+ f85a33377d83 Extracting [==================================================>]  9.673kB/9.673kB
+ f85a33377d83 Pull complete 
+ 86cc7190d1c0 Extracting [==================================================>]     128B/128B
+ 86cc7190d1c0 Extracting [==================================================>]     128B/128B
+ 86cc7190d1c0 Pull complete 
+ 5959c7ea857a Extracting [==================================================>]     167B/167B
+ 5959c7ea857a Extracting [==================================================>]     167B/167B
+ 5959c7ea857a Pull complete 
+ 6bceb0db2fd1 Extracting [==================================================>]  6.108kB/6.108kB
+ 6bceb0db2fd1 Extracting [==================================================>]  6.108kB/6.108kB
+ 6bceb0db2fd1 Pull complete 
+ b7106f8586ee Extracting [==================================================>]     185B/185B
+ b7106f8586ee Extracting [==================================================>]     185B/185B
+ b7106f8586ee Pull complete 
+ postgres Pulled 
+ Container watchagents-t2-bd81b4db3bf047-postgres-1  Creating
+ Container watchagents-t2-bd81b4db3bf047-postgres-1  Created
+ Container watchagents-t2-bd81b4db3bf047-postgres-1  Starting
+ Container watchagents-t2-bd81b4db3bf047-postgres-1  Started
+ Container watchagents-t2-bd81b4db3bf047-postgres-1  Waiting
+ Container watchagents-t2-bd81b4db3bf047-postgres-1  Healthy

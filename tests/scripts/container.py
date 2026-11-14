@@ -61,6 +61,20 @@ def request(path, token=None, body=None):
     finally:
         connection.close()
 
+def wait_for_host():
+    observations = []
+    for _ in range(30):
+        try:
+            status, value = request('/health'); observations.append({'status': status, 'ok': value.get('ok')})
+            if status == 200 and value.get('ok'):
+                receipt['hostReadiness'] = observations
+                return
+        except (OSError, ValueError, http.client.HTTPException) as error:
+            observations.append({'error': repr(error)})
+        time.sleep(0.25)
+    receipt['hostReadiness'] = observations
+    raise RuntimeError('Actual production-network composed API did not become healthy on its published loopback port')
+
 try:
     assert not (root / '.env').exists(), 'Never replace an existing environment'
     assert all(not resources(kind) for kind in ['containers', 'volumes', 'networks'])
@@ -80,24 +94,41 @@ try:
     run('postgres-start', compose + ['up', '-d', '--wait', 'postgres'], 90)
     run('explicit-migration', compose + ['run', '--rm', '--no-deps', 'api', 'npm', '--workspace', '@watch-agents/control-plane', 'run', 'migrate'], 40)
     run('api-start', compose + ['up', '-d', 'api'], 40)
-    for _ in range(30):
-        try:
-            status, value = request('/health')
-            if status == 200 and value.get('ok'):
-                break
-        except (OSError, ValueError, http.client.HTTPException):
-            pass
-        time.sleep(0.25)
-    else:
-        raise RuntimeError('Actual composed API did not become healthy')
+    public = json.loads((root / 'docs/results/2026/11-14/macos-v1/native/native-vector.json').read_text())['publicKeyPem']
+    client = '''
+import assert from 'node:assert/strict';
+const [base, publicKeyPem, bootstrap] = process.argv.slice(1);
+async function req(path, token, body) { const response = await fetch(base+path, {method:body===undefined?'GET':'POST',headers:{'content-type':'application/json',...(token?{authorization:'Bearer '+token}:{})},...(body===undefined?{}:{body:JSON.stringify(body)}),signal:AbortSignal.timeout(5000)});return [response.status,await response.json()]; }
+let ready=false; for(let i=0;i<30;i++){try{const [status,value]=await req('/health');if(status===200&&value.ok){ready=true;break;}}catch{}await new Promise(ok=>setTimeout(ok,250));}assert.ok(ready);
+assert.equal((await req('/v1/admin/pairings',null,{}))[0],401);
+const [created,code]=await req('/v1/admin/pairings',bootstrap,{});assert.equal(created,201);
+const [paired,device]=await req('/v1/devices/pair',null,{code:code.code,platform:'chrome',publicKeyPem,label:'Authored internal packaged client'});assert.equal(paired,201);
+assert.deepEqual(await req('/v1/runs',device.token),[200,{runs:[]}]);
+console.log(JSON.stringify({passed:true,health:true,anonymousAdminRefused:true,pairingAndEmptyRead:true,actualInternalNetworkClient:true}));
+'''
+    receipt['B02'] = json.loads(run('internal-http-client', compose + ['run', '--rm', '--no-deps', 'api', 'node', '--input-type=module', '-e', client, 'http://api:8787', public, fixture['HUB_BOOTSTRAP_SECRET']], 40))
+    # A Docker internal network is a distinct fixture context. Keep that
+    # constraint and qualify ordinary deployment port publication separately.
+    run('internal-compose-logs', compose + ['logs', '--no-color', '--timestamps'])
+    run('internal-compose-down', compose + ['down', '--volumes', '--timeout', '10'], 45)
+    assert all(not resources(kind) for kind in ['containers', 'volumes', 'networks'])
+    receipt['internalFixtureRemovedBeforeProductionContext'] = True
+    compose = ['docker', 'compose', '-p', project, '-f', 'compose.yaml']
+    production = json.loads(run('production-compose-config', compose + ['config', '--format', 'json']))
+    assert not production['networks']['default'].get('internal', False)
+    assert production['services']['api']['ports'][0]['host_ip'] == '127.0.0.1'
+    assert 'ports' not in production['services']['postgres']
+    run('production-postgres-start', compose + ['up', '-d', '--wait', 'postgres'], 60)
+    run('production-explicit-migration', compose + ['run', '--rm', '--no-deps', 'api', 'npm', '--workspace', '@watch-agents/control-plane', 'run', 'migrate'], 40)
+    run('production-api-start', compose + ['up', '-d', 'api'], 30)
+    wait_for_host()
     assert request('/v1/admin/pairings', body={})[0] == 401
     status, code = request('/v1/admin/pairings', fixture['HUB_BOOTSTRAP_SECRET'], {})
     assert status == 201
-    public = json.loads((root / 'docs/results/2026/11-14/macos-v1/native/native-vector.json').read_text())['publicKeyPem']
     status, enrollment = request('/v1/devices/pair', body={'code': code['code'], 'platform': 'chrome', 'publicKeyPem': public, 'label': 'Authored packaged client'})
     assert status == 201
     assert request('/v1/runs', enrollment['token']) == (200, {'runs': []})
-    receipt['B02'] = {'passed': True, 'health': True, 'anonymousAdminRefused': True, 'pairingAndEmptyRead': True, 'loopbackApiOnly': True, 'postgresNotPublished': True, 'externalEgressDisabledByFixture': True}
+    receipt['B03'] = {'passed': True, 'health': True, 'anonymousAdminRefused': True, 'pairingAndEmptyRead': True, 'actualPublishedLoopbackApi': True, 'postgresNotPublished': True, 'ordinaryComposeNetwork': True, 'noAgentEventOrProviderRequest': True}
     run('actual-image', ['docker', 'image', 'inspect', project + '-api', '--format', '{{json .}}'])
     run('base-digests', ['docker', 'image', 'inspect', 'node:24-alpine', 'postgres:16-alpine', '--format', '{{json .RepoDigests}}'])
     receipt['passed'] = True
