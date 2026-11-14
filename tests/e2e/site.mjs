@@ -20,9 +20,9 @@ async function fetchBody(path) {
   assert.equal(response.status, 200); return bytes;
 }
 try {
-  const manifest = JSON.parse(await fetchBody('/build-manifest.json')); assert.equal(manifest.schema, 'watch-agents.public-site'); assert.equal(manifest.version, 1); assert.match(manifest.source, /^[a-f0-9]{40}$/);
+  const manifest = JSON.parse(await fetchBody('/build-manifest.json')); assert.equal(manifest.schema, 'watch-agents.public-site'); assert.equal(manifest.version, 2); assert.match(manifest.source, /^[a-f0-9]{40}$/);
   receipt.deploymentSource = manifest.source;
-  for (const input of manifest.inputs) { assert.ok(!input.path.startsWith('/') && !input.path.split('/').includes('..')); const local = await readFile(input.path); assert.equal(local.length, input.bytes); assert.equal(digest(local), input.sha256); }
+  for (const input of manifest.inputs) { assert.ok(!input.path.startsWith('/') && !input.path.split('/').includes('..')); assert.equal(input.encoding, input.path === 'vercel.json' ? 'canonical-json-v1' : 'raw'); const raw = await readFile(input.path), local = input.encoding === 'raw' ? raw : Buffer.from(JSON.stringify(JSON.parse(raw)) + '\n'); assert.equal(local.length, input.bytes); assert.equal(digest(local), input.sha256); }
   assert.equal(manifest.inputs.length, 10); assert.equal(manifest.files.length, 8);
   for (const file of manifest.files) { const bytes = await fetchBody('/' + (file.target === 'index.html' ? '' : file.target)); assert.equal(bytes.length, file.bytes); assert.equal(digest(bytes), file.sha256); }
   receipt.qualifiedInputBridge = manifest.inputs;

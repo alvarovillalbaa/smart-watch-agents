@@ -1,0 +1,41 @@
+{
+  "schema": "watch-agents.public-browser-evidence",
+  "version": 1,
+  "base": "https://watch-agents-alvaro-lj6cop3uf-my-team-4f230354.vercel.app",
+  "cases": [],
+  "http": [
+    {
+      "url": "https://watch-agents-alvaro-lj6cop3uf-my-team-4f230354.vercel.app/build-manifest.json",
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "age": "0",
+        "cache-control": "no-store",
+        "content-disposition": "inline; filename=\"build-manifest.json\"",
+        "content-encoding": "br",
+        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 14 Nov 2026 14:32:15 GMT",
+        "etag": "W/\"96b7b1635dc22213d5728ccb837e7c9b\"",
+        "last-modified": "Sat, 14 Nov 2026 14:32:15 GMT",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "no-referrer",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex",
+        "x-vercel-cache": "MISS",
+        "x-vercel-id": "sfo1::klh9g-1794666735655-4b6adefb9f6a"
+      },
+      "file": "00.body",
+      "bytes": 3202,
+      "sha256": "2015b66f10196304cef34e08f3d222f3592cd8e1e51cdcdfd512cf989a8cf346"
+    }
+  ],
+  "browserClosed": false,
+  "contextsClosed": true,
+  "passed": false,
+  "deploymentSource": "d92671cc6b36bff30d4558269107641d8982fe7b",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n722 !== 637\n\n    at file:///tmp/watch-agents-t2-yu7l_abm/source/tests/e2e/site.mjs:25:172"
+}
