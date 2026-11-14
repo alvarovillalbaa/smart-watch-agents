@@ -1,0 +1,25 @@
+name: Temporary Watch Agents release qualification
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  container:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Actual locked non-root hub image and owned Compose lifecycle
+        env:
+          WATCH_AGENTS_MODE: container
+          WATCH_AGENTS_OUTPUT: ${{ runner.temp }}/watch-agents-container
+        run: python3 tests/scripts/qualify.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: watch-agents-container-${{ github.run_id }}
+          path: ${{ runner.temp }}/watch-agents-container
+          if-no-files-found: error
+          retention-days: 7

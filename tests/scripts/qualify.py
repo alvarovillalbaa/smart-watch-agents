@@ -197,6 +197,11 @@ try:
         receipt['appGroupSnapshot'] = probe.get('appGroupSnapshot', False)
         execute('mac-package', ['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', str(app), str(output / 'WatchAgentsMac-0.2.0-adhoc-debug.zip')], 60)
         receipt['macBundlePackaged'] = True
+    elif mode == 'container':
+        execute('container-qualification', ['python3', 'tests/scripts/container.py'], 600)
+        result = json.loads((output / 'container/receipt.json').read_text())
+        if not result['passed'] or not result.get('ownedResourcesRemoved'):
+            raise RuntimeError('Actual container package or owned teardown was not established')
     elif mode in ['http', 'chrome', 'mac-http']:
         if mode in ['http', 'mac-http']:
             native = Path(os.environ['WATCH_AGENTS_NATIVE_INPUT'])

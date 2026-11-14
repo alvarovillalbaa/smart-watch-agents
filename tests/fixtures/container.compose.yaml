@@ -1,0 +1,4 @@
+# Only the owned qualification network has no external egress.
+networks:
+  default:
+    internal: true
