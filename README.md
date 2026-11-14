@@ -20,7 +20,8 @@ bound HITL approvals or follow-up prompts.
 
 1. Copy `.env.example` to `.env`, set a real bootstrap and connector secret,
    and set `HUB_PUBLIC_URL` to a TLS URL reachable by the watches.
-2. Run `docker compose up --build`.
+2. Follow the explicit database migration and Compose startup in
+   [docs/INSTALL.md](docs/INSTALL.md).
 3. Register an agent with `npm run hubctl -- agent add hermes Hermes`.
 4. Start `npm run demo` to ingest a sample Hermes run and HITL request.
 5. Create a watch pairing code with `npm run hubctl -- pair create`.
@@ -30,10 +31,17 @@ require a publicly reachable HTTPS endpoint. See [docs/INSTALL.md](docs/INSTALL.
 
 ## Security model
 
-The hub is single-owner in v1. A watch enrolls a P-256 public key using a
+The hub is single-owner. A watch enrolls a P-256 public key using a
 short-lived pairing code. Every HITL approval and follow-up dispatch carries a
-fresh signed nonce and is audited. Notification content defaults to redacted;
+protocol2 signature over exact request bytes/path/time/nonce. Its SQL receipt,
+source-bound subject, audit and queued command commit atomically; exact retry
+returns the original command. Notification content defaults to redacted;
 the owner may opt into summaries per device.
+
+The [desktop/new-tab workstream](docs/specs/desktop-hub-v1.md) is in progress.
+New protocol/migration/client source is not yet qualified; no live database or
+agent was changed. Native signing/compilation and later macOS widgets/Chrome
+clients require their own actual checks. Legacy API/schema remain historical.
 
 ## License
 
