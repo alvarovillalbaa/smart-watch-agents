@@ -145,8 +145,7 @@ finally:
             receipt['ownedResourcesAfterCleanup'] = after
             assert not any(after.values())
             run('owned-image-remove', ['docker', 'image', 'rm', project + '-api'], 20, accepted=(0, 1))
-            code = subprocess.run(['docker', 'image', 'inspect', project + '-api'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=10).returncode
-            assert code == 1
+            run('owned-image-absent-after', ['docker', 'image', 'inspect', project + '-api'], 10, accepted=(1,))
             receipt['ownedResourcesRemoved'] = True
         except Exception as error:
             receipt['cleanupError'] = repr(error); receipt['passed'] = False
