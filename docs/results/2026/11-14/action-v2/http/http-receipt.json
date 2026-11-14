@@ -1,0 +1,11 @@
+{
+  "schema": "watch-agents.http-evidence",
+  "version": 2,
+  "serverClosed": true,
+  "poolClosed": true,
+  "nativeVectorAccepted": true,
+  "concurrentExactRetry": {
+    "responses": 2,
+    "uniqueCommands": 1
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "mode": "http",
+  "commands": [
+    {
+      "name": "node-version",
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 9,
+      "stderrBytes": 0,
+      "stdoutSha256": "6a0cec2e157365c1a8ac6d1715733b7c3321a7c5565862a701ca71ef00359d04",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "dependencies",
+      "argv": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 180,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 25,
+      "stderrBytes": 0,
+      "stdoutSha256": "e845549e7a93d4cf20e361edea6827ade6a4c65ad077834ef7a603f44cae8720",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "initdb",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/initdb",
+        "-D",
+        "/tmp/watch-agents-t2-fcm7cycs/pg-data",
+        "-A",
+        "trust",
+        "--no-locale",
+        "--encoding=UTF8"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 30,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 853,
+      "stderrBytes": 0,
+      "stdoutSha256": "c40d721807182e0e37fffbabfec3857224ca7cb42c47c7ba676d53764c1df4bb",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pg-ready-0",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-p",
+        "58935"
+      ],
+      "exit": 2,
+      "timedOut": false,
+      "timeoutSeconds": 5,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 30,
+      "stderrBytes": 0,
+      "stdoutSha256": "559d2b6fda7587891da6a66defa9e871ded8fc1d51cbd60f2129bd27a4bf0f21",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pg-ready-1",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/pg_isready",
+        "-h",
+        "127.0.0.1",
+        "-p",
+        "58935"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 5,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 40,
+      "stderrBytes": 0,
+      "stdoutSha256": "da63dfed9e4979003280d6201a4d7b6605bf943ef2ea66f56ff2d945af77e29d",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "createdb",
+      "argv": [
+        "/usr/lib/postgresql/16/bin/createdb",
+        "-h",
+        "127.0.0.1",
+        "-p",
+        "58935",
+        "watch_agents_t2"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 15,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "http-tests",
+      "argv": [
+        "node",
+        "--test",
+        "tests/integration/action-http.test.mjs"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 180,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 2199,
+      "stderrBytes": 0,
+      "stdoutSha256": "3ce55cd684b714b70ddde911d53a4b92b125c5aea912017bda0b3ef4a2b5300d",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "passed": true,
+  "cleanup": true,
+  "postgres": {
+    "exit": 0,
+    "leaderReaped": true,
+    "groupAbsent": true
+  },
+  "sourceUnchanged": true,
+  "scratchBytes": 50627201
+}

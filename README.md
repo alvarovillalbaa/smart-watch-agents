@@ -39,9 +39,11 @@ returns the original command. Notification content defaults to redacted;
 the owner may opt into summaries per device.
 
 The [desktop/new-tab workstream](docs/specs/desktop-hub-v1.md) is in progress.
-New protocol/migration/client source is not yet qualified; no live database or
-agent was changed. Native signing/compilation and later macOS widgets/Chrome
-clients require their own actual checks. Legacy API/schema remain historical.
+[Protocol2 prerequisite checks passed](docs/results/2026/11-14/action-v2/result.md):
+actual Swift/CryptoKit-to-Node interoperability and21 HTTP/PostgreSQL cases.
+No live database or agent was changed. Later macOS widgets/Chrome clients,
+Kotlin compilation, actual watches/push and deployment remain unverified.
+Legacy API/schema remain historical; source/fixture proof is not device proof.
 
 ## License
 

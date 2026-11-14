@@ -1,0 +1,98 @@
+{
+  "mode": "native",
+  "commands": [
+    {
+      "name": "keychain-before",
+      "argv": [
+        "security",
+        "find-generic-password",
+        "-s",
+        "dev.watch-agents.identity"
+      ],
+      "exit": 44,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 92,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+    },
+    {
+      "name": "swift-version",
+      "argv": [
+        "swift",
+        "--version"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 15,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 98,
+      "stderrBytes": 30,
+      "stdoutSha256": "b674f79b747370a1c05ae7cec551fffe557816c6c807f35f39f933ecbcca80d7",
+      "stderrSha256": "542ca724f46d8a3dffb85c3cd4b6e0d2fdf6c1bd4c484e6978dd9ed2f22cd639"
+    },
+    {
+      "name": "swift-tests",
+      "argv": [
+        "swift",
+        "test",
+        "--package-path",
+        "packages/apple-core"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 300,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 824,
+      "stderrBytes": 922,
+      "stdoutSha256": "4232483dea05254cd9dd43b43b490ea9bfa87c264c9e65527295177ac885bc7c",
+      "stderrSha256": "e4f72c6a163eeec136856b66eedb2cfc8bd70b17bafb871261525e165694fe22"
+    },
+    {
+      "name": "keychain-cleanup",
+      "argv": [
+        "security",
+        "delete-generic-password",
+        "-s",
+        "dev.watch-agents.identity"
+      ],
+      "exit": 0,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 659,
+      "stderrBytes": 27,
+      "stdoutSha256": "8760bf388dd3b6fa347533fa3895921e5ad0f127049c7367c4c39bd86d5eb718",
+      "stderrSha256": "2ab28655e407f758e702aaba84ebf73bc5b93af0161c56b0b07f86624f827689"
+    },
+    {
+      "name": "keychain-after",
+      "argv": [
+        "security",
+        "find-generic-password",
+        "-s",
+        "dev.watch-agents.identity"
+      ],
+      "exit": 44,
+      "timedOut": false,
+      "timeoutSeconds": 10,
+      "leaderReaped": true,
+      "groupAbsent": true,
+      "stdoutBytes": 0,
+      "stderrBytes": 92,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e40a1fe7d9847086f46c8b7c70cdb52dfd92b292f0e8a4a08ad38053c31dc091"
+    }
+  ],
+  "passed": true,
+  "cleanup": true,
+  "ownedKeychainItemAbsent": true,
+  "sourceUnchanged": true,
+  "scratchBytes": 133448172
+}
