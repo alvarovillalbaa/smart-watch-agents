@@ -1,0 +1,34 @@
+[
+  {
+    "url": "https://watch-agents-alvaro-2fcs3tr39-my-team-4f230354.vercel.app/",
+    "method": "GET"
+  },
+  {
+    "url": "https://watch-agents-alvaro-2fcs3tr39-my-team-4f230354.vercel.app/site.css",
+    "method": "GET"
+  },
+  {
+    "url": "https://watch-agents-alvaro-2fcs3tr39-my-team-4f230354.vercel.app/mark.svg",
+    "method": "GET"
+  },
+  {
+    "url": "https://watch-agents-alvaro-2fcs3tr39-my-team-4f230354.vercel.app/preview/newtab.html",
+    "method": "GET"
+  },
+  {
+    "url": "https://watch-agents-alvaro-2fcs3tr39-my-team-4f230354.vercel.app/preview/style.css",
+    "method": "GET"
+  },
+  {
+    "url": "https://watch-agents-alvaro-2fcs3tr39-my-team-4f230354.vercel.app/preview/newtab.mjs",
+    "method": "GET"
+  },
+  {
+    "url": "https://watch-agents-alvaro-2fcs3tr39-my-team-4f230354.vercel.app/preview/client.mjs",
+    "method": "GET"
+  },
+  {
+    "url": "https://watch-agents-alvaro-2fcs3tr39-my-team-4f230354.vercel.app/preview/demo.mjs",
+    "method": "GET"
+  }
+]

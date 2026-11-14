@@ -25,13 +25,14 @@ try {
   for (const input of manifest.inputs) { assert.ok(!input.path.startsWith('/') && !input.path.split('/').includes('..')); assert.equal(input.encoding, input.path === 'vercel.json' ? 'canonical-json-v1' : 'raw'); const raw = await readFile(input.path), local = input.encoding === 'raw' ? raw : Buffer.from(JSON.stringify(JSON.parse(raw)) + '\n'); assert.equal(local.length, input.bytes); assert.equal(digest(local), input.sha256); }
   assert.equal(manifest.inputs.length, 10); assert.equal(manifest.files.length, 8);
   for (const file of manifest.files) { const bytes = await fetchBody('/' + (file.target === 'index.html' ? '' : file.target)); assert.equal(bytes.length, file.bytes); assert.equal(digest(bytes), file.sha256); }
+  const favicon = await fetchBody('/favicon.ico'); assert.equal(digest(favicon), manifest.files.find(file => file.target === 'mark.svg').sha256);
   receipt.qualifiedInputBridge = manifest.inputs;
   browser = await chromium.launch({ channel: 'chromium', headless: true });
   for (const [id, options] of [['S01', { viewport: { width: 1365, height: 900 }, colorScheme: 'light' }], ['S02-390', { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, colorScheme: 'light' }], ['S03-320', { viewport: { width: 320, height: 844 }, hasTouch: true, isMobile: true, colorScheme: 'dark' }]]) {
     if (selection && !selection.has(id)) continue;
     const context = await browser.newContext(options); contexts.push(context); const page = await context.newPage(); page.setDefaultTimeout(10000);
     const row = { id, passed: false, closed: false }, errors = [], requests = [];
-    page.on('pageerror', error => errors.push(error.stack)); page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+    page.on('pageerror', error => errors.push(error.stack)); page.on('console', message => { if (message.type() === 'error') errors.push(message.text() + ' @ ' + message.location().url); });
     page.on('request', request => requests.push({ url: request.url(), method: request.method() }));
     await page.addInitScript(() => { window.__watchAgentsTouches = []; document.addEventListener('pointerdown', event => window.__watchAgentsTouches.push({ pointerType: event.pointerType, trusted: event.isTrusted, target: event.target.closest('a,button')?.textContent }), true); });
     try {
@@ -39,7 +40,7 @@ try {
       const landingSize = await page.evaluate(() => ({ width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth })); assert.ok(landingSize.scroll <= landingSize.width + 1); row.landingSize = landingSize;
       await page.screenshot({ path: join(output, id + '-landing.png'), fullPage: true, animations: 'disabled' });
       const preview = page.getByRole('link', { name: /Explore the new-tab preview/ }); if (options.hasTouch) await preview.tap(); else await preview.click();
-      await page.waitForSelector('#open-setup'); assert.equal(new URL(page.url()).pathname, '/preview/newtab.html');
+      await page.getByRole('button', { name: 'Load authored preview' }).waitFor({ state: 'visible' }); assert.equal(new URL(page.url()).pathname, '/preview/newtab.html');
       assert.equal(await page.locator('#connection-label').innerText(), 'Authored preview'); assert.equal(await page.locator('.run-card').count(), 0); assert.equal(await page.locator('#setup').isHidden(), true); assert.equal(await page.locator('#refresh').isHidden(), true);
       const load = page.getByRole('button', { name: 'Load authored preview' }); if (options.hasTouch) await load.tap(); else await load.click();
       assert.equal(await page.locator('.run-card').count(), 3); assert.match(await page.locator('#status').innerText(), /Authored preview only/);

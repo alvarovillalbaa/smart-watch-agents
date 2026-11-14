@@ -1,0 +1,117 @@
+{
+  "schema": "watch-agents.public-site",
+  "version": 2,
+  "source": "da1d68e481763578a21c598a4979eac5997cd096",
+  "files": [
+    {
+      "source": "site/index.html",
+      "target": "index.html",
+      "bytes": 5357,
+      "sha256": "0dbd9ace0acff978d7e3f83d32e9cc1107e61afe35c1def0c5dfd482394a7398"
+    },
+    {
+      "source": "site/site.css",
+      "target": "site.css",
+      "bytes": 6657,
+      "sha256": "102745faf694f9731eaad15aed6b68f6d3dbe56980a50cc8eb1ad0fa16bcd2ad"
+    },
+    {
+      "source": "site/mark.svg",
+      "target": "mark.svg",
+      "bytes": 228,
+      "sha256": "097e81be8a7b7bafc1d7c64aaeae7958e06c6ffc89eb16a936c5248f654d3eb2"
+    },
+    {
+      "source": "apps/chrome/newtab.html",
+      "target": "preview/newtab.html",
+      "bytes": 4844,
+      "sha256": "2ce29a1e26c2a88ecc11860618f27c03af8464d24e846f0949c150aa638e79e9"
+    },
+    {
+      "source": "apps/chrome/newtab.mjs",
+      "target": "preview/newtab.mjs",
+      "bytes": 13733,
+      "sha256": "e5204ad3c8e749de34547907b7827c12a73b681ed9e42ea455bc6a04bbe05248"
+    },
+    {
+      "source": "apps/chrome/style.css",
+      "target": "preview/style.css",
+      "bytes": 9507,
+      "sha256": "46e91611898b07460a71604da82e20d15057ce7f81b0df75f248f20a074ca79d"
+    },
+    {
+      "source": "apps/chrome/client.mjs",
+      "target": "preview/client.mjs",
+      "bytes": 14532,
+      "sha256": "2563da6ad82368f5f5402c97abe04f86608b151f1722d50966f46d16033e2650"
+    },
+    {
+      "source": "apps/chrome/demo.mjs",
+      "target": "preview/demo.mjs",
+      "bytes": 1572,
+      "sha256": "744cab631c65e290023a990e49b187bd83a4a426e803041fd9e169a578657561"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "site/index.html",
+      "encoding": "raw",
+      "bytes": 5357,
+      "sha256": "0dbd9ace0acff978d7e3f83d32e9cc1107e61afe35c1def0c5dfd482394a7398"
+    },
+    {
+      "path": "site/site.css",
+      "encoding": "raw",
+      "bytes": 6657,
+      "sha256": "102745faf694f9731eaad15aed6b68f6d3dbe56980a50cc8eb1ad0fa16bcd2ad"
+    },
+    {
+      "path": "site/mark.svg",
+      "encoding": "raw",
+      "bytes": 228,
+      "sha256": "097e81be8a7b7bafc1d7c64aaeae7958e06c6ffc89eb16a936c5248f654d3eb2"
+    },
+    {
+      "path": "apps/chrome/newtab.html",
+      "encoding": "raw",
+      "bytes": 4844,
+      "sha256": "2ce29a1e26c2a88ecc11860618f27c03af8464d24e846f0949c150aa638e79e9"
+    },
+    {
+      "path": "apps/chrome/newtab.mjs",
+      "encoding": "raw",
+      "bytes": 13733,
+      "sha256": "e5204ad3c8e749de34547907b7827c12a73b681ed9e42ea455bc6a04bbe05248"
+    },
+    {
+      "path": "apps/chrome/style.css",
+      "encoding": "raw",
+      "bytes": 9507,
+      "sha256": "46e91611898b07460a71604da82e20d15057ce7f81b0df75f248f20a074ca79d"
+    },
+    {
+      "path": "apps/chrome/client.mjs",
+      "encoding": "raw",
+      "bytes": 14532,
+      "sha256": "2563da6ad82368f5f5402c97abe04f86608b151f1722d50966f46d16033e2650"
+    },
+    {
+      "path": "apps/chrome/demo.mjs",
+      "encoding": "raw",
+      "bytes": 1572,
+      "sha256": "744cab631c65e290023a990e49b187bd83a4a426e803041fd9e169a578657561"
+    },
+    {
+      "path": "scripts/build-site.mjs",
+      "encoding": "raw",
+      "bytes": 1742,
+      "sha256": "b2e23fbafad31aa8ccaa3e44a896f5e9748c33bdfe059b5d428b5b535a04322f"
+    },
+    {
+      "path": "vercel.json",
+      "encoding": "canonical-json-v1",
+      "bytes": 637,
+      "sha256": "a1362dfe068351d61596bbecce3b2a5d74a6d1720c2c9e02c24589cfbeb59db3"
+    }
+  ]
+}
