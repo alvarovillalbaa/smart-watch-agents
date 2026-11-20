@@ -1,5 +1,9 @@
 # Watch Agents
 
+<!-- project-family:start -->
+> **Project family:** [OS Apps](https://github.com/alvarovillalbaa#os-apps) · **Area:** Agent companions
+<!-- project-family:end -->
+
 An open-source, self-hosted control hub for Hermes and OpenClaw agent runs.
 Check the work in a Chrome new tab or a small macOS companion and status widget.
 Review a decision or stored follow-up before choosing the next move. The hub
